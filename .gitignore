@@ -1,0 +1,17 @@
+*.pyc
+.vscode
+
+home/static/*
+mysite/static/*
+projects/static/*
+db.sqlite3*
+
+venv/Include/*
+venv/lib/*
+venv/Scripts/*
+
+
+projects/__pychache__
+home/__pychache__
+mysite/__pychache__
+
