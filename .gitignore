@@ -1,9 +1,6 @@
 *.pyc
 .vscode
 
-home/static/*
-mysite/static/*
-projects/static/*
 db.sqlite3*
 
 venv/Include/*

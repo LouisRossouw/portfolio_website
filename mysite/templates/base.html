@@ -7,45 +7,44 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'js_css/css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'js_css/css/nav_style.css' %}">
 
     <title>{% block title %}Louis Rossouw {% endblock %}</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+
     <link rel="shortcut icon" href="{% static 'images/icons/flav_logo.png' %}"> </link>
-    </head>
-
-    <body class="bg-[#242429]">
 
 
+    <nav class="topnav" style="z-index: 10;">
 
-    <nav class="flex items-center justify-between px-4 py-3 bg-[#18181b] drop-shadow-md opacity-100">
-      <div>
-        <a class="text-xl text-white" href="{% url 'home' %}">Louis Rossouw</a>
+      <ul>
+        <a class="logo_main" href="{% url 'home' %}">Louis Rossouw</a>
+        <div class="menu">
+          <a href="{% url 'home' %}">ABOUT</a>
+          <a href="{% url 'project_index' %}">PORTFOLIO</a>
+          <a href="{% url 'project_index' %}">EXPERIENCE</a>
+          <a href="{% url 'project_index' %}">BLOG</a>
+          <a href="{% url 'project_index' %}">DEV</a>
+          <a href="{% url 'project_index' %}">CONTACT</a>
+        </div>
+      </ul>
 
-      </div>
-      <div class="flex items-center space-x-4">
-      <a class="text-xs text-white hover:text-sky-400" href="{% url 'home' %}">ABOUT</a>
-      <a class="text-xs text-white blur-sm" href="{% url 'project_index' %}">PORTFOLIO</a>
-      <a class="text-xs text-white" href="{% url 'project_index' %}">EXPERIENCE</a>
-      <a class="text-xs text-white" href="{% url 'project_index' %}">BLOG</a>
-      <a class="text-xs text-white" href="{% url 'project_index' %}">DEV</a>
-      <a class="text-xs text-white animate-bounce h-4" href="{% url 'project_index' %}">CONTACT</a>
-      </div>
-
-      <div class="flex items-center space-x-4">
-        <a href="/signup/" class="px-5 py3 rounded-xl text-white bg-stone-500">login</a>
-      </div>
     </nav>
 
 
- 
+    </head>
+
+
+
+
+
+
+  <body style="background-color: rgb(4, 4, 4)">
     {% block page_content %}{% endblock %}
 
 
-
-
-</body>
+    <script src="{% static 'js_css/js/home.js' %}"></script>
+  </body>
 </html>
 
 

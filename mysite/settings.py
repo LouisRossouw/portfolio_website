@@ -119,9 +119,11 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-# STATICFILES_DIRS = [
-#     BASE_DIR / "static",
-# ]
+STATICFILES_DIRS = [
+    BASE_DIR / "mysite/static",
+    BASE_DIR / "home/static",
+    BASE_DIR / "projects/static",
+]
 
 
 # Default primary key field type

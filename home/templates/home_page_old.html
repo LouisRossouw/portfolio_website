@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_content %}
+
+<div class="embed-responsive embed-responsive-40by9 relative w-full overflow-hidden" style="padding-top: 40%;">
+    <video class="embed-responsive-item absolute top-0 right-0 bottom-0 left-0 w-full h-50" autoplay loop muted style=" margin-top: -20px">
+      <source src="{% static 'images/icons/banner_clean.mp4' %}" type="video/mp4">
+    </video>
+  </div>
+
+  <hr>
+
+  <div class="grid grid-rows-3 grid-flow-col gap-4">
+    <div class="row-span-3 ...">
+      <img  src="{% static 'images/icons/flav_logo2.gif' %}">
+    </div>
+    <div class="col-span-2 ...">
+      <h1>Hi, Im Louis.</h1>
+    </div>
+    <div class="row-span-2 col-span-2 ...">03</div>
+  </div>
+
+
+{% endblock %}
+
+
+
+
+

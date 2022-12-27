@@ -1,0 +1,89 @@
+body
+{
+    margin: 0;
+    padding: 0;
+}
+
+
+/* *******      Splash Screen intro */
+.splash
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    background-color: #000;
+    color: #ffff;
+    text-align: center;
+    line-height: 100vh;
+}
+
+.splash.display-none
+{
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    transition: all 2s;
+    z-index: -1;
+
+}
+
+
+.fade-in
+{
+    opacity: 0;
+    filter: blur(5px);
+    animation: fadeIn 1s ease-in forwards;
+}
+
+@keyframes fadeIn{
+    to{
+        opacity: 1;
+        filter: blur(0px);
+        
+
+    }
+}
+
+/* ----------      Splash Screen intro */
+
+
+
+
+
+section
+{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: #000;
+}
+
+
+section h1
+{
+    position: absolute;
+    top: 50%;
+    transform: translate();
+    width: 100%;
+    text-align: center;
+    color: #ffff;
+    font-family: sans-serif;
+    font-size: 8em;
+    margin: 0;
+    padding: 50px, 0;
+    text-transform: uppercase;
+    opacity: 1;
+    
+    
+}
+.img-blur
+{
+    filter: blur(0px);
+}
