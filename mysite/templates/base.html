@@ -7,44 +7,60 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+
+
+<!-- LINK TO STYLES. -->
     <link rel="stylesheet" type="text/css" href="{% static 'js_css/css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'js_css/css/nav_style.css' %}">
 
-    <title>{% block title %}Louis Rossouw {% endblock %}</title>
-
-    <link rel="shortcut icon" href="{% static 'images/icons/flav_logo.png' %}"> </link>
-
-
-    <nav class="topnav" style="z-index: 10;">
-
-      <ul>
-        <a class="logo_main" href="{% url 'home' %}">Louis Rossouw</a>
-        <div class="menu">
-          <a href="{% url 'home' %}">ABOUT</a>
-          <a href="{% url 'project_index' %}">PORTFOLIO</a>
-          <a href="{% url 'project_index' %}">EXPERIENCE</a>
-          <a href="{% url 'project_index' %}">BLOG</a>
-          <a href="{% url 'project_index' %}">DEV</a>
-          <a href="{% url 'project_index' %}">CONTACT</a>
-        </div>
-      </ul>
-
-    </nav>
-
-
-    </head>
+    <title>{% block title %}LouisRossouw {% endblock %}</title>
 
 
 
+<!-- FLAV ICON. -->
+    <link class="flav-icon" rel="shortcut icon" href="{% static 'images/icons/px_1.png' %}"></link>
+
+<!-- Script to animate the flav icon for fun. -->
+    <script>
+      function iconAnimate() {
+          setTimeout(function(){document.querySelector('.flav-icon').href="{% static 'images/icons/px_1.png' %}"}, 450);
+          setTimeout(function(){document.querySelector('.flav-icon').href="{% static 'images/icons/px_2.png' %}"}, 900);}
+
+      setInterval(function(){iconAnimate();}, 1000);
+    </script>
+
+  </head>
+
+<!-- NAVIGATION BAR. -->
+    <header>
+      <a class="logo" href="{% url 'home' %}">Louis Rossouw</a>
+      <nav>
+        <ul class="nav_links">
+          <li><a href="{% url 'home' %}">ABOUT</a></li>
+          <li><a href="{% url 'project_index' %}">PORTFOLIO</a></li>
+          <li><a href="{% url 'project_index' %}">EXPERIENCE</a></li>
+          <li><a href="{% url 'project_index' %}">BLOG</a></li>
+          <li><a href="{% url 'project_index' %}">DEV</a></li>
+        </ul>
+      </nav>
+      <a class="cta" href="/"><button>CONTACT</button></a>
+    </header>
 
 
 
+<!-- CONTENTS PAGES -->
   <body style="background-color: rgb(4, 4, 4)">
     {% block page_content %}{% endblock %}
 
 
     <script src="{% static 'js_css/js/home.js' %}"></script>
   </body>
+
+
+
+
+
+
 </html>
 
 

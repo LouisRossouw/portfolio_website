@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200&display=swap');
+
+
 body
 {
     margin: 0;
     padding: 0;
 }
-
 
 /* *******      Splash Screen intro */
 .splash
@@ -18,6 +20,7 @@ body
     color: #ffff;
     text-align: center;
     line-height: 100vh;
+    
 }
 
 .splash.display-none
@@ -60,16 +63,19 @@ section
 {
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     overflow: hidden;
-    background: #000;
+    background: rgb(0, 0, 0);
 }
 
 
-section h1
-{
+
+/* EXPERMINET*/
+
+  
+.container{
     position: absolute;
-    top: 50%;
+    top: 96%;
     transform: translate();
     width: 100%;
     text-align: center;
@@ -80,10 +86,118 @@ section h1
     padding: 50px, 0;
     text-transform: uppercase;
     opacity: 1;
-    
-    
 }
-.img-blur
-{
+
+.glow {
+    position: relative;
+    background-color : #020c1b;
+    color : #64ffda;
+    border-radius : 10px;
+  }
+  
+.glow:before, .glow:after {
+    content: '';
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    background: linear-gradient(to right, #00f2f2, #0575E6, #00f2f2);
+    background-size: 200%;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    z-index: -1;
+    border-radius : 10px;
+    border-radius: inherit;
+    animation: steam 10s infinite alternate;
+  }
+  
+  
+  @keyframes steam {
+      0% {
+          background-position: 0 0; 
+      }
+      50% {
+          background-position: 400% 0;
+      }
+      100% {
+          background-position: 0 0;
+      }
+  }
+  
+  .glow:after {
+      filter: blur(200px);
+  }
+  
+
+
+.row:after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.row{
+    position: relative;
+    top: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: 'Source Code Pro', monospace;
+    font-size: 14.5px;
+    padding: 120px;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+    color: white;
+    float: left;
+    padding: 40px;
+  }
+  
+  /* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+@media screen and (max-width:600px) {
+.column {
+    width: 100%;
+}
+}
+
+.list_a {
+    text-align: left;
+    list-style-type: circle;
+  }
+
+.vl {
+    border-left: 1px solid rgb(255, 0, 204, 1);
+    height: 40vh;
+    padding-left: 0vh;
+    
+    animation: animate 4s infinite alternate;
+    box-shadow: 0 0 50px #0072ff, 0 0 100px #0072ff, 0 0 150px #0072ff,
+      0 0 200px #0072ff;
+}
+
+
+@keyframes animate {
+    from {
+      filter: hue-rotate(0deg);
+    }
+    to {
+      filter: hue-rotate(-0.15turn);
+    }
+  }
+
+
+.profile_pic{
     filter: blur(0px);
+
+  }
+
+
+.socials li{
+    display: inline;
 }

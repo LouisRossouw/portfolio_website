@@ -3,6 +3,8 @@
 
 {% block page_content %}
 
+
+<!-- Start Splash Screen -->
 <!-- <div class="splash">
   <img class="fade-in" src="{% static 'images/icons/pxl2.gif' %}"></img>
 </div> -->
@@ -11,17 +13,76 @@
 <section style="position: fixed; z-index: -2">
 
 
-<div style="position: fixed; z-index: -1;">
-    <video class="video_background" loop muted playsinline style="margin: -70px 0px; width: 100%; height: auto;">
+<div style="position: fixed; z-index: -1; box-shadow: 100px;">
+    <video class="video_background" loop muted playsinline style="margin: -70px -4px; width: 100%; height: auto;">
       <source src="{% static 'images/icons/banner_clean.mp4' %}" type="video/mp4">
     </video>
 </div>
 
-<div>
-  <h1 class="hello_bio">HI im Louis!</h1>
+<div class="row">
+
+  <div class="column">
+    <img src="{% static 'images/icons/pxl.gif' %}" class="profile_pic"></img>
+
+    <ul class="socials">
+      <li>Linkdln</li>
+      <li>GitHub</li>
+      <li>IMD</li>
+      <li>Youtube</li>
+      <li>Insta</li>
+    </ul>
+
+
+  </div>
+  
+  <div class="vl"></div>
+
+  <div class="column">
+    <h1>Hey, I'm Louis.</h1>
+    <p>I'm a senior character animator with over 10 years of professional experience working in the film and advertising industry.</p>
+    <p>I am creatively flexible, self motivated and a reliable individual that loves to play and experiment with my work. I've had the privilege of being a lead animator for the Apceros sequence in the Monster Hunter film, Deep Blue Sea 3 and other films, animated within Houdini and Maya.</p>
+    <p>Im happiest when knee-deep adding life to complex realistic quadruped animals, to cute goofy characters that make people laugh and feel connected, although most of my work is character animation, I am passionate about other parts of the pipeline too, from modeling to rendering and lighting, to developing pipeline tools for other artists to use.</p>
+    
+    <ul class="list_a">
+      <li>+ 27 79 976 1280</li>
+      <li>louis@louisrossouw.com</li>
+      <li>Full working / living rights for Europe and South Africa.</li>
+    </ul>
+  </div>
+  
+  <div class="vl"></div>
+
+  <div class="column">
+
+    <ul class="list_a">
+      <h1>Skils</h1>
+        <li>Character animation</li>
+        <li>Creature animation</li>
+        <li>Camera animation</li>
+        <li>Pre-visualization</li>
+        <li>Python</li>
+        <li>Tool/Pipeline Development</li>
+        <li>Strong Googling skills</li>
+        <li>Editing</li>
+        <li>Modeling</li>
+    </ul>
+
+    <!-- <h2>Column</h2> -->
+    <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan convallis.</p> -->
+  </div>
+
+</div>
+
+
+<div class='container'>
+  <div class='row_glow'>
+    <div class='glow'>.</div>
+  </div>
 </div>
 
 </section>
+
+
 
 
 
