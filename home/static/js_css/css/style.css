@@ -1,12 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200&display=swap');
 
 
-body
-{
-    margin: 0;
-    padding: 0;
-}
-
 /* *******      Splash Screen intro */
 .splash
 {
@@ -53,29 +47,54 @@ body
     }
 }
 
-/* ----------      Splash Screen intro */
 
 
 
 
 
-section
-{
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background: rgb(0, 0, 0);
+
+* {
+box-sizing: border-box;
 }
 
 
+/* .header {
+    padding: 0px;
+    text-align: center;
+    font-size: 35px;
+    
+} */
 
-/* EXPERMINET*/
+
+.column {
+    color: white;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 14px;
+    background: none;
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+    height: 50vh;
+    /* border: 1px solid green; */
+}
+
+
+.row:after {
+    display: table;
+    clear: both;
+}
+  
+
+
+
+
+
+/* GLOW EFFECTS */
 
   
 .container{
     position: absolute;
-    top: 96%;
+    top: 105%;
     transform: translate();
     width: 100%;
     text-align: center;
@@ -83,9 +102,10 @@ section
     font-family: sans-serif;
     font-size: 8em;
     margin: 0;
-    padding: 50px, 0;
+    padding: 0px, 0;
     text-transform: uppercase;
     opacity: 1;
+
 }
 
 .glow {
@@ -93,6 +113,7 @@ section
     background-color : #020c1b;
     color : #64ffda;
     border-radius : 10px;
+    margin-left: -100px;
   }
   
 .glow:before, .glow:after {
@@ -129,75 +150,94 @@ section
   
 
 
-.row:after{
-    content: "";
-    display: table;
-    clear: both;
+.profile_pic{
+    display: block;
+    padding-top: 10vh;
+    padding-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    width: 10vh;
 }
 
-.row{
-    position: relative;
-    top: 10%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
-    font-family: 'Source Code Pro', monospace;
-    font-size: 14.5px;
-    padding: 120px;
-}
-
-/* Create three equal columns that floats next to each other */
-.column {
-    color: white;
-    float: left;
-    padding: 40px;
-  }
   
-  /* Clear floats after the columns */
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-@media screen and (max-width:600px) {
-.column {
-    width: 100%;
-}
+.socials{
+    margin-left: -50px;
+    display: flex;
+    justify-content: space-evenly;
+    
 }
 
-.list_a {
-    text-align: left;
-    list-style-type: circle;
+.socials i{
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.socials i:hover{
+    color: rgb(157, 253, 242);
+    cursor: pointer;
+    animation: socials_animate 1s infinite alternate;
+    
+}
+@keyframes socials_animate {
+    from {filter: hue-rotate(0deg);}
+    to {filter: hue-rotate(-0.8turn);}
   }
 
-.vl {
-    border-left: 1px solid rgb(255, 0, 204, 1);
-    height: 40vh;
-    padding-left: 0vh;
-    
+
+.line_break{
+    border: 1px solid rgb(255, 0, 204, 0.2);
     animation: animate 4s infinite alternate;
-    box-shadow: 0 0 50px #0072ff, 0 0 100px #0072ff, 0 0 150px #0072ff,
-      0 0 200px #0072ff;
 }
 
 
 @keyframes animate {
-    from {
-      filter: hue-rotate(0deg);
-    }
-    to {
-      filter: hue-rotate(-0.15turn);
-    }
+    from {filter: hue-rotate(0deg);}
+    to {filter: hue-rotate(-0.35turn);}
   }
 
+.list_a {
+    text-align: left;
+    margin-left: -20px;
+    list-style-type: circle;
+  }
+
+.skills_list{
+    text-align: left;
+    margin-left: -20px;
+    list-style-type: circle;
+}
+
+.skills_list li {
+    font-size: 14px;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 600px) {
+.column {
+    width: 100%;
+}
+.glow:after {
+    filter: blur(100px);
+}
+.column{
+    height: auto;
+    overflow:scroll;
+    
+}
 
 .profile_pic{
-    filter: blur(0px);
+    padding-top: 1vh;
+    padding-bottom: auto;
+}
 
-  }
-
-
-.socials li{
-    display: inline;
 }

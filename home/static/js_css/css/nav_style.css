@@ -11,7 +11,7 @@ li, a, button{
 
 
 
-header{
+.navbar_header{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -57,13 +57,33 @@ header{
 
 button{
     padding: 0% 20px;
-    background-color: rgba(0,136,169,0.5);
+    background-color: rgba(0,136,169,0);
     border: none;
-    border-radius: 7px;
+    border-radius: 100px;
     cursor: pointer;
+    z-index: 2;
+    animation: glowza 1s infinite alternate;
 
 }
 
 button:hover{
-    background-color:rgb(255, 0, 204, 1);
+    background-color:rgb(255, 0, 204, 1);   
 }
+
+
+
+
+@keyframes glowza {
+  from {
+      box-shadow: 0 0 1px #00f2f2, 0 0 2px #6a00ff, 0 0 3px #00f2f2, 0 0 4px #ffff00, 0 0 5px #00f2f2, 0 0 6px #00f2f2, 0 0 7px #00f2f2;
+  }
+
+  to {
+      box-shadow: 0 0 1px #00f2f2, 
+      0 0 2px #00f2f2,
+      0 0 5px #88a723,
+      0 0 10px #b300ff;
+  }
+}
+
+

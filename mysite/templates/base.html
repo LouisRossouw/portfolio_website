@@ -12,6 +12,7 @@
 <!-- LINK TO STYLES. -->
     <link rel="stylesheet" type="text/css" href="{% static 'js_css/css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'js_css/css/nav_style.css' %}">
+    <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
 
     <title>{% block title %}LouisRossouw {% endblock %}</title>
 
@@ -32,7 +33,7 @@
   </head>
 
 <!-- NAVIGATION BAR. -->
-    <header>
+    <header class="navbar_header">
       <a class="logo" href="{% url 'home' %}">Louis Rossouw</a>
       <nav>
         <ul class="nav_links">
@@ -58,8 +59,84 @@
 
 
 
+<div class="footer">
+  <a class="footer" href="https://github.com/LouisRossouw/portfolio_website" target="_blank">Designed and Built by LouisRossouw 2023.</a>
+  <i class="fa fa-cog fa-spin fa-2xs"></i>
 
 
+  <style>
+
+    .footer {
+        position: fixed;
+        left: 0px;
+        bottom: 0;
+        width: 100%;
+        color: rgb(255, 255, 255, 0.2);
+        text-align: center;
+        padding: 20px 50px;
+      }
+      .footer:hover {
+        animation: footerGlow linear 0.5s 1 normal forwards;
+      }
+
+    @keyframes footerGlow {
+    from {color: rgb(255, 255, 255, 0.2);}
+    to {color: rgb(111, 217, 255);}
+    }
+
+    .footer i{
+      margin-left: -400px;
+      width: 10%;
+      height: auto;
+    }
+
+
+  </style>
+
+
+
+<div class="footer02">
+
+  <style>
+
+    .footer02 {
+        position: fixed;
+        z-index: -2;
+        left: 0px;
+        bottom: 0;
+        width: 100%;
+        height: 7%;
+        backdrop-filter: blur(4px);
+
+        text-align: center;
+        padding: 20px 50px;
+    }
+
+    @media (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+
+
+    .footer {
+        font-size: smaller;
+    }
+
+    .footer i{
+      margin-left: -300px;
+    }
+
+  }
+
+  </style>
+
+<div class='container'>
+  <div class='row_glow'>
+    <div class='glow'>.</div>
+  </div>
+</div>
+
+</div>
 
 </html>
 
