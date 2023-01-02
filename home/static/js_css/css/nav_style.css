@@ -16,15 +16,26 @@ li, a, button{
     justify-content: space-between;
     align-items: center;
     overflow: hidden;
-    background-image: linear-gradient(to top, rgba(255,0,0,0), rgb(0, 0, 0)) !important ;
-    background-image: grad;
+    background-image: linear-gradient(to top, rgba(255,0,0,0), rgb(0, 0, 0)) ;
     padding:  0% 200px;
 }
 
 .logo{
     cursor: pointer;
+    color: rgb(207, 255, 254);
     font-size: 20px;
+    text-shadow: 1px 1px 1px black;
+    font-weight:900;
+    animation: logo_animate 2s infinite alternate;
 }
+
+
+@keyframes logo_animate {
+    from {filter: hue-rotate(0deg);}
+    to {filter: hue-rotate(-0.8turn);}
+  }
+
+
 
 .nav_links{
     list-style: none;
@@ -38,7 +49,7 @@ li, a, button{
 
 .nav_links li a{
     /* Bottom line */
-    background-image: linear-gradient(rgb(0, 255, 251, 0.5) ,rgb(0, 255, 251, 0.5));
+    background-image: linear-gradient(rgb(85, 255, 221, 1) ,rgb(85, 255, 221, 1));
     background-size: 0 1px, auto;
     background-repeat: no-repeat;
     background-position: center bottom;
@@ -47,7 +58,7 @@ li, a, button{
 
 
 .nav_links li a:hover{
-    color: rgb(255, 0, 204, 1);
+    color: rgb(255, 42, 127, 1);
     text-decoration: none;
     font-weight: bold;
     background-size: 100% 1px, auto;
@@ -67,8 +78,32 @@ button{
 }
 
 button:hover{
-    background-color:rgb(255, 0, 204, 1);   
+    background-color:rgb(255, 42, 127, 1);   
 }
+
+
+.hamburger{
+    display: none;
+    cursor: pointer;
+}
+
+.bar{
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: rgb(220, 254, 255);
+    animation: logo_animate 2s infinite alternate;
+}
+
+
+@keyframes logo_animate {
+    from {filter: hue-rotate(0deg);}
+    to {filter: hue-rotate(-0.8turn);}
+  }
+
 
 
 
@@ -87,3 +122,90 @@ button:hover{
 }
 
 
+
+
+@media (max-width: 768px) {
+
+
+    .hamburger{
+        display:inline-block;
+        z-index: 15;
+        position: fixed;
+        right: 0;
+        padding-right: 10px;
+        padding-top: 10px;
+        font-size:medium;
+        
+    }
+
+    .hamburger.active .bar:nth-child(2){
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1){
+        transform: translateY(8px) rotate(45deg);
+    }
+    
+    .hamburger.active .bar:nth-child(3){
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .nav_links{
+        position: fixed;
+        z-index: 10;
+        right: -100%;
+        top: 25px;
+        gap: 50;
+        flex-direction:column;
+        background-color: rgba(86, 210, 255, 0.04);
+        backdrop-filter: blur(3px);
+        filter: grayscale(50%);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+    }
+
+    
+    .nav_links li{
+        margin: 16px 0;
+        display: block;
+        padding:  0% 0px;
+    }
+
+    .nav_links li a{
+        color: #ffffff;
+        text-shadow: 1px 1px 1px black;
+        font-weight:900;
+    }
+
+    .nav_links.active{
+        right: 0;
+        padding:  0px 0px;
+        margin-left: -0px;
+    }
+    
+
+    .navbar_header{
+        overflow: hidden;
+        position: fixed;
+        background-image: linear-gradient(to top,rgb(0, 0, 0), rgb(0, 0, 0));
+        padding:  6% 200px;
+        margin-top: -10px;
+    }
+
+    .logo{
+        position: fixed;
+        width: 300px;
+        left: 33.3%;
+        /* padding-top: 30px; */
+        font-size:medium;
+        text-shadow: 1px 1px 1px black;
+        font-weight:900;
+
+    }
+
+    .cta{
+        display: none;
+    }
+
+}

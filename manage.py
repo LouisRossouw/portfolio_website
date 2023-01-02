@@ -23,5 +23,3 @@ if __name__ == '__main__':
 
 
 
-
-# <link rel="shortcut icon" href="{% static 'images/icons/flav_logo.png' %}" />

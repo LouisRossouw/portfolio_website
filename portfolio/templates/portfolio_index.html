@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}LouisRossouw - Portfolio {% endblock %}
+
+
+{% block page_content %}
+<div class="row">
+
+{% for port in portfolio %}
+    <div class="test1">
+        <div class="test2">
+            <img class="port_img" src="{% static port.image %}">
+            <div class="port_body">
+                <h5 class="port-title">{{ port.title }}</h5>
+                
+                <p class="port-text">{{ port.description }}</p>
+                <a href="{% url 'portfolio_detail' port.pk %}" class="btn btn-primary">Read More</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+
+</div>
+{% endblock %}

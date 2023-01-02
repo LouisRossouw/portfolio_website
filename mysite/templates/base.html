@@ -6,46 +6,61 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"> -->
 
 
 <!-- LINK TO STYLES. -->
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'js_css/css/reset_style.css' %}"> -->
     <link rel="stylesheet" type="text/css" href="{% static 'js_css/css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'js_css/css/nav_style.css' %}">
     <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'js_css/portfolio_index_style.css' %}">
+    <link rel="stylesheet" href="{% static 'js_css/portfolio_detail_style.css' %}">
 
     <title>{% block title %}LouisRossouw {% endblock %}</title>
 
 
 
 <!-- FLAV ICON. -->
-    <link class="flav-icon" rel="shortcut icon" href="{% static 'images/icons/px_1.png' %}"></link>
+    <link class="flav-icon" rel="shortcut icon" href="{% static 'images/icons/pixl_play_FR_01.svg' %}"></link>
 
 <!-- Script to animate the flav icon for fun. -->
     <script>
       function iconAnimate() {
-          setTimeout(function(){document.querySelector('.flav-icon').href="{% static 'images/icons/px_1.png' %}"}, 450);
-          setTimeout(function(){document.querySelector('.flav-icon').href="{% static 'images/icons/px_2.png' %}"}, 900);}
+          setTimeout(function(){document.querySelector('.flav-icon').href="{% static 'images/icons/pixl_play_FR_01.svg' %}"}, 450);
+          setTimeout(function(){document.querySelector('.flav-icon').href="{% static 'images/icons/pixl_play_FR_02.svg' %}"}, 900);}
 
       setInterval(function(){iconAnimate();}, 1000);
     </script>
 
   </head>
 
+
 <!-- NAVIGATION BAR. -->
+    
     <header class="navbar_header">
       <a class="logo" href="{% url 'home' %}">Louis Rossouw</a>
-      <nav>
+      <nav class="nav_all">
         <ul class="nav_links">
           <li><a href="{% url 'home' %}">ABOUT</a></li>
-          <li><a href="{% url 'project_index' %}">PORTFOLIO</a></li>
-          <li><a href="{% url 'project_index' %}">EXPERIENCE</a></li>
-          <li><a href="{% url 'project_index' %}">BLOG</a></li>
-          <li><a href="{% url 'project_index' %}">DEV</a></li>
+          <li><a href="{% url 'portfolio_index' %}">PORTFOLIO</a></li>
+          <li><a href="{% url 'portfolio_index' %}">EXPERIENCE</a></li>
+          <li><a href="{% url 'portfolio_index' %}">BLOG</a></li>
+          <li><a href="{% url 'portfolio_index' %}">DEV</a></li>
         </ul>
       </nav>
       <a class="cta" href="/"><button>CONTACT</button></a>
+
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+
+      </div>
+
     </header>
+
 
 
 
@@ -55,6 +70,10 @@
 
 
     <script src="{% static 'js_css/js/home.js' %}"></script>
+
+
+
+
   </body>
 
 
@@ -112,14 +131,14 @@
         padding: 20px 50px;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
     .column {
         width: 100%;
     }
 
 
     .footer {
-        font-size: smaller;
+        font-size:x-small;
     }
 
     .footer i{
@@ -129,6 +148,14 @@
   }
 
   </style>
+
+
+<div class='container02'>
+  <div class='row_glow02'>
+    <div class='glow02'>.</div>
+  </div>
+</div>
+
 
 <div class='container'>
   <div class='row_glow'>

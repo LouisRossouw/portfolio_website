@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home',
-    'projects',
+    'portfolio',
 ]
 
 MIDDLEWARE = [
@@ -122,7 +122,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "mysite/static",
     BASE_DIR / "home/static",
-    BASE_DIR / "projects/static",
+    BASE_DIR / "portfolio/static",
 ]
 
 

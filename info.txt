@@ -1,0 +1,13 @@
+##### sqlite:
+
+prop tips:
+https://blog.logrocket.com/making-django-migrations-python/
+https://realpython.com/get-started-with-django-1/
+
+to manage database tables for portfolios for EXAMPLE.
+- python manage.py shell ## to insert objects into the database.
+
+- python manage.py dbshell # to manage / monitor the current database
+- select * from portfolio_portfolio; ## will show / select all rows for portfolio in the database.
+- update portfolio_portfolio set title = 'updated_title'; ## this will update the title.
+- insert into portfolio_portfolio (title, description, technology, image) values ("title", "description", "technology", "image"); ## will insert a new row.

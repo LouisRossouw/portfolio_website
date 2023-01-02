@@ -1,0 +1,9 @@
+.detail_test{
+    color: white;
+    position:relative;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 14px;
+    background: none;
+    float: left;
+    background-size:cover;
+}

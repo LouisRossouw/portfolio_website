@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200&display=swap');
 
 
@@ -54,7 +55,7 @@
 
 
 * {
-box-sizing: border-box;
+box-sizing:border-box;
 }
 
 
@@ -66,24 +67,91 @@ box-sizing: border-box;
 } */
 
 
-.column {
+.column{
     color: white;
     font-family: 'Source Code Pro', monospace;
     font-size: 14px;
     background: none;
     float: left;
-    width: 33.33%;
+    width: 33.3%;
     padding: 10px;
     height: 50vh;
-    /* border: 1px solid green; */
 }
 
 
-.row:after {
-    display: table;
+
+.row {
+    display: inline;
     clear: both;
 }
+
+
+
+
+
+
+/* GLOW EFFECTS */
+
   
+.container02{
+    z-index: -100;
+    position: absolute;
+    bottom: 1500%;
+    transform: translate();
+    width: 100%;
+    text-align: center;
+    color: #ffff;
+    font-family: sans-serif;
+    font-size: 8em;
+    margin: 0;
+    padding: 0px, 0;
+    text-transform: uppercase;
+    opacity: 1;
+    display: none;
+
+}
+
+.glow02 {
+    position: relative;
+    background-color : #020c1b;
+    color : #64ffda;
+    border-radius : 10px;
+    margin-left: -100px;
+  }
+  
+.glow02:before, .glow02:after {
+    content: '';
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    background: linear-gradient(to right, #00f2f2, #0575E6, #00f2f2);
+    background-size: 200%;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    z-index: -1;
+    border-radius : 10px;
+    border-radius: inherit;
+    animation: steam02 10s infinite alternate;
+  }
+  
+  
+  @keyframes steam02 {
+      0% {
+          background-position: 0 0; 
+      }
+      50% {
+          background-position: 400% 0;
+      }
+      100% {
+          background-position: 0 0;
+      }
+  }
+  
+  .glow02:after {
+      filter: blur(200px);
+  }
+
+
 
 
 
@@ -160,7 +228,6 @@ box-sizing: border-box;
 }
 
 
-  
 .socials{
     margin-left: -50px;
     display: flex;
@@ -201,6 +268,15 @@ box-sizing: border-box;
     list-style-type: circle;
   }
 
+
+.skills{
+    width: 40%; 
+    float:left; 
+    padding-left: 10%; 
+    margin-top: -5px;
+}
+
+
 .skills_list{
     text-align: left;
     margin-left: -20px;
@@ -212,6 +288,12 @@ box-sizing: border-box;
   }
 
 
+.software{
+    width: 40%; 
+    float:left; 
+    padding-left: 10%; 
+    margin-top: -5px;
+}
 
 
 
@@ -222,22 +304,86 @@ box-sizing: border-box;
 
 
 
-@media (max-width: 600px) {
+
+@media (max-width: 768px) {
+html, body {
+overflow-x: hidden;
+
+}
+body {
+    position: relative
+}
+
+.bg_video{
+    margin-top: 90px;
+    margin-left: -21vh;
+    width: 70vh;
+}
+
+
 .column {
     width: 100%;
+    color: rgb(192, 253, 253);
+
+}
+
+.column p{
+    width: 100%;
+    color: rgb(255, 255, 255);
+
 }
 .glow:after {
     filter: blur(100px);
 }
+.container02{
+    display:none;
+}
+
+
+.container{
+    display: block;
+}
+
+.glow02:after {
+    filter: blur(100px);
+}
+
 .column{
     height: auto;
     overflow:scroll;
-    
+    font-size: 11px; 
+}
+
+
+.list_a li{
+    margin-left: -8px;
+    font-size: 11px; 
+  }
+
+.skills_list li{
+    font-size: 11px; 
+    width: 100%;
+    margin-left: -5px;
 }
 
 .profile_pic{
     padding-top: 1vh;
     padding-bottom: auto;
+}
+
+.skills{
+    width: 50%; 
+    float:left; 
+    padding-left: 4%;
+    margin-top: -5px;
+}
+
+.software{
+    width: 50%; 
+    float:left; 
+    padding-left: 4%;
+    margin-top: -5px;
+    height: 400px;
 }
 
 }
