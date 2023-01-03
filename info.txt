@@ -1,13 +1,28 @@
+##### html/css
+
+layout pro tips:
+    - https://zellwk.com/blog/9-important-css-properties-you-must-know/
+
+
+
 ##### sqlite:
 
 prop tips:
-https://blog.logrocket.com/making-django-migrations-python/
-https://realpython.com/get-started-with-django-1/
+    - https://blog.logrocket.com/making-django-migrations-python/
+    - https://realpython.com/get-started-with-django-1/
 
 to manage database tables for portfolios for EXAMPLE.
-- python manage.py shell ## to insert objects into the database.
+    (Remember to put ; at the end of commands.)
 
-- python manage.py dbshell # to manage / monitor the current database
-- select * from portfolio_portfolio; ## will show / select all rows for portfolio in the database.
-- update portfolio_portfolio set title = 'updated_title'; ## this will update the title.
-- insert into portfolio_portfolio (title, description, technology, image) values ("title", "description", "technology", "image"); ## will insert a new row.
+    - python manage.py shell                                                // to insert objects into the database.
+
+    - python manage.py dbshell                                              // to manage / monitor the current database
+    - select * from portfolio_portfolio; ## will show                       // select all rows for portfolio in the database.
+    - SELECT name FROM UnknownTable WHERE rowid = 1;                        // selects selected row of table.
+
+    - update portfolio_portfolio set title = 'updated_title';                           // this will update the title for ALL rows, i think.
+    - update portfolio_portfolio set title = 'updated_title' where rowid=3;             // This will update for specific row
+    - insert into portfolio_portfolio (title, description, technology, image) values ("title", "description", "technology", "image");               // will insert a new row.
+
+    - alter table portfolio_portfolio add columt blog;                      // adds a new colum to all tables
+    
