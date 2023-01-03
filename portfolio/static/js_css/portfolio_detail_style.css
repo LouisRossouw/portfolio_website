@@ -1,9 +1,31 @@
-.detail_test{
+.portfolio_detail_text{
     color: white;
-    position:relative;
     font-family: 'Source Code Pro', monospace;
     font-size: 14px;
     background: none;
     float: left;
-    background-size:cover;
+    width: 33.3%;
+    padding: 10px;
+    height: 50vh;
 }
+
+
+.portfolio_detail_column{
+    float: left;
+    width: 33.3%;
+    padding: 10px;
+    height: 50vh;
+}
+
+
+.portfolio_detail_column img{
+    width: 100%;
+}
+
+
+.portfolio_detail_row {
+    display: inline;
+    clear: both;
+}
+
+
