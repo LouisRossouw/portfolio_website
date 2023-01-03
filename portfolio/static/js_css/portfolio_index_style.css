@@ -6,13 +6,8 @@
     padding-top: 50px;
     display: block;
     text-align: center;
-    animation: logo_animate 2s infinite alternate;
+    animation: portfolio_animate 2s infinite alternate;
 }
-
-@keyframes logo_animate {
-    from {filter: hue-rotate(0deg);}
-    to {filter: hue-rotate(-0.8turn);}
-  }
 
 
 .portfolio_row{
