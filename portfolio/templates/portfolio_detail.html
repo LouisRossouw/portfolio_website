@@ -2,18 +2,25 @@
 {% load static %}
 
 {% block page_content %}
-<div class="detail_test">
+<div class="portfolio_detail_row">
 <h1>{{ portfolio.title }}</h1>
 
-    <div class="col-md-8">
+    <div class="portfolio_detail_column">
         <img src="{% static portfolio.image %}" alt="" width="100%">
     </div>
-    <div class="col-md-4">
-        <h5>About the project:</h5>
+    <div class="portfolio_detail_text">
+        <h5>Produced at:</h5>
+        <p>{{ portfolio.produced_at }}</p>
+        <br>
+        <h5>Role:</h5>
         <p>{{ portfolio.description }}</p>
         <br>
-        <h5>Technology used:</h5>
+        <h5>Software used:</h5>
         <p>{{ portfolio.technology }}</p>
+        <br>
+        <h5>About the project:</h5>
+        <p>Give a discription here.</p>
+        <a href="{{portfolio.youtube_link}}" target="_blank">Link</a>
     </div>
 </div>
 {% endblock %}
