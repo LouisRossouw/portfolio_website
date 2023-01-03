@@ -2,24 +2,51 @@
 {% load static %}
 {% block title %}LouisRossouw - Portfolio {% endblock %}
 
-
 {% block page_content %}
-<div class="row">
 
+<div class="portfolio_title">
+    <hr1>PORTFOLIO</hr1>
+</div>
+
+<div class="portfolio_row">
 {% for port in portfolio %}
-    <div class="test1">
-        <div class="test2">
-            <img class="port_img" src="{% static port.image %}">
-            <div class="port_body">
-                <h5 class="port-title">{{ port.title }}</h5>
-                
-                <p class="port-text">{{ port.description }}</p>
-                <a href="{% url 'portfolio_detail' port.pk %}" class="btn btn-primary">Read More</a>
+    {% if port.tag == "film" %}
+
+        <div class="port_film_tag">
+            <div class="port_row">
+                <img class="port_img" src="{% static port.image %}">
+                <div class="port_body">
+                    <h5 class="port_title">{{ port.title }}</h5>
+                    
+                    <p class="port_text">{{ port.description }}</p>                
+                    <a href="{% url 'portfolio_detail' port.pk %}" class="port_readMore">Read More</a>
+                </div>
             </div>
         </div>
-    </div>
+
+    {% endif %}
+{% endfor %}
+
+
+
+<div class="portfolio_row">
+    {% for port in portfolio %}
+        {% if port.tag == "cinematic" or port.tag == "ad" %}
+    
+            <div class="port_film_tag">
+                <div class="port_row">
+                    <img class="port_img" src="{% static port.image %}">
+                    <div class="port_body">
+                        <h5 class="port_title">{{ port.title }}</h5>
+                        
+                        <p class="port_text">{{ port.description }}</p>                
+                        <a href="{% url 'portfolio_detail' port.pk %}" class="port_readMore">Read More</a>
+                    </div>
+                </div>
+            </div>
+    
+        {% endif %}
     {% endfor %}
 
 
-</div>
 {% endblock %}
