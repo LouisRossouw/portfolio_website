@@ -1,9 +1,81 @@
 
+.portfolio_title {
+    color: rgb(207, 255, 254);
+    font-family: 'Source Code Pro', monospace;
+    font-size: 80px;
+    padding-top: 50px;
+    display: block;
+    text-align: center;
+    animation: logo_animate 2s infinite alternate;
+}
 
-.test1{
+@keyframes logo_animate {
+    from {filter: hue-rotate(0deg);}
+    to {filter: hue-rotate(-0.8turn);}
+  }
+
+
+.portfolio_row{
+    padding-top: 10px;
+    padding-left: auto;
+    padding-right: auto;
+    text-align: center;
+    display: block;
+}
+
+.port_film_tag{
     color: white;
     font-family: 'Source Code Pro', monospace;
     font-size: 14px;
     background: none;
-    float: left;
+    display: inline-block;
+    padding-top: 10px;
+}
+
+.port_row{
+    zoom: 0.8;
+}
+
+.port_title{
+    font-size: 20px;
+}
+
+.port_text{
+    margin-top: -20px;
+}
+
+
+@media (max-width: 1750px) {
+
+    .port_row{
+        zoom: 0.7;
+}
+}
+
+
+
+@media (max-width: 768px) {
+
+.portfolio_title{
+    font-size: 40px;
+}
+
+
+.port_row{
+    zoom: 0.62;
+    font-size: 20px;
+}
+
+.port_title{
+    font-size: 30px;
+}
+
+.port_text{
+    margin-top: -40px;
+}
+
+.port_readMore{
+    font-size: 30px;
+}
+
 }
