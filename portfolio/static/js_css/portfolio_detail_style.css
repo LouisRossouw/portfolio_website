@@ -1,31 +1,70 @@
-.portfolio_detail_text{
+html, body {
+    overflow-x: hidden;    
+}
+
+body {
+    position: relative
+}
+
+
+.portfolio_trailer{
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.portfolio_detail_column{
+    background: none;
+    float: left;
+    width: 100vw;
+    height: 50vh;
+    /* margin-top: -67px; */
+}
+
+.portfolio_detail_column2{
     color: white;
     font-family: 'Source Code Pro', monospace;
     font-size: 14px;
     background: none;
     float: left;
-    width: 33.3%;
-    padding: 10px;
+    width: 30%;
+    padding: 10px 100px;
     height: 50vh;
 }
 
-
-.portfolio_detail_column{
+.portfolio_detail_column3{
+    background: none;
     float: left;
-    width: 33.3%;
+    width: 70%;
     padding: 10px;
     height: 50vh;
 }
-
 
 .portfolio_detail_column img{
     width: 100%;
 }
 
 
-.portfolio_detail_row {
-    display: inline;
-    clear: both;
+
+
+
+
+@media screen and (max-width: 768px) {
+.portfolio_detail_column {
+    width: 100%;
+    margin-top: -25px;
+}
+.portfolio_detail_column2 {
+    width: 100%;
+    padding: 5px;
+    margin-top: -25px;
+}
+.portfolio_detail_column3 {
+    width: 100%;
 }
 
+.portfolio_detail_title{
+    text-align: center;
+}
+}
 
