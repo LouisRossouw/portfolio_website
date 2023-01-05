@@ -15,3 +15,6 @@ projects/__pychache__
 home/__pychache__
 mysite/__pychache__
 
+mysite/settings.py
+
+
