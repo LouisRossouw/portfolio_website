@@ -6,7 +6,7 @@ Rebuilding my website, to help me learn some Python/Django/HTML/CSS/JavaScript
 
 temporarly available at 
 
-<p href="Kpow636.pythonanywhere.com">pythonanywhere.com</p>
+<a href="Kpow636.pythonanywhere.com">pythonanywhere.com</a>
 
 <br>
 
