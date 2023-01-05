@@ -1,6 +1,8 @@
 *.pyc
 .vscode
 
+.env
+
 db.sqlite3*
 
 venv
@@ -8,7 +10,6 @@ venv
 venv/Include/*
 venv/lib/*
 venv/Scripts/*
-
 
 projects/__pychache__
 home/__pychache__
