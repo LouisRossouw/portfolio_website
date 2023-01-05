@@ -10,15 +10,16 @@ li, a, button{
 }
 
 
-
 .navbar_header{
     display: flex;
     justify-content: space-between;
     align-items: center;
     overflow: hidden;
-    background-image: linear-gradient(to top, rgba(255,0,0,0), rgb(0, 0, 0)) ;
+    background-image: linear-gradient(to top, rgba(255,0,0,0), rgb(0, 0, 0));
+    background-image: grad;
     padding:  0% 200px;
 }
+
 
 .logo{
     cursor: pointer;
@@ -36,16 +37,17 @@ li, a, button{
   }
 
 
-
 .nav_links{
     list-style: none;
     margin-left: -100px;
 }
 
+
 .nav_links li{
     display: inline-block;
     padding:  0% 20px;
 }
+
 
 .nav_links li a{
     /* Bottom line */
@@ -65,7 +67,6 @@ li, a, button{
 }
 
 
-
 button{
     padding: 0% 20px;
     background-color: rgba(0,136,169,0);
@@ -74,8 +75,8 @@ button{
     cursor: pointer;
     z-index: 2;
     animation: glowza 1s infinite alternate;
-
 }
+
 
 button:hover{
     background-color:rgb(255, 42, 127, 1);   
@@ -86,6 +87,7 @@ button:hover{
     display: none;
     cursor: pointer;
 }
+
 
 .bar{
     display: block;
@@ -103,9 +105,6 @@ button:hover{
     from {filter: hue-rotate(0deg);}
     to {filter: hue-rotate(-0.8turn);}
   }
-
-
-
 
 
 @keyframes glowza {
@@ -126,7 +125,6 @@ button:hover{
 
 @media (max-width: 768px) {
 
-
     .hamburger{
         display:inline-block;
         z-index: 15;
@@ -138,17 +136,21 @@ button:hover{
         
     }
 
+
     .hamburger.active .bar:nth-child(2){
         opacity: 0;
     }
+
 
     .hamburger.active .bar:nth-child(1){
         transform: translateY(8px) rotate(45deg);
     }
     
+
     .hamburger.active .bar:nth-child(3){
         transform: translateY(-8px) rotate(-45deg);
     }
+
 
     .nav_links{
         position: fixed;
@@ -172,11 +174,13 @@ button:hover{
         padding:  0% 0px;
     }
 
+
     .nav_links li a{
         color: #ffffff;
         text-shadow: 1px 1px 1px black;
         font-weight:900;
     }
+
 
     .nav_links.active{
         right: 0;
@@ -193,6 +197,7 @@ button:hover{
         margin-top: -10px;
     }
 
+
     .logo{
         position: fixed;
         width: 300px;
@@ -204,8 +209,8 @@ button:hover{
 
     }
 
+
     .cta{
         display: none;
     }
-
 }
