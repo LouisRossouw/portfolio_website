@@ -1,5 +1,14 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200&display=swap');
+
+* {
+    box-sizing:border-box;
+}
+
+
+html{
+    background-color: rgba(0, 0, 0, 0) !important;
+    z-index: -2;
+}
 
 
 /* *******      Splash Screen intro */
@@ -17,6 +26,7 @@
     line-height: 100vh;
     
 }
+
 
 .splash.display-none
 {
@@ -39,6 +49,7 @@
     animation: fadeIn 1s ease-in forwards;
 }
 
+
 @keyframes fadeIn{
     to{
         opacity: 1;
@@ -47,24 +58,6 @@
 
     }
 }
-
-
-
-
-
-
-
-* {
-box-sizing:border-box;
-}
-
-
-/* .header {
-    padding: 0px;
-    text-align: center;
-    font-size: 35px;
-    
-} */
 
 
 .column{
@@ -79,7 +72,6 @@ box-sizing:border-box;
 }
 
 
-
 .row {
     display: inline;
     clear: both;
@@ -88,11 +80,8 @@ box-sizing:border-box;
 
 
 
-
-
 /* GLOW EFFECTS */
 
-  
 .container02{
     z-index: -100;
     position: absolute;
@@ -108,8 +97,8 @@ box-sizing:border-box;
     text-transform: uppercase;
     opacity: 1;
     display: none;
-
 }
+
 
 .glow02 {
     position: relative;
@@ -119,6 +108,7 @@ box-sizing:border-box;
     margin-left: -100px;
   }
   
+
 .glow02:before, .glow02:after {
     content: '';
     position: absolute;
@@ -132,10 +122,10 @@ box-sizing:border-box;
     border-radius : 10px;
     border-radius: inherit;
     animation: steam02 10s infinite alternate;
-  }
+}
   
   
-  @keyframes steam02 {
+@keyframes steam02 {
       0% {
           background-position: 0 0; 
       }
@@ -154,11 +144,7 @@ box-sizing:border-box;
 
 
 
-
-
-
 /* GLOW EFFECTS */
-
   
 .container{
     position: absolute;
@@ -173,8 +159,8 @@ box-sizing:border-box;
     padding: 0px, 0;
     text-transform: uppercase;
     opacity: 1;
-
 }
+
 
 .glow {
     position: relative;
@@ -183,6 +169,7 @@ box-sizing:border-box;
     border-radius : 10px;
     margin-left: -100px;
   }
+
   
 .glow:before, .glow:after {
     content: '';
@@ -197,26 +184,26 @@ box-sizing:border-box;
     border-radius : 10px;
     border-radius: inherit;
     animation: steam 10s infinite alternate;
-  }
+}
   
-  
-  @keyframes steam {
-      0% {
-          background-position: 0 0; 
-      }
-      50% {
-          background-position: 400% 0;
-      }
-      100% {
-          background-position: 0 0;
-      }
+
+@keyframes steam {
+    0% {
+        background-position: 0 0; 
+    }
+    50% {
+        background-position: 400% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
   }
+
   
   .glow:after {
       filter: blur(200px);
   }
   
-
 
 .profile_pic{
     display: block;
@@ -231,20 +218,22 @@ box-sizing:border-box;
 .socials{
     margin-left: -50px;
     display: flex;
-    justify-content: space-evenly;
-    
+    justify-content: space-evenly;    
 }
+
 
 .socials i{
     color: rgba(255, 255, 255, 0.5);
 }
 
+
 .socials i:hover{
     color: rgb(157, 253, 242);
     cursor: pointer;
-    animation: socials_animate 1s infinite alternate;
-    
+    animation: socials_animate 1s infinite alternate;   
 }
+
+
 @keyframes socials_animate {
     from {filter: hue-rotate(0deg);}
     to {filter: hue-rotate(-0.8turn);}
@@ -261,6 +250,7 @@ box-sizing:border-box;
     from {filter: hue-rotate(0deg);}
     to {filter: hue-rotate(-0.35turn);}
   }
+
 
 .list_a {
     text-align: left;
@@ -283,6 +273,7 @@ box-sizing:border-box;
     list-style-type: circle;
 }
 
+
 .skills_list li {
     font-size: 14px;
   }
@@ -299,17 +290,13 @@ box-sizing:border-box;
 
 
 
-
-
-
-
-
-
 @media (max-width: 768px) {
 html, body {
 overflow-x: hidden;
-
 }
+
+
+
 body {
     position: relative
 }
