@@ -17,17 +17,16 @@ li, a, button{
     overflow: hidden;
     background-image: linear-gradient(to top, rgba(255,0,0,0), rgb(0, 0, 0));
     background-image: grad;
-    padding:  0% 200px;
+    padding:  0% 13vw;
+    width: 100vw;
+
 }
 
 
 .logo{
     cursor: pointer;
-    color: rgb(207, 255, 254);
+    color: rgb(255, 255, 255);
     font-size: 20px;
-    text-shadow: 1px 1px 1px black;
-    font-weight:900;
-    animation: logo_animate 2s infinite alternate;
 }
 
 
@@ -132,8 +131,7 @@ button:hover{
         right: 0;
         padding-right: 10px;
         padding-top: 10px;
-        font-size:medium;
-        
+        font-size:small;
     }
 
 
@@ -156,11 +154,11 @@ button:hover{
         position: fixed;
         z-index: 10;
         right: -100%;
-        top: 25px;
+        padding-top: 2%;
         gap: 50;
         flex-direction:column;
-        background-color: rgba(86, 210, 255, 0.04);
-        backdrop-filter: blur(3px);
+        background-image: linear-gradient(to top, rgba(255,0,0,0), rgb(0, 0, 0));
+        backdrop-filter: blur(5px);
         filter: grayscale(50%);
         width: 100%;
         text-align: center;
@@ -195,17 +193,17 @@ button:hover{
         background-image: linear-gradient(to top,rgb(0, 0, 0), rgb(0, 0, 0));
         padding:  6% 200px;
         margin-top: -10px;
+        width: 100vw;
     }
 
 
     .logo{
         position: fixed;
-        width: 300px;
-        left: 33.3%;
-        /* padding-top: 30px; */
+        left: 20px;
+        padding-top: 30px;
+        padding-bottom: 20px;
         font-size:medium;
-        text-shadow: 1px 1px 1px black;
-        font-weight:900;
+        font-weight:bold;
 
     }
 
