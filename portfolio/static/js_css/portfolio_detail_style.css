@@ -5,8 +5,14 @@ html {
 body {
     position: relative;
     z-index: -1;
+    padding-bottom: 250px;
 }
 
+
+.extra_padding{
+    margin-top: 250px;
+    border: none;
+}
 
 .portfolio_trailer{
     width: 100%;
@@ -22,7 +28,93 @@ body {
     /* margin-top: -67px; */
 }
 
-.portfolio_detail_column2{
+
+.portfolio_detail_column img{
+    width: 100%;
+}
+
+
+
+
+/* #######################################      
+/* #######################################     
+/* #######################################   ==   1 or 0 columns */
+
+.portfolio_detail_TEXT_DYNAMIC_LENGTH_1{
+    font-family: 'Source Code Pro', monospace;
+    color: white;
+    font-size: 14px;
+    background: none;
+    float: left;
+    width: 30%;
+    padding: 10px 100px;
+    height: 50vh;
+}
+.portfolio_detail_MYSHOTS_DYNAMIC_LENGTH_1{
+    font-family: 'Source Code Pro', monospace;
+    color: white;
+    font-size: 14px;
+    float: left;
+    width: 70%;
+}
+.portfolio_detail_RAW_DYNAMIC_LENGTH_1{
+    font-family: 'Source Code Pro', monospace;
+    color: white;
+    font-size: 14px;
+    float: left;
+    width: 70%;
+}
+.portfolio_detail_BREAKDOWN_DYNAMIC_LENGTH_1{
+    font-family: 'Source Code Pro', monospace;
+    color: white;
+    font-size: 14px;
+    float: left;
+    width: 70%;
+}
+
+.portfolio_detail_MYSHOTS_DYNAMIC_LENGTH_1 img{
+    width: 25%;
+    transition: transform .2s;
+}
+.portfolio_detail_RAW_DYNAMIC_LENGTH_1 img{
+    width: 25%;
+    transition: transform .2s;
+}
+.portfolio_detail_BREAKDOWN_DYNAMIC_LENGTH_1 video{
+    width: 35%;
+    z-index: 0;
+    transition: transform .2s;
+}
+/* ########################################################### HOVER EFFECT */
+.portfolio_detail_MYSHOTS_DYNAMIC_LENGTH_1 img:hover{
+    width: 30%;
+    transform: scale(1.5);
+}
+.portfolio_detail_RAW_DYNAMIC_LENGTH_1 img:hover{
+    width: 30%;
+    transform: scale(1.5);
+}
+.portfolio_detail_BREAKDOWN_DYNAMIC_LENGTH_1 video:hover{
+    width: 35%;
+    transform: scale(1.5);
+    z-index: 5;
+}
+/* #######################################      
+/* #######################################     
+/* #######################################  */
+
+
+
+
+
+
+/* #######################################      
+/* #######################################     
+/* #######################################   ==   2 columns */
+
+
+
+.portfolio_detail_TEXT_DYNAMIC_LENGTH_2{
     color: white;
     font-family: 'Source Code Pro', monospace;
     font-size: 14px;
@@ -32,18 +124,130 @@ body {
     padding: 10px 100px;
     height: 50vh;
 }
+.portfolio_detail_MYSHOTS_DYNAMIC_LENGTH_2{
+    color: white;
+    float: left;
+    width: 35%;
+}
+.portfolio_detail_RAW_DYNAMIC_LENGTH_2{
+    color: white;
+    float: left;
+    width: 35%;
+}
+.portfolio_detail_BREAKDOWN_DYNAMIC_LENGTH_2{
+    color: white;
+    float: left;
+    width: 35%;
+}
 
-.portfolio_detail_column3{
+.portfolio_detail_MYSHOTS_DYNAMIC_LENGTH_2 img{
+    width: 30%;
+    transition: transform .2s;
+}
+.portfolio_detail_RAW_DYNAMIC_LENGTH_2 img{
+    width: 40%;
+    transition: transform .2s;
+}
+.portfolio_detail_BREAKDOWN_DYNAMIC_LENGTH_2 video{
+    width: 70%;
+    transition: transform .2s;
+}
+/* ########################################################### HOVER EFFECT */
+.portfolio_detail_MYSHOTS_DYNAMIC_LENGTH_2 img:hover{
+    width: 30%;
+    transform: scale(1.5);
+}
+.portfolio_detail_RAW_DYNAMIC_LENGTH_2 img:hover{
+    width: 30%;
+    transform: scale(1.5);
+}
+.portfolio_detail_BREAKDOWN_DYNAMIC_LENGTH_2 video:hover{
+    width: 70%;
+    transform: scale(1.5);
+}
+/* #######################################      
+/* #######################################     
+/* #######################################  */
+
+
+
+
+
+/* #######################################      
+/* #######################################     
+/* #######################################      3 columns */
+
+.portfolio_detail_TEXT_DYNAMIC_LENGTH_3{
+    color: white;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 14px;
     background: none;
     float: left;
-    width: 70%;
-    padding: 10px;
+    width: 23.3%;
+    padding: 10px 100px;
     height: 50vh;
 }
-
-.portfolio_detail_column img{
-    width: 100%;
+.portfolio_detail_MYSHOTS_DYNAMIC_LENGTH_3{
+    font-family: 'Source Code Pro', monospace;
+    color: white;
+    font-size: 14px;
+    padding: 10px ;
+    float: left;
+    width: 23.3%;
 }
+.portfolio_detail_RAW_DYNAMIC_LENGTH_3{
+    font-family: 'Source Code Pro', monospace;
+    color: white;
+    font-size: 14px;
+    padding: 10px ;
+    float: left;
+    width: 23.3%;
+}
+.portfolio_detail_BREAKDOWN_DYNAMIC_LENGTH_3{
+    font-family: 'Source Code Pro', monospace;
+    color: white;
+    font-size: 14px;
+    padding: 10px;
+    float: left;
+    width: 23.3%;
+}
+
+.portfolio_detail_MYSHOTS_DYNAMIC_LENGTH_3 img{
+    width: 30%;
+    transition: transform .2s;
+}
+.portfolio_detail_RAW_DYNAMIC_LENGTH_3 img{
+    width: 30%;
+    transition: transform .2s;
+}
+.portfolio_detail_BREAKDOWN_DYNAMIC_LENGTH_3 video{
+    width: 100%;
+    transition: transform .2s;
+}
+/* ########################################################### HOVER EFFECT */
+.portfolio_detail_MYSHOTS_DYNAMIC_LENGTH_3 img:hover{
+    width: 30%;
+    transform: scale(1.5);
+}
+.portfolio_detail_RAW_DYNAMIC_LENGTH_3 img:hover{
+    width: 30%;
+    transform: scale(1.5);
+}
+.portfolio_detail_BREAKDOWN_DYNAMIC_LENGTH_3 video:hover{
+    width: 100%;
+    transform: scale(1.5);
+}
+/* #######################################      
+/* #######################################     
+/* #######################################  */
+
+
+
+
+
+
+
+
 
 
 
@@ -51,21 +255,149 @@ body {
 
 
 @media screen and (max-width: 768px) {
+
 .portfolio_detail_column {
     width: 100%;
     margin-top: -25px;
 }
-.portfolio_detail_column2 {
+
+/* #######################################      
+/* #######################################     
+/* #######################################      1 or 0 columns */
+
+.portfolio_detail_TEXT_DYNAMIC_LENGTH_1 {
     width: 100%;
     padding: 5px;
-    margin-top: -25px;
+    margin-top: -25px;   
 }
-.portfolio_detail_column3 {
+.portfolio_detail_MYSHOTS_DYNAMIC_LENGTH_1 {
     width: 100%;
 }
-
+.portfolio_detail_RAW_DYNAMIC_LENGTH_1 {
+    width: 100%;
+}
+.portfolio_detail_BREAKDOWN_DYNAMIC_LENGTH_1{
+    width: 100%;
+}
 .portfolio_detail_title{
     text-align: center;
 }
+.portfolio_detail_MYSHOTS_DYNAMIC_LENGTH_1 img{
+    width: 30%;
+}
+.portfolio_detail_RAW_DYNAMIC_LENGTH_1 img{
+    width: 30%;
+}
+.portfolio_detail_BREAKDOWN_DYNAMIC_LENGTH_1 video{
+    width: 100%;
+}
+/* ########################################################### HOVER EFFECT */
+.portfolio_detail_MYSHOTS_DYNAMIC_LENGTH_1 img:hover{
+    width: 30%;
+    transform: scale(2.5);
+}
+.portfolio_detail_RAW_DYNAMIC_LENGTH_1 img:hover{
+    width: 30%;
+    transform: scale(2.5);
+}
+.portfolio_detail_BREAKDOWN_DYNAMIC_LENGTH_1 video:hover{
+    width: 100%;
+    transform: none !important;
 }
 
+
+
+/* #######################################      
+/* #######################################     
+/* #######################################      2 columns */
+
+
+.portfolio_detail_TEXT_DYNAMIC_LENGTH_2 {
+    width: 100%;
+    padding: 5px;
+    margin-top: -25px;   
+}
+.portfolio_detail_MYSHOTS_DYNAMIC_LENGTH_2 {
+    width: 100%;
+}
+.portfolio_detail_RAW_DYNAMIC_LENGTH_2 {
+    width: 100%;
+}
+.portfolio_detail_BREAKDOWN_DYNAMIC_LENGTH_2{
+    width: 100%;
+}
+.portfolio_detail_title{
+    text-align: center;
+}
+.portfolio_detail_MYSHOTS_DYNAMIC_LENGTH_2 img{
+    width: 30%;
+}
+.portfolio_detail_RAW_DYNAMIC_LENGTH_2 img{
+    width: 30%;
+}
+.portfolio_detail_BREAKDOWN_DYNAMIC_LENGTH_2 video{
+    width: 100%;
+}
+/* ###      ## HOVER EFFECT */
+.portfolio_detail_MYSHOTS_DYNAMIC_LENGTH_2 img:hover{
+    width: 30%;
+    transform: scale(2.5);
+}
+.portfolio_detail_RAW_DYNAMIC_LENGTH_2 img:hover{
+    width: 30%;
+    transform: scale(2.5);
+}
+.portfolio_detail_BREAKDOWN_DYNAMIC_LENGTH_2 video:hover{
+    width: 100%;
+    transform: none !important;
+}
+
+/* #######################################      
+/* #######################################     
+/* #######################################      3 columns */
+
+
+.portfolio_detail_TEXT_DYNAMIC_LENGTH_3 {
+    width: 100%;
+    padding: 5px;
+    margin-top: -25px;   
+}
+.portfolio_detail_MYSHOTS_DYNAMIC_LENGTH_3 {
+    width: 100%;
+}
+.portfolio_detail_RAW_DYNAMIC_LENGTH_3 {
+    width: 100%;
+}
+.portfolio_detail_BREAKDOWN_DYNAMIC_LENGTH_3{
+    width: 100%;
+}
+.portfolio_detail_title{
+    text-align: center;
+}
+.portfolio_detail_MYSHOTS_DYNAMIC_LENGTH_3 img{
+    width: 30%;
+}
+.portfolio_detail_RAW_DYNAMIC_LENGTH_3 img{
+    width: 30%;
+}
+.portfolio_detail_BREAKDOWN_DYNAMIC_LENGTH_3 video{
+    width: 100%;
+}
+/* ###      ## HOVER EFFECT */
+.portfolio_detail_MYSHOTS_DYNAMIC_LENGTH_3 img:hover{
+    width: 30%;
+    transform: scale(2.5);
+}
+.portfolio_detail_RAW_DYNAMIC_LENGTH_3 img:hover{
+    width: 30%;
+    transform: scale(2.5);
+}
+.portfolio_detail_BREAKDOWN_DYNAMIC_LENGTH_3 video:hover{
+    width: 100%;
+    transform: none !important;
+}
+
+
+
+
+}
