@@ -1,4 +1,9 @@
 
+.extra_padding{
+padding-bottom: 250px;
+}
+
+
 .portfolio_title {
     color: rgb(207, 255, 254);
     font-family: 'Source Code Pro', monospace;
