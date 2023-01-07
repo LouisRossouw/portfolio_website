@@ -24,5 +24,5 @@ to manage database tables for portfolios for EXAMPLE.
     - update portfolio_portfolio set title = 'updated_title' where rowid=3;             // This will update for specific row
     - insert into portfolio_portfolio (title, description, technology, image) values ("title", "description", "technology", "image");               // will insert a new row.
 
-    - alter table portfolio_portfolio add columt blog;                                  // adds a new colum to all tables
+    - alter table portfolio_portfolio add column blog;                                  // adds a new colum to all tables
     
