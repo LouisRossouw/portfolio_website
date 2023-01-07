@@ -11,6 +11,31 @@ html{
 }
 
 
+#playbutton{
+    color:#00f2f2;
+}
+
+
+.showreel_button{
+    color: white;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+    transition: transform .2s;
+}
+
+.showreel_button:hover{
+    color: rgb(157, 253, 242);
+    font-weight: bolder;
+    cursor: pointer;
+    opacity: 1;
+    animation: socials_animate 1s infinite alternate;   
+    transform: scale(1.2);
+}
+
+
 /* *******      Splash Screen intro */
 .splash
 {
@@ -207,7 +232,8 @@ html{
 
 .profile_pic{
     display: block;
-    padding-top: 10vh;
+    padding-top: 40px;
+    padding-bottom: 10px;
     padding-bottom: auto;
     margin-left: auto;
     margin-right: auto;
@@ -302,9 +328,8 @@ body {
 }
 
 .bg_video{
-    margin-top: 90px;
-    margin-left: -21vh;
-    width: 70vh;
+    margin-top: 120px;
+    scale: 2;
 }
 
 
