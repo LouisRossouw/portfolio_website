@@ -12,7 +12,7 @@
     </div>
 
     
-    <div class="portfolio_detail_column2">
+    <div class="{{ column_width.column_1 }}">
         <h1 class="portfolio_detail_title">{{ portfolio.title }}</h1>
         <h5>About the project:</h5>
         <p>Give a discription here.</p>
@@ -28,10 +28,65 @@
     </div>
 
 
+    <!-- MYSHOTS SHOWCASE -->
+        <div class="{{ column_width.column_2 }}">
+            <!-- <p>Additional images / videos will populate this column.</p> -->
 
-    <div style="color: white; padding-top: 200px;" class="portfolio_detail_column3">
-        <p>Additional images / videos will populate this column.</p>
+
+            {% if additional_images.myshots != False %}
+
+                <h1>My Shots:</h1>
+                {% for imgs in additional_images.myshots %}
+
+                    <img src="{% static imgs %}">
+
+            {% endfor %}
+            {% endif %}
+
+        </div>
+
+
+    <!-- RAW SHOWCASE -->
+    <div class="{{ column_width.column_3 }}">
+        <!-- <p>Additional images / videos will populate this column.</p> -->
+
+
+        {% if additional_images.raw != False %}
+
+            <h1>Raw:</h1>
+            {% for imgs in additional_images.raw %}
+
+                <img src="{% static imgs %}">
+
+        {% endfor %}
+        {% endif %}
+
     </div>
+
+
+
+    <!-- RAW BREAKDOWN -->
+    <div class="{{ column_width.column_4 }}">
+        <!-- <p>Additional images / videos will populate this column.</p> -->
+
+
+        {% if additional_images.breakdown != False %}
+
+            <h1>Clips:</h1>
+            {% for imgs in additional_images.breakdown %}
+
+                <video src="{% static imgs %}" controls></video>
+
+        {% endfor %}
+        {% endif %}
+
+    </div>
+
+
+</div>
+
+
+
 
 {% endblock %}
 
