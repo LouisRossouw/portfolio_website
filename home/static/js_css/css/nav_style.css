@@ -27,6 +27,7 @@ li, a, button{
     cursor: pointer;
     color: rgb(255, 255, 255);
     font-size: 20px;
+    margin-left: 20px;
 }
 
 
@@ -132,6 +133,8 @@ button:hover{
         padding-right: 10px;
         padding-top: 10px;
         font-size:small;
+        padding-top: 50%;
+        padding-bottom: 50%;
     }
 
 
@@ -153,16 +156,18 @@ button:hover{
     .nav_links{
         position: fixed;
         z-index: 10;
-        right: -100%;
-        padding-top: 2%;
+        right: 0;
+        top: -250px;
         gap: 50;
         flex-direction:column;
         background-image: linear-gradient(to top, rgba(255,0,0,0), rgb(0, 0, 0));
-        backdrop-filter: blur(5px);
-        filter: grayscale(50%);
+        backdrop-filter: blur(6px);
+        filter: grayscale(70%);
         width: 100%;
         text-align: center;
-        transition: 0.3s;
+        padding:  0px 0px;
+        margin-left: 0px;
+        transition: 0.1s;
     }
 
     
@@ -170,12 +175,13 @@ button:hover{
         margin: 16px 0;
         display: block;
         padding:  0% 0px;
+        margin-top: 20px;
     }
 
 
     .nav_links li a{
         color: #ffffff;
-        text-shadow: 1px 1px 1px black;
+        text-shadow: 2px 2px 2px rgb(0, 0, 0);
         font-weight:900;
     }
 
@@ -183,7 +189,8 @@ button:hover{
     .nav_links.active{
         right: 0;
         padding:  0px 0px;
-        margin-left: -0px;
+        margin-left: 0px;
+        top: -10px;
     }
     
 
@@ -194,21 +201,24 @@ button:hover{
         padding:  6% 200px;
         margin-top: -10px;
         width: 100vw;
+
+
     }
 
 
     .logo{
         position: fixed;
-        left: 20px;
-        padding-top: 30px;
-        padding-bottom: 20px;
-        font-size:medium;
+        left: 0px;
+        padding-top: 50%;
+        padding-bottom: 50%;
+        padding-left: 10px;
+        font-size:small;
         font-weight:bold;
 
     }
 
 
     .cta{
-        display: none;
+        display:none;
     }
 }
