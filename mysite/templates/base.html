@@ -42,6 +42,8 @@
           <li><a href="{% url 'home' %}">ABOUT</a></li>
           <li><a href="{% url 'portfolio_index' %}">PORTFOLIO</a></li>
           <li><a href="https://www.youtube.com/watch?v=oYjiiJe67Xw&ab_channel=LouisRossouw" target="blank">SHOWREEL</a></li>
+          <li><a href="{% url 'home' %}">EXPERIENCE</a></li>
+          <li><a href="{% url 'home' %}">BLOG</a></li>
         </ul>
       </nav>
       <a class="cta" href="/"><button>CONTACT</button></a>
@@ -72,7 +74,7 @@
 <div class="footer">
   <a class="footer" href="https://github.com/LouisRossouw/portfolio_website" target="_blank">Built by LouisRossouw 2023. </i></a>
   <i class="fa fa-cog fa-spin fa-2xs"></i>
-  <i class="fa fa-heart-o" aria-hidden="true" style="margin-left: 250px;">
+  <i class="fa fa-heart-o" id="footer_icons" aria-hidden="true">
 
 
   <style>
@@ -118,14 +120,32 @@
         padding: 20px 50px;
     }
 
+
+    #footer_icons{
+      margin-left: 250px;
+    }
+
+
     @media (max-width: 768px) {
     .column {
         width: 100%;
     }
 
 
+
+    .footer02{
+        background-image: linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0));
+        backdrop-filter: blur(4px);
+        filter: grayscale(70%);
+    }
+
+
     .footer {
         font-size:x-small;
+    }
+
+    #footer_icons{
+      margin-left: 180px;
     }
 
   }
