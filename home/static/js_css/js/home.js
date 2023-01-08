@@ -47,15 +47,15 @@ function Splash_fade() {
 }
 
 
-// Blur on scroll.
-let my_img = document.querySelector('.img-blur');
-let title = document.querySelector('section h1');
+// // Blur on scroll.
+// let my_img = document.querySelector('.img-blur');
+// let title = document.querySelector('section h1');
 
-function blur_image_onScroll() {
-    let scroll_amount = document.documentElement.scrollTop;
-    my_img.style.filter = 'blur(' + scroll_amount/15 + 'px)';
-    title.style.opacity = scroll_amount / 900;
-}
+// function blur_image_onScroll() {
+//     let scroll_amount = document.documentElement.scrollTop;
+//     my_img.style.filter = 'blur(' + scroll_amount/15 + 'px)';
+//     title.style.opacity = scroll_amount / 900;
+// }
 
 
 // Delay start video until the splash screen has cleared.
