@@ -84,8 +84,20 @@ html{
     }
 }
 
+.column_01{
+    color: white;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 14px;
+    background: none;
+    float: left;
+    width: 33.3%;
+    padding: 0px;
+    padding-left: 100px;
+    height: 50vh;
+}
 
-.column{
+
+.column_02{
     color: white;
     font-family: 'Source Code Pro', monospace;
     font-size: 14px;
@@ -95,6 +107,19 @@ html{
     padding: 10px;
     height: 50vh;
 }
+
+.column_03{
+    color: white;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 14px;
+    background: none;
+    float: left;
+    width: 25%;
+    padding: 10px;
+    padding-left: 50px;
+    height: 50vh;
+}
+
 
 
 .row {
@@ -288,14 +313,14 @@ html{
 .skills{
     width: 40%; 
     float:left; 
-    padding-left: 10%; 
+    padding-left: 0%; 
     margin-top: -5px;
 }
 
 
 .skills_list{
     text-align: left;
-    margin-left: -20px;
+    margin-left: -22px;
     list-style-type: circle;
 }
 
@@ -317,35 +342,62 @@ html{
 
 
 @media (max-width: 768px) {
+    
 html, body {
-overflow-x: hidden;
+    overflow-x: hidden;
 }
-
-
 
 body {
     position: relative
 }
 
 .bg_video{
-    margin-top: 120px;
-    scale: 2;
+    margin-top: 180px;
+    scale: 2.5;
 }
 
 
-.column {
+.column_01 {
     width: 100%;
     color: rgb(192, 253, 253);
+    padding: 0px;
+    padding-top: 20px;
+    padding-left: 20px;
+    height: 33.3%;
+}
+.column_02 {
+    width: 100%;
+    color: rgb(192, 253, 253);
+    padding: 0px;
+    padding: 20px;
+    height: 33.3%;
 
 }
+.column_03 {
+    width: 100%;
+    color: rgb(192, 253, 253);
+    padding: 0px;
+    padding-left: 0px;
+    height: 33.3%;
+}
 
-.column p{
+.column_01 p{
     width: 100%;
     color: rgb(255, 255, 255);
-
 }
+.column_02 p{
+    width: 100%;
+    color: rgb(255, 255, 255);
+}
+.column_03 p{
+    width: 100%;
+    color: rgb(255, 255, 255);
+}
+
+
+
 .glow:after {
-    filter: blur(100px);
+    filter: blur(0px);
 }
 .container02{
     display:none;
@@ -357,7 +409,7 @@ body {
 }
 
 .glow02:after {
-    filter: blur(100px);
+    filter: blur(0px);
 }
 
 .column{
@@ -381,6 +433,7 @@ body {
 .profile_pic{
     padding-top: 1vh;
     padding-bottom: auto;
+
 }
 
 .skills{
