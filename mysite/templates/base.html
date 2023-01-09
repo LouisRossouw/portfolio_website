@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'js_css/portfolio_index_style.css' %}">
     <link rel="stylesheet" href="{% static 'js_css/portfolio_detail_style.css' %}">
+    <link rel="stylesheet" href="{% static 'js_css/contact_css.css' %}">
 
     <title>{% block title %}LouisRossouw {% endblock %}</title>
 
@@ -44,9 +45,10 @@
           <li><a href="https://www.youtube.com/watch?v=oYjiiJe67Xw&ab_channel=LouisRossouw" target="blank">SHOWREEL</a></li>
           <li><a href="{% url 'home' %}">EXPERIENCE</a></li>
           <li><a href="{% url 'home' %}">BLOG</a></li>
+          <li><a href="{% url 'contact' %}">CONTACT</a></li>
         </ul>
       </nav>
-      <a class="cta" href="/"><button>CONTACT</button></a>
+      <a class="cta" href="https://www.dropbox.com/s/s9omplrsmbid4ii/CV_LouisRossouw_2023.pdf?dl=0"><button>Resume/CV</button></a>
 
       <div class="hamburger">
         <span class="bar"></span>
@@ -63,9 +65,7 @@
 
 
     <script src="{% static 'js_css/js/home.js' %}"></script>
-
-
-
+    <script src="{% static 'js_css/contact.js' %}"></script>
 
   </body>
 
