@@ -1,3 +1,13 @@
+// Hides the nav bar for the contact page.
+function hide_navbar() {
+    let navbar = document.querySelector('.navbar_header');
+    navbar.style.display = 'none';
+    console.log("NavBar hidden");
+}
+
+
+
+
 const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".nav_links");
 
@@ -5,6 +15,7 @@ hamburger.addEventListener("click", () =>{
     hamburger.classList.toggle("active");
     navMenu.classList.toggle("active");
 })
+
 
 
 
@@ -79,4 +90,8 @@ if (document.title == "LouisRossouw") {
 }
 if (document.title == "LouisRossouw - Portfolio") {
     animateTitle(StaticTitle="LouisRossouw: ", Title="Portfolio");
+}
+if (document.title == "LouisRossouw - Contact") {
+    animateTitle(StaticTitle="LouisRossouw: ", Title="Contact");
+    hide_navbar();
 }
