@@ -5,3 +5,11 @@ def home_page(request):
 
     context = {}
     return render(request, template_name="home_page.html", context=context)
+
+
+
+def temp_page(request):
+    " A temp under construction page. " 
+
+    context = {}
+    return render(request, template_name="temp.html", context=context)
