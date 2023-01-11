@@ -9,6 +9,21 @@
 <div class="contact_div">
     <div  class="contact_center">
 
+    <div class="logo_icons">
+        <img src="{% static 'images/icons/pixl_play_FR_01.svg' %}" class="profile_pic"></img>
+    
+        <!-- Script to animate the flav icon for fun. -->
+        <script>
+        function profileAnimate() {
+            setTimeout(function(){document.querySelector('.profile_pic').src="{% static 'images/icons/pixl_play_FR_01.svg' %}"}, 450);
+            setTimeout(function(){document.querySelector('.profile_pic').src="{% static 'images/icons/pixl_play_FR_02.svg' %}"}, 900);}
+    
+        setInterval(function(){profileAnimate();}, 1000);
+        </script>
+
+
+
+
     <h3 class="contact_title_01">Got a question?</h3>
     <h1 class="contact_title_02">GET IN TOUCH WITH ME</h1>
 
