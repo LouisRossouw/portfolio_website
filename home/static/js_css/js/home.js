@@ -1,12 +1,57 @@
+
+// SHOWREEL button
+const lightbox = document.createElement('div')
+lightbox.id = 'lightbox';
+document.body.appendChild(lightbox)
+
+const lightbox_blur = document.createElement('div')
+lightbox_blur.id = 'lightbox_blur_bg';
+document.body.appendChild(lightbox_blur)
+
+// when "Showreel" nav button is pushed, create a div to display an embedded youtube video at center of screen
+// with a blurred backround.
+const showreel = document.querySelector(".showreel");
+
+
+    // when clicked - set the css for video active for youtube + blurred div.
+    showreel.addEventListener('click', e => {
+        
+        lightbox.classList.add('active');
+        lightbox_blur.classList.add('active');
+
+        const video =  document.createElement('iframe');
+        video.src = "https://www.youtube.com/embed/yATUI8-0piM";
+        video.id = "showreel_video";
+
+        // if div is already active, remove the first one before we add a new one.
+        while (lightbox.firstChild){
+            lightbox.removeChild(lightbox.firstChild);
+        }
+
+        lightbox.appendChild(video);
+
+    })
+
+// when we are previewing the video, listen for a click outside of the window area and execute / remove video / blurred div
+// basically exit the lightbox view.
+lightbox.addEventListener('click', e => {
+    if (e.target !== e.currentTarget) return
+
+    document.getElementById('showreel_video').src = "//";
+
+    lightbox.classList.remove('active')
+    lightbox_blur.classList.remove('active')
+})
+
+
+
+
 // Hides the nav bar for the contact page.
 function hide_navbar() {
     let navbar = document.querySelector('.navbar_header');
     navbar.style.display = 'none';
     console.log("NavBar hidden");
 }
-
-
-
 
 const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".nav_links");
@@ -58,16 +103,6 @@ function Splash_fade() {
 }
 
 
-// // Blur on scroll.
-// let my_img = document.querySelector('.img-blur');
-// let title = document.querySelector('section h1');
-
-// function blur_image_onScroll() {
-//     let scroll_amount = document.documentElement.scrollTop;
-//     my_img.style.filter = 'blur(' + scroll_amount/15 + 'px)';
-//     title.style.opacity = scroll_amount / 900;
-// }
-
 
 // Delay start video until the splash screen has cleared.
 const startVideo = async () => {
@@ -76,7 +111,6 @@ const startVideo = async () => {
     video.setAttribute('autoplay', true);
     console.log("video is playing")
 }
-
 
 
 
