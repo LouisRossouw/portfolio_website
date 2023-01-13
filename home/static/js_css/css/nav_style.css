@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200&display=swap');
 
+html{
+    -webkit-tap-highlight-color: transparent;
+}
 
 li, a, button{
     font-family: 'Source Code Pro', monospace;
@@ -92,12 +95,11 @@ button:hover{
 .bar{
     display: block;
     width: 25px;
-    height: 3px;
-    margin: 5px;
+    height: 1px;
+    margin: 6px;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-    background-color: rgb(220, 254, 255);
-    animation: logo_animate 2s infinite alternate;
+    background-color: rgba(255, 255, 255, 0.726);
 }
 
 
@@ -157,7 +159,7 @@ button:hover{
         position: fixed;
         z-index: 10;
         right: 0;
-        top: -250px;
+        top: -300px;
         gap: 50;
         flex-direction:column;
         background-image: linear-gradient(to top, rgba(255,0,0,0), rgb(0, 0, 0));
@@ -195,6 +197,7 @@ button:hover{
     
 
     .navbar_header{
+        z-index: 100;
         overflow: hidden;
         position: fixed;
         background-image: linear-gradient(to top,rgb(0, 0, 0), rgb(0, 0, 0));
@@ -214,7 +217,6 @@ button:hover{
         padding-left: 10px;
         font-size:small;
         font-weight:bold;
-
     }
 
 
