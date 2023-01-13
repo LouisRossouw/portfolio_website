@@ -10,13 +10,13 @@
     <div  class="contact_center">
 
     <div class="logo_icons">
-        <img src="{% static 'images/icons/pixl_play_FR_01.svg' %}" class="profile_pic"></img>
+        <img src="{% static 'images/icons/pixl_play_FR_01.svg' %}" class="profile_pic_02"></img>
     
         <!-- Script to animate the flav icon for fun. -->
         <script>
         function profileAnimate() {
-            setTimeout(function(){document.querySelector('.profile_pic').src="{% static 'images/icons/pixl_play_FR_01.svg' %}"}, 450);
-            setTimeout(function(){document.querySelector('.profile_pic').src="{% static 'images/icons/pixl_play_FR_02.svg' %}"}, 900);}
+            setTimeout(function(){document.querySelector('.profile_pic_02').src="{% static 'images/icons/pixl_play_FR_01.svg' %}"}, 450);
+            setTimeout(function(){document.querySelector('.profile_pic_02').src="{% static 'images/icons/pixl_play_FR_02.svg' %}"}, 900);}
     
         setInterval(function(){profileAnimate();}, 1000);
         </script>
@@ -41,15 +41,17 @@
                 <td>&nbsp;</td>
                 <td><input class="contact_submit" type="submit" value="Submit"></td>
             </tr>
-        </table>
 
+        </table>
         {% csrf_token %}
         </form>
 
     {% endif %}
-
     </div>
+
 </div>
+
+
 
 
 {% endblock page_content %}
