@@ -262,7 +262,8 @@ html{
     padding-bottom: auto;
     margin-left: auto;
     margin-right: auto;
-    width: 10vh;
+    width: 10vw;
+    padding-right: 10px;
 }
 
 
@@ -361,14 +362,13 @@ body {
     width: 100%;
     color: rgb(192, 253, 253);
     padding: 0px;
-    padding-top: 20px;
-    padding-left: 20px;
+    padding-top: 1vh;
+    padding-left: 0px;
     height: 33.3%;
 }
 .column_02 {
     width: 100%;
     color: rgb(192, 253, 253);
-    padding: 0px;
     padding: 20px;
     height: 33.3%;
 
@@ -379,6 +379,10 @@ body {
     padding: 0px;
     padding-left: 0px;
     height: 33.3%;
+}
+
+.column_02 h1{
+    margin-top: -2vh;
 }
 
 .column_01 p{
@@ -393,7 +397,6 @@ body {
     width: 100%;
     color: rgb(255, 255, 255);
 }
-
 
 
 .glow:after {
@@ -412,12 +415,6 @@ body {
     filter: blur(0px);
 }
 
-.column{
-    height: auto;
-    overflow:scroll;
-    font-size: 11px; 
-}
-
 
 .list_a li{
     margin-left: -8px;
@@ -431,8 +428,13 @@ body {
 }
 
 .profile_pic{
+    height: 0%;
+    display: block;
     padding-top: 1vh;
-    padding-bottom: auto;
+    padding-bottom: 1vh;
+    margin-left: auto;
+    margin-right: auto;
+    width: 35vw;
 
 }
 
