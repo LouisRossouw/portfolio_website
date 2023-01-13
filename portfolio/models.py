@@ -5,8 +5,10 @@ class Portfolio(models.Model):
     title = models.CharField(max_length=100)
     project_acronym = models.CharField(max_length=3)
     description = models.TextField()
+    additional_description = models.TextField()
     technology = models.CharField(max_length=20)
     image = models.FilePathField(path="/portfolio")
+
     
     blog = models.TextField()               # link to my blog webpage for specific project.
     produced_at = models.TextField()        # link to company.
