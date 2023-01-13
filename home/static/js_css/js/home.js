@@ -127,5 +127,5 @@ if (document.title == "LouisRossouw - Portfolio") {
 }
 if (document.title == "LouisRossouw - Contact") {
     animateTitle(StaticTitle="LouisRossouw: ", Title="Contact");
-    hide_navbar();
+    // hide_navbar();
 }
