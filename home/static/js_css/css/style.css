@@ -15,6 +15,17 @@ html{
     color:#00f2f2;
 }
 
+.resume_text{
+    display: none;
+    color: rgb(174, 255, 255);
+}
+
+.resume_text:hover{
+    color: rgb(0, 255, 255);
+    font-weight: bolder;
+}
+
+
 
 .showreel_button{
     color: white;
@@ -357,6 +368,16 @@ body {
     scale: 2.5;
 }
 
+
+.resume_text{
+    display:inline-block;
+    color: rgb(174, 255, 255);
+}
+
+.resume_text:hover{
+    color: rgb(0, 255, 255);
+    font-weight: bolder;
+}
 
 .column_01 {
     width: 100%;
