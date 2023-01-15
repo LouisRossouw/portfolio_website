@@ -4,7 +4,6 @@ from django.conf import settings
 
 
 
-
 def calculate_columns(dict):
     """ This function chooses a specific .css class based on if there content in the projects additional images directories /
         based off that data, it will generate a column for the specific column if there is content. """
@@ -70,3 +69,8 @@ def return_additional_images(portfolio):
     columns = calculate_columns(dict)
 
     return dict, columns
+
+
+
+
+
