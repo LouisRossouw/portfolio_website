@@ -25,4 +25,6 @@ to manage database tables for portfolios for EXAMPLE.
     - insert into portfolio_portfolio (title, description, technology, image) values ("title", "description", "technology", "image");               // will insert a new row.
 
     - alter table portfolio_portfolio add column blog;                                  // adds a new colum to all tables
+
+    - delete from contact_ignore_list where rowid=1;                                    // removes row 1 from table
     
