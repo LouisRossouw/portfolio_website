@@ -14,11 +14,11 @@
 
         <div class="port_film_tag">
             <div class="port_row">
-                <img class="port_img" src="{% static port.image %}">
+                <img class="port_img" src="{{port.image_main.url}}">
                 <div class="port_body">
                     <h5 class="port_title">{{ port.title }}</h5>
                     
-                    <p class="port_text">{{ port.description }}</p>                
+                    <p class="port_text">{{ port.role }}</p>                
                     <a href="{% url 'portfolio_detail' port.pk %}" class="port_readMore">Read More</a>
                 </div>
             </div>
@@ -35,11 +35,11 @@
     
             <div class="port_film_tag">
                 <div class="port_row">
-                    <img class="port_img" src="{% static port.image %}">
+                    <img class="port_img" src="{{port.image_main.url}}">
                     <div class="port_body">
                         <h5 class="port_title">{{ port.title }}</h5>
                         
-                        <p class="port_text">{{ port.description }}</p>                
+                        <p class="port_text">{{ port.role }}</p>                
                         <a href="{% url 'portfolio_detail' port.pk %}" class="port_readMore">Read More</a>
                     </div>
                 </div>
@@ -48,5 +48,5 @@
         {% endif %}
     {% endfor %}
 
-<h1 style="color: rgba(255, 255, 255, 0); padding-bottom: 200px;">
+<h1 class="extra_bottom_ignore" style="color: rgba(255, 255, 255, 0); padding-bottom: 200px;"></h1>
 {% endblock %}
