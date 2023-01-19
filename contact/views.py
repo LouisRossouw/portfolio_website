@@ -17,6 +17,7 @@ def contact_page(request):
 
     if request.method == "POST":
         form = forms.ContactForm(request.POST)
+        
         if form.is_valid():
             contact_form = form.cleaned_data
             # assert False
