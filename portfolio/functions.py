@@ -47,8 +47,8 @@ def return_additional_images(portfolio):
     dict = {}
 
     images_path = portfolio.project_acronym
-    static_path = f"portfolio/img/additional_images/{images_path}"
-    addition_images_path = f"{settings.BASE_DIR}/portfolio/static/{static_path}/" # locally source the image.
+    static_path = f"/portfolio/additional_images/{images_path}"
+    addition_images_path = f"{settings.BASE_DIR}/media/{static_path}/" # locally source the image.
 
     if os.path.exists(addition_images_path) == True:
 
@@ -59,12 +59,14 @@ def return_additional_images(portfolio):
             if bool(return_contents) == True:
                 collected_list = []
                 for img in return_contents:
-                    collected_list.append(f"{static_path}/{dir}/{img}")
+                    collected_list.append(f"/media/{static_path}/{dir}/{img}")
 
                 dict[dir] = collected_list
 
             else:
                 dict[dir] = False
+
+    print(dict)
 
     columns = calculate_columns(dict)
 
