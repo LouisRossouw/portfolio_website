@@ -7,6 +7,9 @@ from django.db import models
 class ignore_list(models.Model):
     email = models.TextField()
 
+    def __str__(self):
+        return f"{self.email}"
+
 
 
 class Email_list(models.Model):
@@ -16,7 +19,6 @@ class Email_list(models.Model):
     subject = models.TextField(default=None, blank=True)
     time = models.TimeField(auto_now=True)
 
-    
 
 
 
