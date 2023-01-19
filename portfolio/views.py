@@ -1,7 +1,7 @@
 from portfolio import functions
 
 from django.shortcuts import render
-from portfolio.models import Portfolio
+from .models import Projects
 
 
 
@@ -9,7 +9,7 @@ from portfolio.models import Portfolio
 def portfolio_index(request):
     """ Renders all portoflio images. """
 
-    portfolio = Portfolio.objects.all()
+    portfolio = Projects.objects.all()
 
     context = {'portfolio': portfolio}
     
@@ -22,7 +22,7 @@ def portfolio_detail(request, pk):
     """ Renders all data from specific chosen project + additional images / videos if
         they exist in the server directories. """
 
-    portfolio = Portfolio.objects.get(pk=pk)
+    portfolio = Projects.objects.get(pk=pk)
 
     # Returns additional images if they exist on the server, can calculates how many columns to generate.
     additional_images = functions.return_additional_images(portfolio)
