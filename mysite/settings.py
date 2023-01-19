@@ -19,6 +19,7 @@ load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+PORTFOLIO_DIR = "D:/work/projects/dev/projects/portfolio_website/portfolio/static/portfolio/img"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -44,7 +45,8 @@ INSTALLED_APPS = [
     'mysite',
     'home',
     'portfolio',
-    'contact'
+    'contact',
+    'captcha',
 ]
 
 MIDDLEWARE = [
@@ -140,7 +142,16 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_PASSWORD = os.getenv("GMAIL_SMTP_PASSWORD")
 
 
+MEDIA_ROOT = f"{BASE_DIR}/media"
+MEDIA_URL = '/media/'
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+RECAPTCHA_PUBLIC_KEY = os.getenv("RECAPTCHA_PUBLIC_KEY")
+RECAPTCHA_PRIVATE_KEY = os.getenv("RECAPTCHA_PRIVATE_KEY")
