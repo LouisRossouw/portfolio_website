@@ -7,13 +7,13 @@ from contact.models import ignore_list, Email_list
 def save_email_list(contact_form):
     """ Saves users email to the databse. """
 
-    email_exists = Email_list.objects.filter(email=contact_form["email"]).exists()
+    email_exists = Email_list.objects.filter(email=contact_form["postbox"]).exists()
 
     # If email already exists in the database, then dont save it to the database.
     if email_exists != True:
 
         add_email = Email_list()
-        add_email.email = contact_form["email"]
+        add_email.email = contact_form["postbox"]
         add_email.name = contact_form["yourname"]
         add_email.message = contact_form["message"]
         add_email.subject = contact_form["subject"]
