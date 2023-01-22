@@ -1,4 +1,10 @@
 
+html{
+    overflow-y: scroll;
+    padding-bottom: 500px;
+}
+
+
 .contact_title_01{
     color: white;
     font-family: 'Source Code Pro', monospace;
@@ -19,7 +25,7 @@
 }
 
 .contact_div{
-    position:fixed;
+    position: absolute;
     padding:0;
     margin:0;
     z-index: -5;
@@ -35,11 +41,11 @@
 .contact_center {
     margin: 0;
     position: absolute;
-    top: 45%;
     left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 0%);
+    padding-top: 0px;
     width: 50%;
+    height: 50%;
   }
 
 
@@ -126,7 +132,46 @@ input:hover{
 
 
 
-@media (max-width: 768px) {
+.g-recaptcha > div {
+    margin: auto;
+    filter: invert(1) hue-rotate(180deg);
+    float:left;
+    }
+
+
+
+label[for=id_captcha]{
+    display: none;
+}
+
+#recaptcha_area, #recaptcha_table { 
+    line-height: 0 !important;
+    float: left !important;
+}
+
+
+
+
+
+@media (max-width: 850px) {
+
+
+html{
+    overflow-y: scroll;
+}
+
+
+.g-recaptcha > div {
+    margin: auto;
+    filter: invert(1) hue-rotate(180deg);
+    }
+
+label[for=id_captcha]{
+    display: none;
+}
+
+
+
 
 .contact_title_02{
     color: white;
@@ -157,23 +202,25 @@ input:hover{
 
     width: 100%;
     height: 50%;
+    overflow: visible;
 }
+
+
+
+.contact_center {
+    /* scale: 0.9; */
+    width: 100vw;
+    height: 90%;
+    margin: 0;
+
+
+    position: absolute;
+    margin-left: 0%;
+    margin-top: 0%;
+    }
 
 textarea{
     height: 100px;
 }
-
-.contact_center {
-    /* scale: 0.8; */
-    width: 120%;
-    height: 100%;
-    margin: 0;
-    top: 50%;
-    position: absolute;
-    margin-left: 0%;
-    margin-top: 0%;
-
-
-    }
-
 }
+
