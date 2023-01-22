@@ -257,7 +257,7 @@ body {
 
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 850px) {
 
 
 .portfolio_detail_column {
@@ -272,7 +272,7 @@ body {
 .portfolio_detail_TEXT_DYNAMIC_LENGTH_1 {
     width: 100%;
     padding: 5px;
-    margin-top: -25px;   
+    margin-top: -25px;
 }
 .portfolio_detail_MYSHOTS_DYNAMIC_LENGTH_1 {
     width: 100%;
@@ -319,7 +319,7 @@ body {
 .portfolio_detail_TEXT_DYNAMIC_LENGTH_2 {
     width: 100%;
     padding: 5px;
-    margin-top: -25px;   
+    margin-top: -25px; 
 }
 .portfolio_detail_MYSHOTS_DYNAMIC_LENGTH_2 {
     width: 100%;
