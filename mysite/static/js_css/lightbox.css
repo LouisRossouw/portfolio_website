@@ -1,0 +1,80 @@
+#lightbox{
+    position: fixed;
+    z-index: 250;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+
+#lightbox.active{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#lightbox iframe {
+    z-index: 255;
+    width: 70vw;
+    height: 35vw;
+    padding: 4px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+
+#lightbox_blur_bg{
+    position: fixed;
+    z-index: 200;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    filter: blur(6px);
+    background-image: linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0.2));
+    backdrop-filter: blur(8px);
+    filter: grayscale(100%);
+    display: none;
+    margin-left: -10px;
+}
+
+
+#lightbox_blur_bg.active{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+@media (max-width: 850px) {
+
+#lightbox iframe {
+    z-index: 255;
+    width: 95%;
+    height: 30%;
+    padding: 0px;
+    padding-right: 5px;
+    padding-left: 5px;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    margin-left: -20px;
+    margin-top: -100px;
+}  
+
+
+#lightbox_blur_bg{
+    position: fixed;
+    z-index: 200;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0.2));
+    backdrop-filter: blur(3px);
+    filter: grayscale(100%);
+    display: none;
+    margin-left: -10px;
+}
+}
