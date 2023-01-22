@@ -14,6 +14,7 @@ venv/Scripts/*
 projects/__pychache__
 home/__pychache__
 mysite/__pychache__
+contact/__pychache__
 
 mysite/settings.py
 
