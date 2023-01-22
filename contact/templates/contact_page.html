@@ -1,5 +1,7 @@
 {% extends "base.html" %}
+
 {% load static %}
+{% load honeypot %}
 
 {% block title %}LouisRossouw - Contact {% endblock %}
 
@@ -37,12 +39,14 @@
         <form action="" method="post" novalidate>
         <table>
             {{ form.as_p }}
+            
             <tr>
                 <td>&nbsp;</td>
                 <td><input class="contact_submit" type="submit" value="Submit"></td>
             </tr>
 
         </table>
+        {% render_honeypot_field "email" %}
         {% csrf_token %}
         </form>
 
