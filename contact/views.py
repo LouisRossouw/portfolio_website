@@ -7,9 +7,11 @@ from django.core.mail import send_mail, get_connection
 from django.shortcuts import redirect
 
 from contact import forms
+from honeypot.decorators import check_honeypot
 
 
-# Create your views here.
+
+@check_honeypot(field_name='email')
 def contact_page(request):
     " Render / Logic for the contact page. " 
 
@@ -17,15 +19,15 @@ def contact_page(request):
 
     if request.method == "POST":
         form = forms.ContactForm(request.POST)
-        
+
         if form.is_valid():
             contact_form = form.cleaned_data
             # assert False
 
-            reformatted_message = f"email from louisrossouw.com website: \n\nName: {contact_form['yourname']}\n\nMessage:\n\n{contact_form['message']}\n\nTheir Mail: {contact_form['email']}"
+            reformatted_message = f"email from louisrossouw.com website: \n\nName: {contact_form['yourname']}\n\nMessage:\n\n{contact_form['message']}\n\nTheir Mail: {contact_form['postbox']}"
 
             # Check if user email is part of the ignore list, return True or False.
-            ignore_mail = func.ignore_email_list(contact_form['email'])
+            ignore_mail = func.ignore_email_list(contact_form['postbox'])
 
             if ignore_mail != True:
 
@@ -33,7 +35,7 @@ def contact_page(request):
                 send_mail(
                         contact_form['subject'],
                         reformatted_message,
-                        contact_form['email'], ['louis@louisrossouw.com'])
+                        contact_form['postbox'], ['louis@louisrossouw.com'])
 
                 # Save email to the contact_email_list database.
                 func.save_email_list(contact_form)
