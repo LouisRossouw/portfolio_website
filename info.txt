@@ -5,6 +5,14 @@ layout pro tips:
 
 
 
+django
+
+- python manage.py migrate --fake myappname zero                                        // fixes the issue when makemigrations and migrate does not create a table.
+
+
+
+
+
 ##### sqlite:
 
 prop tips:
@@ -27,4 +35,7 @@ to manage database tables for portfolios for EXAMPLE.
     - alter table portfolio_portfolio add column blog;                                  // adds a new colum to all tables
 
     - delete from contact_ignore_list where rowid=1;                                    // removes row 1 from table
+
+    - drop table blog_post                                                              // Deletes the entire table from the db.
+    
     
