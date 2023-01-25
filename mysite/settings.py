@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'portfolio',
     'contact',
     'honeypot',
+    'blog'
 ]
 
 MIDDLEWARE = [
@@ -129,6 +130,7 @@ STATICFILES_DIRS = [
     str(BASE_DIR) + "/mysite/static",
     str(BASE_DIR) + "/home/static",
     str(BASE_DIR) + "/portfolio/static",
+    str(BASE_DIR) + "/blog/static",
     str(BASE_DIR) + "/contact/static",
 ]
 
