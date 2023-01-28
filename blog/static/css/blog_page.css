@@ -1,0 +1,380 @@
+
+.blog_page_main{
+    color: white;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 14px;
+    background: none;
+    margin: auto;
+    width: 60%;
+    max-width: 1000px;
+    padding: 10px;
+    /* border-left: 1px solid rgba(0, 62, 84, 0.4);
+    border-right: 1px solid rgba(0, 62, 84, 0.4); */
+    background-color: rgb(10, 10, 10);
+    /* background-image: linear-gradient(to top, rgb(0, 62, 84, 0.2), rgba(0, 234, 255, 0)); */
+}
+
+
+.blog_page_main img{
+    box-shadow: 10px 10px 5px black;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 25px;
+    border-left: 1px solid rgb(222, 132, 255);
+    border-right: 1px solid rgb(136, 255, 255);
+}
+
+
+.blog_page_body hr{
+    /* border: solid 1px rgb(139, 255, 255) !important; */
+    border: solid 1px rgb(30, 30, 30) !important;
+    width: 100% !important;
+}
+
+
+.blog_page_body a{
+    cursor: pointer;
+    color: rgb(148, 255, 255);
+}
+
+
+.blog_page_body a:hover{
+    cursor: pointer;
+    color: rgb(148, 255, 255);
+    border-radius: 5px;
+    font-weight: bolder;
+}
+
+
+.blog_page_body{
+    margin-top: 50px;
+}
+
+
+.blog_page_main iframe{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 40vh;
+}
+
+
+.blog_page_title{
+    font-size: 80px;
+    color: rgb(207, 255, 254);
+    text-align: center;
+    margin: auto;
+    width: 100%;
+    padding-top: 50px;
+}
+
+
+.blog_page_date{
+    color: white;
+    text-align: center;
+    margin: auto;
+    width: 50%;
+    padding: 0px;
+}
+
+
+.blog_page_body{
+    /* border-left: 1px solid rgba(255, 255, 255, 0.2);
+    border-right: 1px solid rgba(255, 255, 255, 0.2); */
+    padding: 10px;
+}
+
+
+
+/* ###############################################  Normal Monitor */
+@media (max-width: 1418px) and (min-width: 1000px) {
+
+    .blog_page_main{
+        color: white;
+        font-family: 'Source Code Pro', monospace;
+        font-size: 14px;
+        background: none;
+    
+        margin: auto;
+        width: 60%;
+        padding: 10px;
+        /* border-left: 1px solid rgba(0, 62, 84, 0.4);
+        border-right: 1px solid rgba(0, 62, 84, 0.4); */
+        background-color: rgb(10, 10, 10);
+        /* background-image: linear-gradient(to top, rgb(0, 62, 84, 0.2), rgba(0, 234, 255, 0)); */
+    }
+    
+    .blog_page_main img{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 25px;
+        border-left: 1px solid rgb(222, 132, 255);
+        border-right: 1px solid rgb(136, 255, 255);
+        max-width: 100%;
+        height: auto;
+        width: auto\9; /* ie8 */
+    }
+    
+    .blog_page_body{
+        margin-top: 50px;
+    }
+    
+    .blog_page_main iframe{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        height: 40vh;
+    }
+    
+    
+    .blog_page_title{
+        font-size: 80px;
+        color: rgb(207, 255, 254);
+        text-align: center;
+        margin: auto;
+        width: 100%;
+        padding-top: 50px;
+    }
+    
+    .blog_page_date{
+        color: white;
+        text-align: center;
+        margin: auto;
+        width: 50%;
+        padding: 0px;
+    }
+    
+    
+    .blog_page_body{
+        /* border-left: 1px solid rgba(255, 255, 255, 0.2);
+        border-right: 1px solid rgba(255, 255, 255, 0.2); */
+        padding: 10px;
+    }
+}
+
+
+
+/* ###############################################  Half Laptop screen */
+@media (max-width: 1000px) and (min-width: 850px){
+
+.blog_page_main{
+    color: white;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 14px;
+    background: none;
+
+    margin: auto;
+    width: 95%;
+    padding: 10px;
+    /* border-left: 1px solid rgba(0, 62, 84, 0.4);
+    border-right: 1px solid rgba(0, 62, 84, 0.4); */
+    background-color: rgb(10, 10, 10);
+    /* background-image: linear-gradient(to top, rgb(0, 62, 84, 0.2), rgba(0, 234, 255, 0)); */
+}
+
+.blog_page_main img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 25px;
+    border-left: 1px solid rgb(222, 132, 255);
+    border-right: 1px solid rgb(136, 255, 255);
+    max-width: 80%;
+    height: auto;
+    width: auto\9; /* ie8 */
+}
+
+.blog_page_body{
+    margin-top: 50px;
+}
+
+.blog_page_main iframe{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 40vh;
+}
+
+
+.blog_page_title{
+    font-size: 50px;
+    color: rgb(207, 255, 254);
+    text-align: center;
+    margin: auto;
+    width: 100%;
+    padding-top: 50px;
+}
+
+.blog_page_date{
+    color: white;
+    text-align: center;
+    margin: auto;
+    width: 50%;
+    padding: 0px;
+}
+
+
+.blog_page_body{
+    /* border-left: 1px solid rgba(255, 255, 255, 0.2);
+    border-right: 1px solid rgba(255, 255, 255, 0.2); */
+    padding: 10px;
+}
+}
+
+
+
+/* ###############################################  LARGE MOBILE / TABLET */
+@media (max-width: 850px) and (min-width: 580px) {
+
+.blog_page_main{
+    color: white;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 14px;
+    background: none;
+    margin: auto;
+    width: 95%;
+    padding: 10px;
+    /* border-left: 1px solid rgba(0, 62, 84, 0.4);
+    border-right: 1px solid rgba(0, 62, 84, 0.4); */
+    background-color: rgb(10, 10, 10);
+    /* background-image: linear-gradient(to top, rgb(0, 62, 84, 0.2), rgba(0, 234, 255, 0)); */
+}
+
+
+.blog_page_main img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 25px;
+    border-left: 1px solid rgb(222, 132, 255);
+    border-right: 1px solid rgb(136, 255, 255);
+    max-width: 80%;
+    height: auto;
+    width: auto\9; /* ie8 */
+}
+
+
+.blog_page_body{
+    margin-top: 50px;
+}
+
+
+.blog_page_main iframe{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 40vh;
+}
+
+
+.blog_page_title{
+    font-size: 50px;
+    color: rgb(207, 255, 254);
+    text-align: center;
+    margin: auto;
+    width: 100%;
+    padding-top: 50px;
+}
+
+
+.blog_page_date{
+    color: white;
+    text-align: center;
+    margin: auto;
+    width: 50%;
+    padding: 0px;
+}
+
+
+.blog_page_body{
+    /* border-left: 1px solid rgba(255, 255, 255, 0.2);
+    border-right: 1px solid rgba(255, 255, 255, 0.2); */
+    padding: 10px;
+}
+}
+
+
+
+/* ###############################################  MOBILE */
+@media (max-width: 580px) {
+
+.blog_page_main{
+    color: white;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 12px;
+    background: none;
+    margin: auto;
+    width: 95%;
+    padding: 10px;
+    /* border-left: 1px solid rgba(0, 62, 84, 0.4);
+    border-right: 1px solid rgba(0, 62, 84, 0.4); */
+    background-color: rgb(10, 10, 10);
+    /* background-image: linear-gradient(to top, rgb(0, 62, 84, 0.2), rgba(0, 234, 255, 0)); */
+}
+
+
+.blog_page_main li{
+    margin-left: -25px;
+    font-size: 12px;
+}
+
+
+.blog_page_main img{
+    box-shadow: 5px 5px 2px black;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 25px;
+    border-left: 1px solid rgb(222, 132, 255);
+    border-right: 1px solid rgb(136, 255, 255);
+    max-width: 100%;
+    height: auto;
+    width: auto\9; /* ie8 */
+}
+
+
+.blog_page_body{
+    margin-top: 20px;
+}
+
+
+.blog_page_main iframe{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 40vh;
+}
+
+
+.blog_page_title{
+    font-size: 35px;
+    color: rgb(207, 255, 254);
+    text-align: center;
+    margin: auto;
+    width: 100%;
+    padding-top: 50px;
+}
+
+
+.blog_page_date{
+    color: white;
+    text-align: center;
+    margin: auto;
+    width: 50%;
+    padding: 0px;
+}
+
+
+.blog_page_body{
+    /* border-left: 1px solid rgba(255, 255, 255, 0.2);
+    border-right: 1px solid rgba(255, 255, 255, 0.2); */
+    padding: 10px;
+}
+}

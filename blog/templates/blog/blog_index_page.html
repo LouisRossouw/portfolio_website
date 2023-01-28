@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-blogindexpage{% endblock %}
+
+{% block page_content %}
+    <div class="blog_index">
+
+        <div class="blog_index_title">
+            <h1>{{ page.title }}</h1>
+            <p class="blog_index_subtitle">{{ page.intro|richtext }}</p>
+            
+        </div>
+
+
+
+
+        <div class="blog_index_blogpost_list">
+            {% for post in page.get_children %}
+            
+                <div class="blog_index_blogpost" onclick="location.href='{% pageurl post %}';">
+                    
+                    <div class="blog_index_blogpost_column_01">
+                        
+                        <img src="{{post.specific.cover_img.url}}"></img>
+                        
+                    </div>
+
+
+                    <div class="blog_index_blogpost_column_02">
+                        
+                        <a class="blog_index_readmore" href="{% pageurl post %}">{{ post.title }}</a> <small> |&nbsp; {{ post.specific.date }}</small>
+                        <br>
+                        
+                        <p>
+                        {{ post.specific.intro }}
+                        </p>
+                        
+                        
+                    </div>
+
+                </div>
+            
+            {% endfor %}
+        </div>
+
+    </div>
+
+{% endblock %}
