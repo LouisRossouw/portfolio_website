@@ -19,15 +19,21 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from wagtail.admin import urls as wagtailadmin_urls
+from wagtail import urls as wagtail_urls
+from wagtail.documents import urls as wagtaildocs_urls
+
 
 urlpatterns = [
     path(str(f"{os.getenv('ADMIN_LOGIN')}/"), admin.site.urls),
-
     path('', include('home.urls'), name='home'),
     path('portfolio/', include('portfolio.urls'), name='portfolio'),
-    
-    path('blog/', include('blog.urls'), name="blog"),
     path('contact/', include('contact.urls'), name='contact'),
+
+    path('cms/', include(wagtailadmin_urls)),
+    path('documents/', include(wagtaildocs_urls)),
+    path('', include(wagtail_urls)),
+
 ]
 
 if settings.DEBUG:
