@@ -29,7 +29,7 @@ SECRET_KEY = os.getenv("PORTFOLIO_WEBSITE_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["10.0.0.113"]
+ALLOWED_HOSTS = ["10.0.0.113", "localhost"]
 
 
 # Application definition
@@ -41,12 +41,29 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'mysite',
     'home',
     'portfolio',
     'contact',
     'honeypot',
-    'blog'
+    'blog',
+
+    'wagtail.contrib.forms',
+    'wagtail.contrib.redirects',
+    'wagtail.embeds',
+    'wagtail.sites',
+    'wagtail.users',
+    'wagtail.snippets',
+    'wagtail.documents',
+    'wagtail.images',
+    'wagtail.search',
+    'wagtail.admin',
+    'wagtail',
+
+    'modelcluster',
+    'taggit',
+
 ]
 
 MIDDLEWARE = [
@@ -57,6 +74,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+      'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -126,6 +145,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 STATICFILES_DIRS = [
     str(BASE_DIR) + "/mysite/static",
     str(BASE_DIR) + "/home/static",
@@ -158,3 +179,5 @@ RECAPTCHA_PRIVATE_KEY = os.getenv("RECAPTCHA_PRIVATE_KEY")
 
 
 HONEYPOT_FIELD_NAME = "email"
+
+WAGTAIL_SITE_NAME = 'LouisRossouw'
