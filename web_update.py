@@ -174,7 +174,7 @@ def perform_update_copy():
 
         for file in KEEP_FILES:
 
-            file_source = f"{LOCAL_REPO}\{file}"
+            file_source = f"{LOCAL_REPO}/{file}"
             file_destination = f"{UPDATER_DIR}"
             is_directory = is_dir(file_source)
 
@@ -288,6 +288,8 @@ def run_update():
 
         to_backup = input("Backup - [ y / n ]?")
 
+        check_dirs(UPDATER_DIR)
+
         logging.info("Starting Update")
         logging.info(("-")*line_length)
 
@@ -336,10 +338,6 @@ def run_update():
     
     else:
         exit()
-
-
-
-
 
 
 
