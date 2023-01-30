@@ -75,7 +75,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-      'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -181,3 +181,13 @@ RECAPTCHA_PRIVATE_KEY = os.getenv("RECAPTCHA_PRIVATE_KEY")
 HONEYPOT_FIELD_NAME = "email"
 
 WAGTAIL_SITE_NAME = 'LouisRossouw'
+
+
+# BLOG on Publish_page Signal:
+# Reduces / removes .gifs in /media/image if greater than original in /media/original_images - wagtail.
+GFGF_ACTIVE = True
+GFGF_REMOVE_ORIGINAL_GIF = False
+GFGF_REMOVE_THUMBNAIL_GIF = True
+GFGF_REMOVE_MAX_WIDTH_GIF = True
+GFGF_REPLACE_RENDITION_GIF = True
+
