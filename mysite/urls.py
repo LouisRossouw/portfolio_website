@@ -23,10 +23,18 @@ from wagtail.admin import urls as wagtailadmin_urls
 from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
+from dailies import views as dailies
+
 
 urlpatterns = [
     path(str(f"{os.getenv('ADMIN_LOGIN')}/"), admin.site.urls),
     path('', include('home.urls'), name='home'),
+
+    path('dailies/', dailies.dailies_view, name="dailies"),
+    path('ajax_capture_data/', dailies.ajax_return_data),
+    path('ajax_add_vote/', dailies.ajax_add_vote),
+    path('ajax_remove_comment/', dailies.ajax_remove_comment),
+
     path('portfolio/', include('portfolio.urls'), name='portfolio'),
     path('contact/', include('contact.urls'), name='contact'),
 
@@ -34,7 +42,10 @@ urlpatterns = [
     path('documents/', include(wagtaildocs_urls)),
     path('', include(wagtail_urls)),
 
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# if settings.DEBUG:
+#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+

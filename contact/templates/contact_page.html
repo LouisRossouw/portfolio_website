@@ -8,28 +8,23 @@
 {% block page_content %}
 
 
-<div class="contact_div">
-    <div  class="contact_center">
-
-    <div class="logo_icons">
-        <img src="{% static 'images/icons/pixl_play_FR_01.svg' %}" class="profile_pic_02"></img>
-    
-        <!-- Script to animate the flav icon for fun. -->
-        <script>
-        function profileAnimate() {
-            setTimeout(function(){document.querySelector('.profile_pic_02').src="{% static 'images/icons/pixl_play_FR_01.svg' %}"}, 450);
-            setTimeout(function(){document.querySelector('.profile_pic_02').src="{% static 'images/icons/pixl_play_FR_02.svg' %}"}, 900);}
-    
-        setInterval(function(){profileAnimate();}, 1000);
-        </script>
 
 
 
 
-    <h3 class="contact_title_01">Got a question?</h3>
-    <h1 class="contact_title_02">GET IN TOUCH WITH ME</h1>
+<div class="contact_container">
 
-    {% if submitted %}
+    <div class="contact_items">
+
+        <img id="contact_img_01" src="{% static 'images/icons/pixl_play_FR_01.svg' %}" width="150" height="150"></img>
+        <img id="contact_img_02" src="{% static 'images/icons/pixl_play_FR_02.svg' %}" width="150" height="150" style="display: none;"></img>
+
+
+        <h3 class="contact_title_01">Got a question?</h3>
+        <h1 class="contact_title_02">GET IN TOUCH WITH ME</h1>
+
+
+        {% if submitted %}
         <p class="success">
             Your message was submitted successfully. Thank you.
         </p>
@@ -53,9 +48,40 @@
     {% endif %}
     </div>
 
+
+    </div>
+
 </div>
+
+
+<div id='glow_effect' style="z-index: -1000;">
+    <div class='row_glow'>
+      <div class='glow'>.</div>
+    </div>
+  </div>
+
+
+
+<script>
+    
+function profileAnimate() {
+
+    setTimeout(function(){document.getElementById("contact_img_01").style.display = "none"}, 450);
+    setTimeout(function(){document.getElementById("contact_img_02").style.display = "block"}, 450);
+
+    setTimeout(function(){document.getElementById("contact_img_01").style.display = "block"}, 900);
+    setTimeout(function(){document.getElementById("contact_img_02").style.display = "none"}, 900);
+
+}
+
+setInterval(function(){profileAnimate();}, 1000);
+
+</script> 
 
 
 
 
 {% endblock page_content %}
+
+
+

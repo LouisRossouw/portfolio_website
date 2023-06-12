@@ -1,0 +1,167 @@
+
+<div class="DLS_PR_container">
+
+    <div class="DLS_PR_title">
+        <p>Project List</p>
+    </div>
+
+    <div class="DLS_PR_projects">
+
+        <div class="DLS_PR_proj" id="DLS_PR_proj" style="margin-top: 0px; border-bottom: 1px solid grey; background-color: rgb(20, 20, 20);" onclick="select_project(this, 'overview')">
+            <i class="fa-regular fa-star" style="margin-right: 10px;"></i><p> OverView </p><span class="DLS_PR_proj_arrow"><i id="ppp" class="fa-solid fa-caret-right"></i></span>
+        </div>
+
+
+        {% for proj in all_projects %}
+
+            <div class="DLS_PR_proj" id="DLS_PR_proj" onclick="select_project(this, '{{ proj }}')">
+                <i class="fa-solid fa-folder" style="margin-right: 10px;"></i><p> {{ proj }}</p><span class="DLS_PR_proj_arrow" style="display: none;"><i class="fa-solid fa-caret-right"></i></span>
+            </div>
+
+        {% endfor %}
+
+
+
+
+    </div>
+
+
+
+</div>
+
+
+<script>
+
+function select_project(element, selected_project){
+    // Changes the project nav to show which project is selected.
+
+    hideRowsByProjectId(selected_project) 
+
+    project_element = document.getElementsByClassName("DLS_PR_proj");
+    arrow_element = document.getElementsByClassName("DLS_PR_proj_arrow");
+        for (var i = 0; i < project_element.length; i++) {
+            project_element[i].style.backgroundColor = "rgb(10, 10, 10)";
+            project_element[i].style.borderBottom = "none";
+            arrow_element[i].style.display = "none";
+
+    }
+    element.style.borderBottom = "1px solid grey";
+    element.style.backgroundColor = "rgb(20, 20, 20)";
+    element.querySelector("span").style.display = "block";
+}
+
+
+
+function hideRowsByProjectId(selected_project) {
+    // Hides rows to show only captures for the specific selected project.
+
+    var table = document.querySelector('.DLS_PR_table table');
+    var rows = table.getElementsByTagName('tr');
+
+    if (selected_project === "overview"){
+        for (var i = 0; i < rows.length; i++) {
+            var row = rows[i];
+            if (row.id !== "DLS_PR_table_title"){
+                row.style.display = '';
+            }
+        }
+
+    } else {
+
+        // Unhide all first.
+        for (var i = 0; i < rows.length; i++) {
+            rows[i].style.display = '';
+        }
+
+        // Then hide the ones thats not part of selected project.
+        for (var i = 0; i < rows.length; i++) {
+            var row = rows[i];
+            if (row.id !== selected_project) {
+                if (row.id !== "DLS_PR_table_title"){
+                    row.style.display = 'none';
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+function return_project_list(selected_project){
+
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var data = JSON.parse(this.responseText);
+
+            // var selectedFile = JSON.parse(data.captures)[0].fields;
+            // var studio = JSON.parse(data.studio)[0].fields;
+            // var commento = JSON.parse(data.comments);
+                console.log("Completed selection")
+            }
+        }
+
+    xhttp.open("GET", "/ajax_return_project/?selected_project=" + selected_project, true);
+    xhttp.send();
+}
+
+
+
+    
+</script>
+
+<style>
+
+
+
+.DLS_PR_container{
+    width: 95%;
+    margin: auto;
+    height: 100%;
+}
+
+.DLS_PR_title{
+    height: 50px;
+    text-align: center;
+    border-bottom: 1px solid rgb(50, 50, 50);
+    display: flex;
+    align-items: center;
+}
+
+.DLS_PR_projects{
+    margin-top: 0px;
+}
+
+#DLS_PR_proj{
+    font-size: 12px;
+    padding-left: 5px;
+    height: 30px;
+    float: left;
+    width: 95%;
+    background-color: rgb(10, 10, 10);
+    margin-top: 5px;
+
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    display: flex;
+    align-items: center;
+    
+}
+
+#DLS_PR_proj:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.DLS_PR_proj_arrow{
+    color: rgb(214, 0, 107);
+    margin-left: auto;
+    margin-right: 5px;
+}
+
+
+</style>
+

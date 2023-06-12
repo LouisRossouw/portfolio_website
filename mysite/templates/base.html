@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <!-- LINK TO STYLES. -->
-    <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}"> -->
 
     <link rel="stylesheet" type="text/css" href="{% static 'js_css/home.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'js_css/nav_style.css' %}">
@@ -22,6 +22,8 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/blog_page.css' %}">
 
     <link rel="stylesheet" type="text/css" href="{% static 'js_css/contact.css' %}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 
     <title>{% block title %}LouisRossouw {% endblock %}</title>
@@ -42,7 +44,7 @@
   </head>
 
 
-
+  
 
 <!-- NAVIGATION BAR. -->
     
@@ -53,12 +55,12 @@
           <li><a href="{% url 'home' %}">ABOUT</a></li>
           <li><a href="{% url 'portfolio_index' %}">PORTFOLIO</a></li>
           <li><a class="showreel">SHOWREEL</a></li>
-          <li><a href="{% url 'temp' %}">EXPERIENCE</a></li>
+          <li><a href="{% url 'dailies' %}">DAILIES</a></li>
           <li><a href="{% slugurl 'blog' %}">BLOG</a></li>
           <li><a href="{% url 'contact' %}">CONTACT</a></li>
         </ul>
       </nav>
-      <a class="cta" href="https://www.dropbox.com/s/s9omplrsmbid4ii/CV_LouisRossouw_2023.pdf?dl=0"><button>Resume/CV</button></a>
+      <a class="cta" href="https://www.dropbox.com/s/s9omplrsmbid4ii/CV_LouisRossouw_2023.pdf?dl=0"><button id="resume_btn">Resume/CV</button></a>
 
       <div class="hamburger">
         <span class="bar"></span>
@@ -90,27 +92,27 @@
 
   <style>
 
-    .footer {
-        position: fixed;
-        left: 0px;
-        bottom: 0;
-        width: 100%;
-        color: rgb(255, 255, 255, 0.2);
-        text-align: center;
-        padding: 20px 50px;
-      }
-      .footer:hover {
-        animation: footerGlow linear 0.5s 1 normal forwards;
-      }
+.footer {
+    position: fixed;
+    left: 0px;
+    bottom: 0;
+    width: 100%;
+    color: rgb(255, 255, 255, 0.2);
+    text-align: center;
+    padding: 20px 50px;
+  }
+  .footer:hover {
+    animation: footerGlow linear 0.5s 1 normal forwards;
+  }
 
-    @keyframes footerGlow {
-    from {color: rgb(255, 255, 255, 0.2);}
-    to {color: rgb(111, 217, 255);}
-    }
+@keyframes footerGlow {
+  from {color: rgb(255, 255, 255, 0.2);}
+  to {color: rgb(111, 217, 255);}
+}
 
 
 
-  </style>
+</style>
 
 
 
@@ -164,18 +166,9 @@
   </style>
 
 
-<div class='container02'>
-  <div class='row_glow02'>
-    <div class='glow02'>.</div>
-  </div>
-</div>
 
 
-<div class='container'>
-  <div class='row_glow'>
-    <div class='glow'>.</div>
-  </div>
-</div>
+
 
 </div>
 

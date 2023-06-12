@@ -6,7 +6,7 @@
 
 <!-- Start Splash Screen -->
 <div class="splash">
-  <img class="fade-in" src="{% static 'images/icons/pxl2.gif' %}"></img>
+  <img class="fade-in" src="{% static 'images/icons/gifplay2.gif' %}" width="50" height="50"></img>
 </div>
 
 
@@ -30,33 +30,25 @@
   <div class="column_01">
 
     <div class="logo_icons">
-      <img src="{% static 'images/icons/pixl_play_FR_01.svg' %}" class="profile_pic"></img>
 
-    <!-- Script to animate the flav icon for fun. -->
-    <script>
-      function profileAnimate() {
-          setTimeout(function(){document.querySelector('.profile_pic').src="{% static 'images/icons/pixl_play_FR_01.svg' %}"}, 450);
-          setTimeout(function(){document.querySelector('.profile_pic').src="{% static 'images/icons/pixl_play_FR_02.svg' %}"}, 900);}
-
-      setInterval(function(){profileAnimate();}, 1000);
-    </script>
-
+      <img class="profile_pic" id="contact_img_01" src="{% static 'images/icons/pixl_play_FR_01.svg' %}" style="margin: auto;"></img>
+      <img class="profile_pic" id="contact_img_02" src="{% static 'images/icons/pixl_play_FR_02.svg' %}" style="display: none; margin: auto;"></img>
 
       <ul class="socials">
         <a href="https://www.linkedin.com/in/louisrossouw636/" target="_blank">
-          <i class="fa fa-linkedin fa-2x" aria-hidden="true"></i>
+          <i class="fa-brands fa-linkedin fa-2xl" aria-hidden="true"></i>
         </a>
         <a href="https://github.com/LouisRossouw" target="_blank">
-          <i class="fa fa-github fa-2x" aria-hidden="true"></i>
+          <i class="fa-brands fa-github fa-2xl " aria-hidden="true"></i>
         </a>
         <a href="https://www.imdb.com/name/nm11179176/?ref_=ra_sb_ln" target="_blank">
-          <i class="fa fa-imdb fa-2x" aria-hidden="true"></i>
+          <i class="fa-brands fa-imdb fa-2xl" aria-hidden="true"></i>
         </a>
         <a href="https://www.youtube.com/user/kwelapies" target="_blank">
-          <i class="fa fa-youtube fa-2x" aria-hidden="true"></i>
+          <i class="fa-brands fa-youtube fa-2xl" aria-hidden="true"></i>
         </a>
         <a href="https://www.instagram.com/boxbloxx/" target="_blank">
-          <i class="fa fa-instagram fa-2x" aria-hidden="true"></i>
+          <i class="fa-brands fa-instagram fa-2xl" aria-hidden="true"></i>
         </a>
       </ul>
     </div>
@@ -72,6 +64,7 @@
     <p>I am creatively flexible, self motivated and a reliable individual that loves to play and experiment with my work. I've had the privilege of being a lead animator for the Apceros sequence in the Monster Hunter film, Deep Blue Sea 3 and other films, animated within Houdini and Maya.</p>
     <p>I'm happiest when knee-deep adding life to complex realistic quadruped animals, to cute goofy characters that make people laugh and feel connected, although most of my work is character animation, I am passionate about other parts of the pipeline too, from modeling to rendering and lighting, to developing pipeline tools for other artists to use.</p>
     
+
     <ul class="list_a">
       <li>+ 27 79 976 1280</li>
       <li>louis@louisrossouw.com</li>
@@ -79,6 +72,7 @@
       <br>
       <li class="resume_text"><a class="resume_text"href="https://www.dropbox.com/s/s9omplrsmbid4ii/CV_LouisRossouw_2023.pdf?dl=0">Resume/CV</a></li>
     </ul>
+
   </div>
 
 </div>
@@ -93,11 +87,15 @@
           <li>Creature animation</li>
           <li>Camera animation</li>
           <li>Pre-visualization</li>
-          <li>Python</li>
+          <li>Python / Django</li>
+          <li>Javascript / HTML / CSS</li>
           <li>Tool/Pipeline Dev</li>
           <li>Strong Googling skills</li>
-          <li>Editing</li>
-          <li>Modeling</li>
+          <li>Video Editing</li>
+          <li>3D Modeling</li>
+
+
+
       </ul>
     </div>
 
@@ -119,7 +117,35 @@
 
 </div>
 
+
+<div id='glow_effect'>
+  <div class='row_glow'>
+    <div class='glow'>.</div>
+  </div>
 </div>
+
+</div>
+
+
+
+
+
+<script>
+    
+  function profileAnimate() {
+  
+      setTimeout(function(){document.getElementById("contact_img_01").style.display = "none"}, 450);
+      setTimeout(function(){document.getElementById("contact_img_02").style.display = "block"}, 450);
+  
+      setTimeout(function(){document.getElementById("contact_img_01").style.display = "block"}, 900);
+      setTimeout(function(){document.getElementById("contact_img_02").style.display = "none"}, 900);
+  
+  }
+  
+  setInterval(function(){profileAnimate();}, 1000);
+  
+  </script> 
+  
 
 
 

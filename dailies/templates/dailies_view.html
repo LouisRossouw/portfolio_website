@@ -1,0 +1,305 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block page_content %}
+
+
+<div class="DLS_container">
+
+
+    <div id="DLS_submitter_bg_blur">
+
+        <img id="DLS_sbumitter_img" src="{% static 'images/icons/pixl_play_FR_01.svg' %}" width="10%" height="10%"></img>
+    </div>
+    <div id="DLS_submitter">
+        <div id="DLS_submitter_close" onclick="close_submitter()"><i class="fa-solid fa-xmark"></i></div>
+
+        <div class="DLS_submitter_container">
+            <form id="DLS_VW_form" action="" enctype="multipart/form-data" method="post">{% csrf_token %}
+                {{ submit_daily_form.as_p }}
+            <button id="DLS_submitter_btn" type="submit">Submit Daily <i class="fa-solid fa-cloud-arrow-up"></i></button>
+            </form>
+        </div>
+    </div>
+
+
+
+    <div class="DLS_top">
+
+        <div class="DLS_top_col_01">
+            <h1>Dailies</h1>
+            <p>Play Blasts, Rough, most recent and unfinished work. <i class="fa-regular fa-heart"></i></p>
+        </div>
+
+        <div class="DLS_top_col_02">
+            <button id="submit_dailies" onclick="open_submitter()"><i class="fa-regular fa-circle-up" style="color: grey;"></i> Submit</button>
+        </div>
+
+    </div>
+
+
+
+
+    <div class="DLS_column_01">
+        {% include 'dailies_project.html' %}
+    </div>
+
+
+    <div class="DLS_column_02">
+        {% include 'dailies_captures.html' %}
+    </div>
+
+    <div class="DLS_column_03">
+        {% include 'dailies_viewer.html' %}
+    </div>
+
+
+</div>
+
+
+
+
+ 
+<style>
+
+
+/* SUBMITTER *************/
+#DLS_submitter{
+    display: none;
+    margin-top: 75px;
+    position: absolute;
+    height: 100%;
+    width: 35%;
+    z-index: 1000;
+    overflow: hidden;
+    right: 0;
+
+    background-color: rgb(20, 20, 20);
+    border-left: 1px solid rgb(60, 60, 60);
+
+}
+#DLS_submitter_bg_blur{
+    display: none;
+    margin-top: 75px;
+    position: absolute;
+    height: 100%;
+    width: 65%;
+    z-index: 1000;
+    overflow: hidden;
+
+    background-image: linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0.2));
+    backdrop-filter: blur(8px);
+
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+#DLS_submitter_close{
+    float: right;
+    margin-right: 25px;
+    margin-top: 25px;
+}
+#DLS_submitter_close:hover{
+    cursor: pointer;
+    color: red;
+}
+
+#DLS_sbumitter_img{
+    z-index: 1005;
+    display: block;
+    margin: auto;
+}
+
+
+.DLS_submitter_container{
+    width: 90%;
+    height: 80%;
+    margin: auto;
+    margin-top: 75px;
+    border: 1px solid rgb(40, 40, 40);
+    border-radius: 10px;
+}
+
+#DLS_submitter_btn{
+    background-color: rgb(44, 44, 44);
+    border: none;
+    width: 100%;
+    height: 25px;
+    border-radius: 5px;
+    margin-bottom: 0px;
+}
+#DLS_submitter_btn:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+
+/* ************************************ */
+
+
+
+
+.DLS_container{
+    position: relative;
+    color: white;
+    width: 90%;
+    max-width: 1800px;
+    margin: auto;
+    height: 82vh;
+    margin-top: 25px;
+
+    background-color: rgb(25, 25, 25);
+    border: 1px solid rgb(60, 60, 60);
+
+    border-top: 2px solid rgb(120, 120, 120);
+    border-right: none;
+    border-bottom: none;
+
+    /* background-color: rgb(15, 15, 15);
+    border: 1px solid rgb(35, 35, 35);; */
+    border-radius: 10px;
+    overflow: hidden;
+    color: rgb(200, 200, 200);
+
+    font-weight:lighter;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+    /* border-bottom: 1px solid rgba(0, 204, 255, 0.5); */
+    /* border-right: 1px solid rgba(0, 204, 255, 0.2); */
+}
+
+.DLS_top{
+    text-align: center;
+    align-items: center;
+    width: 100%;
+    height: 75px;
+    background-color: rgb(10, 10, 10);
+    border-radius: 10px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+
+}
+.DLS_top_col_01{
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+
+.DLS_top_col_01 h1{
+    margin-top: 0px;
+    text-align: left;
+    font-size: 50px;
+    padding-left: 25px;
+    padding-top: 0px;
+    margin-bottom: 0px;
+}
+.DLS_top_col_01 p{
+    margin-top: -10px;
+    text-align: left;
+    padding-left: 25px;
+    padding-top: 2px;
+    margin-bottom: 0px;
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+
+.DLS_top_col_02{
+    position: relative;
+    width: 50%;
+    height: 100%;
+    float: left;    
+}
+#submit_dailies{
+    float: right;
+    margin-right: 25px;
+    margin-top: 25px;
+    background-color: rgb(60, 60, 60);
+    width: 150px;
+    height: 25px;
+    border-radius: 10px;
+    border: none;
+}
+#submit_dailies:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.DLS_column_01{
+    float: left;
+    width: 10%;
+    height: 100%;
+    /* border-right: 1px solid rgb(40, 40, 40); */
+    background-color: rgb(23, 23, 23);
+
+
+}
+.DLS_column_02{
+    float: left;
+    width: 55%;
+    height: 90%;
+}
+
+
+
+
+
+.DLS_column_03{
+    display: block;
+    float: left;
+    width: 35%;
+    height: 90%;
+    /* border-left: 1px solid rgb(40, 40, 40); */
+
+    overflow-y: scroll;
+}
+.DLS_column_03::-webkit-scrollbar {
+  width: 5px;
+}
+.DLS_column_03::-webkit-scrollbar-track {
+  background-color: none; /* Set the background color to transparent */
+}
+.DLS_column_03::-webkit-scrollbar-thumb {
+  background-color: rgb(53, 53, 53);
+}
+.DLS_column_03::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(82, 82, 82);;
+} 
+
+</style>
+
+
+
+<script>
+
+var submitter_enabled = false;
+
+function open_submitter(){
+    submitter_enabled = true;
+    document.getElementById("DLS_submitter").style.display = "block";
+    document.getElementById("DLS_submitter_bg_blur").style.display = "flex";
+}
+
+function close_submitter(){
+    submitter_enabled = false;
+    document.getElementById("DLS_submitter").style.display = "none";
+    document.getElementById("DLS_submitter_bg_blur").style.display = "none"; 
+}
+
+
+// Close the submitter if BTG blur section was clicked.
+const DLS_submitter_bg_blur = document.getElementById("DLS_submitter_bg_blur");
+DLS_submitter_bg_blur.addEventListener('click', function(event) {
+    close_submitter()
+})
+
+
+
+
+</script>
+
+
+
+
+{% endblock %}

@@ -6,25 +6,41 @@
 
 
 html{
-    background-color: rgba(0, 0, 0, 0) !important;
+    background-color: rgba(0, 0, 0, 0);
     z-index: -2;
     overflow-y: scroll;
-    scrollbar-color: rgb(29, 29, 29) rgb(0, 0, 0) !important;
+    scrollbar-color: rgb(29, 29, 29) rgb(0, 0, 0);
     padding-bottom: 500px;
 }
 
 /* Chrome, Safari */
-::-webkit-scrollbar {
+html::-webkit-scrollbar {
     width: 10px;
     height: 10px;
-    }
-    ::-webkit-scrollbar-track-piece  {
+}
+html::-webkit-scrollbar-track-piece  {
     background-color: #000000;
-    }
-    ::-webkit-scrollbar-thumb:vertical {
+}
+html::-webkit-scrollbar-thumb:vertical {
     height: 30px;
     background-color: #001b1b;
-    }
+}
+
+
+#logoplay{
+    animation: rotation 30s linear infinite;
+    transform-origin: 50% 55%;
+}
+@keyframes rotation {
+from {
+    transform: rotate(0deg);
+}
+to {
+    transform: rotate(360deg);
+}
+}
+
+
 
 
 #playbutton{
@@ -223,9 +239,9 @@ html{
 
 /* GLOW EFFECTS */
   
-.container{
-    position: absolute;
-    top: 105%;
+#glow_effect{
+    position: fixed;
+    top: 102%;
     transform: translate();
     width: 100%;
     text-align: center;

@@ -19,7 +19,7 @@ def clips_video_path(instance, filename):
 
 
 class Projects(models.Model):
-    
+
     title = models.CharField(max_length=100, default=None)
     project_acronym = models.CharField(max_length=3, default=None)
     description = models.TextField(default=None)
@@ -39,4 +39,7 @@ class Projects(models.Model):
     tag = models.TextField(default=None)                # add a tag / film / advertising / etc.
     tags = models.TextField(default=None)
 
+    project_date = models.DateTimeField(null=True, blank=True)
 
+    def __str__(self):
+       return self.title

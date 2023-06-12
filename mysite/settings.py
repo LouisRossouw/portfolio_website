@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'mysite',
     'home',
     'portfolio',
+    'dailies',
     'contact',
     'honeypot',
     'blog',
@@ -151,6 +152,7 @@ STATICFILES_DIRS = [
     str(BASE_DIR) + "/mysite/static",
     str(BASE_DIR) + "/home/static",
     str(BASE_DIR) + "/portfolio/static",
+    str(BASE_DIR) + "/dailies/static",
     str(BASE_DIR) + "/blog/static",
     str(BASE_DIR) + "/contact/static",
 ]

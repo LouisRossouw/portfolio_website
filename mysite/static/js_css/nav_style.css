@@ -70,7 +70,7 @@ li, a, button{
 }
 
 
-button{
+#resume_btn{
     padding: 0% 20px;
     background-color: rgba(0,136,169,0);
     border: none;
@@ -81,7 +81,7 @@ button{
 }
 
 
-button:hover{
+#resume_btn:hover{
     background-color:rgb(255, 42, 127, 1);   
 }
 
