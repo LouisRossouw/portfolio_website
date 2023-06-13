@@ -1,0 +1,310 @@
+
+#DLS_VW_viewer{
+    display: block;
+    /* background-color: rgb(0, 0, 0); */
+}
+
+#DLS_VW_vote_count{
+    margin-left: auto;
+    margin-right: 15px;
+}
+
+
+
+.DLS_VW_container{
+    width: 90%;
+    margin: auto;
+    height: 100%;
+}
+
+
+.DLS_VW_title{
+    float: left;
+    padding-left: 10px;
+    height: 50px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+}
+
+#DLS_VW_vote{
+    margin-right: 10px;
+}
+#DLS_VW_vote:hover{
+    cursor: pointer;
+    color: rgb(255, 0, 0);
+}
+
+
+.DLS_VW_capture{
+    margin-top: 10px;
+}
+
+
+.selected_media{
+    border-radius: 10px;
+    width: 100%; 
+    max-height: 600px;
+    background-color: rgb(0, 0, 0);
+}
+
+
+.DLS_VW_Details{
+    position:inherit;
+
+    top: 0;
+    margin-top: -74px;
+    height: 50px;
+    width: 100%;
+}
+.DLS_VW_Details p{
+    color: white;
+}
+
+
+
+.DLS_VW_Details table {
+    border-collapse: collapse;
+    width: 100%;
+
+    backdrop-filter: blur(2px);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    
+
+
+}
+.DLS_VW_Details th {
+    display: none;
+    color: rgb(205, 253, 255);
+    text-align: left;
+    font-size: 14px;
+    /* border-bottom: 1px solid rgb(25, 25, 25);
+    border-left: 1px solid rgb(25, 25, 25); */
+    padding: 5px;
+    font-weight:lighter;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.DLS_VW_Details td {
+    text-align: center;
+    font-size: 12px;
+    /* border-bottom: 1px solid rgb(25, 25, 25); */
+    /* background-image: linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0.2)); */
+
+    padding: 5px;
+    font-weight:lighter;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+
+.DLS_VW_description{
+    width: 100%;
+    background-color: rgb(10, 10, 10);
+    border: 1px solid rgb(40, 40, 40);
+    height: 50px;
+    margin-top: 0px;
+    border-radius: 5px;
+}
+
+.DLS_VW_desc_column_01{
+    float: left;
+    width: 10%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid rgb(50, 50, 50);
+}
+.DLS_VW_desc_column_01 i{
+    font-size: 20px;
+    color: rgb(194, 246, 255);
+    margin: auto;
+}
+
+
+.DLS_VW_desc_column_02{
+    float: left;
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center;   
+}
+
+.DLS_VW_comment{
+    padding: 10px;
+    font-weight:lighter;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.DLS_VW_desc_column_03{
+    float: left;
+    width: 10%;
+    height: 100%;
+
+    padding: 5px;
+    border-left: 1px solid rgb(50, 50, 50);
+
+    display:grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 0px;
+}
+.software_item{
+    z-index: 50;
+    text-align: center;
+}
+
+.DLS_VW_software{
+    position: absolute;
+    top: 10px;
+    opacity: 0.7;
+    filter: grayscale(100%);
+}
+
+.DLS_VW_software_position{
+    position: relative;
+    float: right;
+    margin-right: 28px;
+}
+
+
+.DLS_VW_logo_position{
+    position: relative;
+    float: left;
+    margin-left: 5px;
+}
+.DLS_VW_logo{
+    position: absolute;
+    top: 10px;
+    opacity: 0.4;
+}
+
+
+/* USER COMMENTS **********************************************/
+
+#user_comment{
+    color: aquamarine;
+}
+#user_comment:hover{
+    cursor: pointer;
+    opacity: 0.8;
+    color: rgb(255, 255, 255);
+}
+
+.DLS_comments_title{
+    width: 100%;
+}
+.DLS_comments_title p{
+    height: 0px;
+    font-size: 12px;
+}
+
+
+#DLS_VW_comments{
+    display: block;
+    width: 100%;
+    height: 75%;
+    margin: auto;
+    margin-top: 0px;
+    overflow: scroll;
+    /* background-color: rgb(10, 10, 10); */
+    /* border: 1px solid rgb(40, 40, 40); */
+    scrollbar-width: none;
+}
+#DLS_VW_comments::-webkit-scrollbar {
+    display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+#DLS_VW_comments {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+
+
+.DLS_VW_user_comment{
+    width: 100%;
+    /* border-top: 1px solid  rgb(35, 35, 35);
+    border-bottom: 1px solid  rgb(35, 35, 35); */
+    border: 1px solid rgb(35, 35, 35);
+    height: 50px;
+    margin-top: 5px;
+    border-radius: 5px;
+
+}
+
+.DLS_VW_user_comment_col_01{
+    float: left;
+    width: 10%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid rgb(50, 50, 50);
+}
+.DLS_VW_user_comment_col_01 i{
+    font-size: 15px;
+    color: rgb(194, 246, 255);
+    margin: auto;
+}
+
+
+.DLS_VW_user_comment_col_02{
+    float: left;
+    width: 90%;
+    height: 100%;
+}
+
+.DLS_VW_usr_comment{
+
+    padding-left: 10px;
+    font-size: 12px;
+    font-weight:lighter;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.DLS_VW_write_container{
+    margin-top: 0px;
+    width: 100%;
+    height: 75px;
+    /* background-color: rgb(10, 10, 10); */
+    border: 1px solid rgb(40, 40, 40); 
+    border-radius: 5px;
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.DLS_VW_write_container p{
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 12px;
+}
+
+
+#DLS_VW_form input{
+    background-color: none;
+    border: none;
+    color: white;
+}
+#DLS_VW_form input::placeholder{
+    color: rgb(189, 189, 189);
+}
+
+#DLS_VW_submit_btn{
+    float: right;
+    background-color: rgb(44, 44, 44);
+    border: none;
+    width: 100%;
+    height: 25px;
+    border-radius: 5px;
+    align-self: flex-end;
+    margin-bottom: 0px;
+}
+#DLS_VW_submit_btn:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+

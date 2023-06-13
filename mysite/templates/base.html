@@ -21,6 +21,11 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/blog_index.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/blog_page.css' %}">
 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/dailies_captures.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/dailies_project.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/dailies_view.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/dailies_viewer.css' %}">
+
     <link rel="stylesheet" type="text/css" href="{% static 'js_css/contact.css' %}">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -55,7 +60,7 @@
           <li><a href="{% url 'home' %}">ABOUT</a></li>
           <li><a href="{% url 'portfolio_index' %}">PORTFOLIO</a></li>
           <li><a class="showreel">SHOWREEL</a></li>
-          <li><a href="{% url 'dailies' %}">DAILIES</a></li>
+          <li id="nav_dailies"><a href="{% url 'dailies' %}">DAILIES</a></li>
           <li><a href="{% slugurl 'blog' %}">BLOG</a></li>
           <li><a href="{% url 'contact' %}">CONTACT</a></li>
         </ul>
@@ -81,6 +86,12 @@
 
 
   </body>
+
+
+<script src="{% static 'js/dailies_captures.js' %}"></script>
+<script src="{% static 'js/dailies_project.js' %}"></script>
+<script src="{% static 'js/dailies_view.js' %}"></script>
+<script src="{% static 'js/dailies_viewer.js' %}"></script>
 
 
 

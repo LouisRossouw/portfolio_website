@@ -1,0 +1,103 @@
+.DLS_PR_table{
+    height: 50px;
+    width: 100%;
+    
+}
+
+.DLS_PR_table p{
+    color: white;
+}
+
+.DLS_PR_table table {
+    border-collapse: collapse;
+    width: 100%;  
+}
+
+.DLS_PR_table th {
+    color: rgb(205, 253, 255);
+    text-align: left;
+    font-size: 13px;
+    border-bottom: 1px solid rgb(50, 50, 50);
+    border-left: 1px solid rgb(25, 25, 25);
+    background-color: rgb(15, 15, 15);
+    padding: 5px;
+    font-weight:lighter;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.DLS_PR_table td {
+    height: 40px;
+    text-align: left;
+    font-size: 12px;
+    border-bottom: 1px solid rgb(50, 50, 50);
+    padding: 5px;
+    font-weight:lighter;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.DLS_PR_table tr:hover{
+    cursor: pointer;
+    background-color: rgb(40, 40, 40);
+}
+
+.DLS_PR_table tr:nth-child(even){
+    background-color: rgb(22, 22, 22);
+}
+
+.DLS_PR_table tr:nth-child(even):hover{
+    background-color: rgb(40, 40, 40);
+}
+
+
+
+
+
+.DLS_CP_container{
+    margin: auto;
+    height: 95%;
+    width: 100%;
+}
+
+.DLS_CP_title{
+    height: 50px;
+    text-align: center;
+    border-bottom: 1px solid rgb(50, 50, 50);
+
+    display: flex;
+    align-items: center;
+}
+
+.DLS_CP_projects{
+    margin-top: 0px;
+    height: 100%;
+    overflow-y: scroll;
+}
+.DLS_CP_projects::-webkit-scrollbar {
+  width: 2px;
+}
+.DLS_CP_projects::-webkit-scrollbar-track {
+  background-color: transparent; /* Set the background color to transparent */
+}
+.DLS_CP_projects::-webkit-scrollbar-thumb {
+  background-color: #4e4e4e;
+}
+.DLS_CP_projects::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0);
+} 
+
+
+.DLS_CP_proj{
+    float: left;
+    width: 100%;
+    border: 1px solid rgb(50, 50, 50);
+    background-color: rgb(19, 19, 19);
+    border-radius: 10px;
+    margin-top: 5px;
+    padding-left: 5px;
+
+}
+.DLS_CP_proj:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+    
