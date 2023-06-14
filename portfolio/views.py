@@ -9,10 +9,10 @@ from .models import Projects
 def portfolio_index(request):
     """ Renders all portoflio images. """
 
-    portfolio = Projects.objects.all()
+    portfolio = Projects.objects.order_by('project_date')
 
     context = {'portfolio': portfolio}
-    
+
     return render(request, template_name='portfolio_index.html', context=context)
 
 
@@ -28,8 +28,8 @@ def portfolio_detail(request, pk):
     additional_images = functions.return_additional_images(portfolio)
 
 
-    context = {'portfolio': portfolio, 
-                'additional_images' : additional_images[0], 
+    context = {'portfolio': portfolio,
+                'additional_images' : additional_images[0],
                 "column_width" : additional_images[1]}
 
 

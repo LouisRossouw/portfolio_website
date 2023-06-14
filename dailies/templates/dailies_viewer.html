@@ -1,0 +1,111 @@
+{% load static %}
+
+<div class="DLS_VW_container">
+
+    <div id="DLS_VW_viewer">
+
+        <div class="DLS_VW_title">
+            <i class="fa-solid fa-video" style="margin-right: 10px;"></i><p id="vw_d_title"></p><p id="DLS_VW_vote_count">-</p><i onclick="add_vote(this)" id="DLS_VW_vote" class="fa-regular fa-heart fa-fade"></i>
+        </div>
+
+
+<!-- CAPTURE SECTION -->
+        <div class="DLS_VW_capture" >
+
+        <!-- LOGO PLACEMENT -->
+            <div class="DLS_VW_logo_position">
+                <div class="DLS_VW_logo" id="DLS_VW_logo_container">
+                    <img class="software_item" src="/media/dailies/BlackGinger.png" width="20" height="20"></img>
+                </div>
+            </div>
+
+        <!-- SOFTWARE USED PLACEMENT -->
+            <div class="DLS_VW_software_position">
+                <div class="DLS_VW_software" id="DLS_VW_software_container">
+
+                </div>
+            </div>
+
+        <!-- MEDIA PLACEMENT -->
+            <video class="selected_media" id="DLS_VW_cap" loop muted playsinline controls>
+                <source src="/media/dailies/banner_clean.mp4" type="video/mp4">
+            </video>
+
+            <img class="selected_media" id="DLS_VW_cap_img" src="" width="100%" height="100%" style="display: none;"></img>
+
+        </div>
+
+<!-- DESCRIPTION SECTION -->
+        <div class="DLS_VW_description">
+
+            <div class="DLS_VW_desc_column_01">
+                <i class="fa-solid fa-circle-info"></i>
+            </div>
+
+            <div class="DLS_VW_desc_column_02">
+                <div class="DLS_VW_comment">
+                    <p id="vw_d_description"></p>
+                </div>
+            </div>
+
+            <div class="DLS_VW_desc_column_03">
+
+            </div>
+
+        </div>
+
+<!-- DETAILS SECTION -->
+        <div class="DLS_VW_Details">
+            <table>
+                <tr>
+                <th style="width: 50px;">Project</th>
+                <th style="width: 50px;">Task</th>
+                <th style="width: 50px;">Studio</th>
+                <th style="width: 50px;">Status</th>
+                </tr>
+
+                <tr>
+                <td id="vw_d_project" style="width: 50px;"></td>
+                <td id="vw_d_task" style="width: 50px;"></td>
+                <td id="vw_d_studio" style="width: 50px;"></td>
+                <td id="vw_d_satus" style="width: 50px;"></td>
+                </tr>
+
+            </table>
+        </div>
+
+    </div>
+
+<!-- COMMENT SECTION -->
+    <div class="DLS_VW_write_container">
+
+        <form id="DLS_VW_form" action="" method="post" onsubmit="return fdb_validateForm()" >{% csrf_token %}
+            {{ write_comment_form.as_p }}
+            <input id="DLS_VW_inp_daily" type="hidden" name="daily_id" value="">
+            <button id="DLS_VW_submit_btn" type="submit">Comment</button>
+        </form>
+    </div>
+
+
+    <div class="DLS_comments_title" id="DLS_comments_titles" style="display: none;">
+        <p>Comments:</p>
+        <!-- <hr style="border-color: black; width: 50%; float: left;"> -->
+    </div>
+
+    <div id="DLS_VW_comments">
+        <div class="DLS_VW_user_comment">
+
+            <div class="DLS_VW_user_comment_col_01" id="DLS_VW_user_comment_col_011">
+            </div>
+
+            <div class="DLS_VW_user_comment_col_02">
+                <div class="DLS_VW_usr_comment">
+                    <p id="vw_d_description"></p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+

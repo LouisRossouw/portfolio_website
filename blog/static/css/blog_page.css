@@ -6,8 +6,9 @@
     background: none;
     margin: auto;
     width: 60%;
-    max-width: 1000px;
-    padding: 10px;
+    max-width: 1250px;
+    padding-left: 100px;
+    padding-right: 100px;
     /* border-left: 1px solid rgba(0, 62, 84, 0.4);
     border-right: 1px solid rgba(0, 62, 84, 0.4); */
     background-color: rgb(10, 10, 10);
@@ -16,13 +17,10 @@
 
 
 .blog_page_main img{
-    box-shadow: 10px 10px 5px black;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    border-radius: 25px;
-    border-left: 1px solid rgb(222, 132, 255);
-    border-right: 1px solid rgb(136, 255, 255);
+    border-radius: 20px;
 }
 
 
@@ -30,6 +28,8 @@
     /* border: solid 1px rgb(139, 255, 255) !important; */
     border: solid 1px rgb(30, 30, 30) !important;
     width: 100% !important;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 

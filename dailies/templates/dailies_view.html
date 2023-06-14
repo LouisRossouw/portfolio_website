@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block page_content %}
+
+
+<div class="DLS_container">
+
+    <div id="DLS_submitter_bg_blur">
+
+        <img id="DLS_sbumitter_img" src="{% static 'images/icons/pixl_play_FR_01.svg' %}" width="10%" height="10%"></img>
+    </div>
+    <div id="DLS_submitter">
+        <div id="DLS_submitter_close" onclick="close_submitter()"><i class="fa-solid fa-xmark"></i></div>
+
+        <div class="DLS_submitter_container">
+            <form id="DLS_VW_form" action="" enctype="multipart/form-data" method="post">{% csrf_token %}
+                {{ submit_daily_form.as_p }}
+            <button id="DLS_submitter_btn" type="submit">Submit Daily <i class="fa-solid fa-cloud-arrow-up"></i></button>
+            </form>
+        </div>
+    </div>
+
+
+
+    <div class="DLS_top">
+
+        <div class="DLS_top_col_01">
+            <h1>Dailies</h1>
+            <p>Play Blasts, Rough, most recent and unfinished work. <i class="fa-regular fa-heart"></i></p>
+        </div>
+
+        <div class="DLS_top_col_02">
+            <button id="submit_dailies" onclick="open_submitter()"><i class="fa-regular fa-circle-up" style="color: grey;"></i> Submit</button>
+        </div>
+
+    </div>
+
+
+    <div class="DLS_column_01">
+        {% include 'dailies_project.html' %}
+    </div>
+
+
+    <div class="DLS_column_02">
+        {% include 'dailies_captures.html' %}
+    </div>
+
+    <div class="DLS_column_03">
+        {% include 'dailies_viewer.html' %}
+    </div>
+
+
+</div>
+
+
+
+
+{% endblock %}

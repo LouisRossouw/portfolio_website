@@ -1,0 +1,83 @@
+<div class="DLS_CP_container">
+    
+    <div class="DLS_CP_title">
+        <p>Captures</p>
+    </div>
+
+    <div class="DLS_CP_projects">
+        <div class="DLS_PR_table">
+
+            <table>
+
+                <tr id="DLS_PR_table_title">
+                    <th style="width:25px; border-left: none;"></th>
+                    <th style="width:30px; border-left: none;"></th>
+                    <th style="width:25px; border-left: none;"></th>
+                    <th style="width:200px;">Project</th>
+                    <th style="width:35px;">Type</th>
+                    <th style="width:50px;">Studio</th>
+                    <th style="width:50px;">Status</th>
+                    <th style="width:75px;">Date</th>
+                    <th>Comment</th>
+                    <th><i class="fa-regular fa-comment"></i></th>
+                    <th><i class="fa-regular fa-heart"></i></th>
+
+                </tr>
+
+                {% for capture in all_captures %}
+
+                    <tr id="{{ capture.project }}" onclick="select_row(this, '{{ forloop.counter }}', '{{ capture.path_to_capture }}', '{{ capture.pk }}', '{{ capture.project.studio_name }}', '{{ capture.media_type }}')">
+
+                        <td style="width:25px;">{{ forloop.counter }}</td>
+                        <td style="width:30px;"><img src="{{ capture.path_to_thumbnail.url }}" width="25" height="25"></img></td>
+
+                        {% if capture.comments_count > 0 %}
+                            <td style="width:25px;" onclick="select_comments(event, '{{ capture }}')"><i class="fa-solid fa-comment-dots" style="color: aquamarine;"></i></td>
+                        {% else %}
+                            <td style="width:25px;"></td>
+                        {% endif %}
+
+                        <td style="width:200px;">{{ capture.project }}_{{ capture }}_{{ capture.version }}</td>
+                        <td style="width:35px; overflow: hidden;">{{ capture.task_type }}</td>
+                        <td style="width:50px;">{{ capture.project.studio_name }}</td>
+                        <td style="width:50px;">{{ capture.status }}</td>
+                        <td style="width:75px;">{{ capture.date_time.date|date:"d.m.y" }}</td>
+                        <td>{{ capture.description }}</td>
+
+                        {% if capture.comments_count > 0 %}
+                            <td style="color: greenyellow;">{{ capture.comments_count }}</td>
+                        {% else %}
+                            <td>{{ capture.comments_count }}</td>
+                        {% endif %}
+
+                        {% if capture.upvotes > 0 %}
+                            <td style="color: greenyellow;">{{ capture.upvotes }}</td>
+                        {% else %}
+                            <td>{{ capture.upvotes }}</td>
+                        {% endif %}
+
+                    </tr>
+
+                {% endfor %}
+    
+              </table>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+// Pass IP to JS,so user can remove their own comments.
+var user_ip = "{{ user_ip }}";
+
+</script>
+
+
+
+
+
+
+
+    

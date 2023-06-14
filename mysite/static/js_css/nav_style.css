@@ -70,7 +70,7 @@ li, a, button{
 }
 
 
-button{
+#resume_btn{
     padding: 0% 20px;
     background-color: rgba(0,136,169,0);
     border: none;
@@ -81,7 +81,7 @@ button{
 }
 
 
-button:hover{
+#resume_btn:hover{
     background-color:rgb(255, 42, 127, 1);   
 }
 
@@ -192,6 +192,10 @@ li, a, button{
 /* ###############################################  Half Laptop screen */
 @media (max-width: 1000px) and (min-width: 850px){
 
+#nav_dailies{
+    display: none;
+}
+
 
 .hamburger{
     display:inline-block;
@@ -294,6 +298,10 @@ li, a, button{
 /* ###############################################  LARGE MOBILE / TABLET */
 @media (max-width: 850px) and (min-width: 580px) {
 
+#nav_dailies{
+    display: none;
+}
+
 .navbar_header{
     z-index: 100;
     overflow: hidden;
@@ -395,6 +403,10 @@ li, a, button{
 
 /* ###############################################  MOBILE */
 @media (max-width: 580px) {
+
+#nav_dailies{
+    display: none;
+}
 
 .hamburger{
     display:inline-block;
