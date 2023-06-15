@@ -1,14 +1,19 @@
+import uuid
 from django.db import models
 from django.contrib.auth.models import User
 
 from datetime import datetime, timedelta
-
+from django.db import IntegrityError
 
 class Project(models.Model):
 
     project_name = models.CharField(max_length=100, null=True, blank=True)
     studio_name = models.CharField(max_length=100, null=True, blank=True)
+    date_time = models.DateTimeField(null=True, blank=True)
+    order = models.IntegerField(default=0, null=True, blank=True)
 
+    class Meta:
+        ordering = ['order']
 
     def __str__(self):
         return self.project_name
@@ -17,8 +22,6 @@ class Project(models.Model):
         """ Returns project or Creates a new one if it does not exist. """
 
         project_exists = Project.objects.filter(project_name=project_name)
-
-        print("*** ", project_name, studio_name)
 
         if project_exists.exists() != True:
 
@@ -83,6 +86,7 @@ class Capture(models.Model):
 
 class upvotes(models.Model):
 
+    UUID = models.UUIDField(default=uuid.uuid4, editable=False)
     user_ip = models.CharField(max_length=500, null=True, blank=True)
     post = models.ForeignKey(Capture, on_delete=models.CASCADE, related_name='vote')
 
@@ -93,40 +97,51 @@ class upvotes(models.Model):
     def add_new_vote(self, request, daily_id):
         """ Creates a vote on specific capture and saves it into the database. """
 
+        if 'uuid' not in request.session:
+            request.session['uuid'] = str(uuid.uuid4())
+
         return_ip = return_user_ip(request)
         capture = Capture.objects.get(pk=daily_id)
 
-        existing_vote = upvotes.objects.filter(user_ip=return_ip, post=capture).first()
+        existing_vote = upvotes.objects.filter(UUID=request.session['uuid'], post=capture).first()
 
         if existing_vote:
             # User has already voted, remove their vote
             capture.upvotes = capture.upvotes - 1
             existing_vote.delete()
+
         else:
             # User hasn't voted yet, add their vote
             capture.upvotes = capture.upvotes + 1
+            self.UUID = request.session['uuid']
             self.user_ip = return_ip
             self.post = capture
             self.save()
 
         capture.save()
 
+        return capture.upvotes
+
 
 
 
 class comments(models.Model):
 
+    UUID = models.UUIDField(default=uuid.uuid4, editable=False)
     user_ip = models.CharField(max_length=500, null=True, blank=True)
     post = models.ForeignKey(Capture, on_delete=models.CASCADE, related_name='capture')
     comment = models.CharField(max_length=100, null=True, blank=True)
     date_time = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
-        return self.user_ip
+        return self.comment
     
 
     def create_comment(self, request, daily_id, comment):
         """ Creates a comment on a post. """
+
+        if 'uuid' not in request.session:
+            request.session['uuid'] = str(uuid.uuid4())
 
         return_ip = return_user_ip(request)
 
@@ -134,6 +149,7 @@ class comments(models.Model):
         capture.comments_count = capture.comments_count + 1
         capture.save()
 
+        self.UUID = request.session['uuid']
         self.user_ip = str(return_ip)
         self.post = capture
         self.comment = f"{str(comment)}"
@@ -145,14 +161,17 @@ class comments(models.Model):
         """ Removes user comment. """
         
         selected_comment = comments.objects.get(pk=pk_number)
-        capture = Capture.objects.get(capture_name=selected_comment.post)
+        captures = Capture.objects.filter(capture_name=selected_comment.post.capture_name, 
+                                          version=selected_comment.post.version)
 
-        if str(return_user_ip(request)) == str(selected_comment.user_ip):
-            capture.comments_count = capture.comments_count - 1
-            capture.save()
-            selected_comment.delete()
-        else:
-            print("Not matching")
+        for cap in captures:
+
+            if request.session['uuid']  == str(selected_comment.UUID):
+                cap.comments_count = cap.comments_count - 1
+                cap.save()
+                selected_comment.delete()
+            else:
+                print("Not matching")
 
 
 

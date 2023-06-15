@@ -1,5 +1,5 @@
 .DLS_PR_container{
-    width: 95%;
+    width: 80%;
     margin: auto;
     height: 100%;
 }
@@ -11,6 +11,28 @@
     display: flex;
     align-items: center;
 }
+
+
+
+.DLS_PR_proj_containerz{
+    height: 1000px;
+    overflow-y: scroll;
+}
+.DLS_PR_proj_containerz::-webkit-scrollbar {
+    width: 2px;
+  }
+  .DLS_PR_proj_containerz::-webkit-scrollbar-track {
+    background-color: transparent; /* Set the background color to transparent */
+  }
+  .DLS_PR_proj_containerz::-webkit-scrollbar-thumb {
+    background-color: #4e4e4e;
+  }
+  .DLS_PR_proj_containerz::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0);
+  } 
+
+
+
 
 .DLS_PR_projects{
     margin-top: 0px;

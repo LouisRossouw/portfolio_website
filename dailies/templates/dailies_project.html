@@ -7,18 +7,22 @@
 
     <div class="DLS_PR_projects">
 
-        <div class="DLS_PR_proj" id="DLS_PR_proj" style="margin-top: 0px; border-bottom: 1px solid grey; background-color: rgb(20, 20, 20);" onclick="select_project(this, 'overview')">
-            <i class="fa-regular fa-star" style="margin-right: 10px;"></i><p> OverView </p><span class="DLS_PR_proj_arrow"><i id="ppp" class="fa-solid fa-caret-right"></i></span>
-        </div>
+        <div class="DLS_PR_proj_containerz">
 
-
-        {% for proj in all_projects %}
-
-            <div class="DLS_PR_proj" id="DLS_PR_proj" onclick="select_project(this, '{{ proj }}')">
-                <i class="fa-solid fa-folder" style="margin-right: 10px;"></i><p> {{ proj }}</p><span class="DLS_PR_proj_arrow" style="display: none;"><i class="fa-solid fa-caret-right"></i></span>
+            <div class="DLS_PR_proj" id="DLS_PR_proj" style="margin-top: 0px; border-bottom: 1px solid grey; background-color: rgb(20, 20, 20);" onclick="select_project(this, 'overview')">
+                <i class="fa-regular fa-star" style="margin-right: 10px;"></i><p> OverView </p><span class="DLS_PR_proj_arrow"><i id="ppp" class="fa-solid fa-caret-right"></i></span>
             </div>
 
-        {% endfor %}
+
+            {% for proj in all_projects %}
+
+                <div class="DLS_PR_proj" id="DLS_PR_proj" onclick="select_project(this, '{{ proj }}')">
+                    <i class="fa-solid fa-folder" style="margin-right: 10px;"></i><p> {{ proj }}</p><span class="DLS_PR_proj_arrow" style="display: none;"><i class="fa-solid fa-caret-right"></i></span>
+                </div>
+
+            {% endfor %}
+            
+        </div>
 
     </div>
 

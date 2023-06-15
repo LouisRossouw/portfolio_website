@@ -1,5 +1,6 @@
 
 import os
+import uuid
 from django.conf import settings
 from django.shortcuts import render
 from .models import Project, Capture, upvotes, comments
@@ -20,25 +21,31 @@ MEDIA_PATH = settings.MEDIA_ROOT
 def dailies_view(request):
     """ Render dailies views. """
 
-    all_projects = Project.objects.all()
+    all_projects = Project.objects.all().order_by('order')
     all_captures = Capture.objects.all().order_by('-date_time')
     all_upvotes = upvotes.objects.all()
     all_comments = comments.objects.all()
 
     user_ip = utils.return_user_ip(request)
 
+    if 'uuid' not in request.session:
+        print("NO UUID, creating it.")
+        request.session['uuid'] = str(uuid.uuid4())
+
     if request.method == "GET":
 
         write_comment_form = forms.WriteComment()
         submit_daily_form = forms.SubmitDaily()
 
-        context = {"all_projects": all_projects,
+        context = {
+                "all_projects": all_projects,
                 "all_captures": all_captures,
                 "all_upvotes": all_upvotes,
                 "all_comments": all_comments,
                 'write_comment_form' : write_comment_form, 
                 "submit_daily_form": submit_daily_form,
                 "user_ip": user_ip,
+                "UUID": request.session['uuid']
                 }
     
         return render(request, 'dailies_view.html', context)
@@ -64,12 +71,15 @@ def dailies_view(request):
             else:
                 return redirect("dailies")
 
-        context = {"all_projects": all_projects,
+        context = {
+                    "all_projects": all_projects,
                     "all_captures": all_captures,
                     "all_upvotes": all_upvotes,
                     "all_comments": all_comments,
                     'write_comment_form' : write_comment_form,
-                    "submit_daily_form": submit_daily_form
+                    "submit_daily_form": submit_daily_form,
+                    "user_ip": user_ip,
+                    "UUID": request.session['uuid']
         }
     
         return render(request, 'dailies_view.html', context)
@@ -109,9 +119,9 @@ def ajax_add_vote(request):
     if request.method == 'GET':
 
         id = request.GET.get("id")
-        upvotes().add_new_vote(request, id)
+        total_votes = upvotes().add_new_vote(request, id)
 
-        return JsonResponse({})
+        return JsonResponse({"total_votes":total_votes})
     
 
 

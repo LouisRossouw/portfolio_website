@@ -193,3 +193,10 @@ GFGF_REMOVE_THUMBNAIL_GIF = True
 GFGF_REMOVE_MAX_WIDTH_GIF = True
 GFGF_REPLACE_RENDITION_GIF = True
 
+
+
+
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+
+

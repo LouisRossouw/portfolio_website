@@ -18,16 +18,13 @@ function add_vote(element){
         if (this.readyState == 4 && this.status == 200) {
             var data = JSON.parse(this.responseText);
 
+            document.getElementById("DLS_VW_vote_count").innerHTML = data.total_votes;
+
         }
     }
     xhttp.open("GET", "/ajax_add_vote/?id=" + row_selected, true);
     xhttp.send();
 }
-
-
-
-
-
 
 
 
