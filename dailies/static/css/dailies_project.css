@@ -64,3 +64,15 @@
     margin-left: auto;
     margin-right: 5px;
 }
+
+
+
+
+@media (max-height: 1000px) {
+
+.DLS_PR_proj_containerz{
+    height: 650px;
+    overflow-y: scroll;
+}
+
+}

@@ -25,6 +25,8 @@ from wagtail.documents import urls as wagtaildocs_urls
 
 from dailies import views as dailies
 
+from dev import views as dev
+
 
 urlpatterns = [
     path(str(f"{os.getenv('ADMIN_LOGIN')}/"), admin.site.urls),
@@ -37,6 +39,8 @@ urlpatterns = [
 
     path('portfolio/', include('portfolio.urls'), name='portfolio'),
     path('contact/', include('contact.urls'), name='contact'),
+
+    path('test/', dev.dev_test),
 
     path('cms/', include(wagtailadmin_urls)),
     path('documents/', include(wagtaildocs_urls)),

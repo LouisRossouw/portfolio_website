@@ -18,3 +18,12 @@ const DLS_submitter_bg_blur = document.getElementById("DLS_submitter_bg_blur");
 DLS_submitter_bg_blur.addEventListener('click', function(event) {
     close_submitter()
 })
+
+
+window.addEventListener('load', function() {
+    // on load, start a video
+    var button = document.getElementById('test3');
+  
+    // Simulate a click event on the button
+    button.click();
+  });

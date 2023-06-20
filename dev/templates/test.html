@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block page_content %}
+
+
+
+  
+
+
+  <div id="test_container">
+    <canvas class="experience-canvas"></canvas>
+</div>
+
+
+
+
+
+
+
+
+
+
+<style>
+
+#test_container{
+    width: 80%;
+    height: 750px;
+    color: white;
+    margin: auto;
+    margin-top: 100px;
+
+}
+.experience-canvas{
+    border-radius: 15px;
+    border: 1px solid grey;
+}
+
+
+</style>
+
+
+<!-- GOOGLE CHROME - three.js module only works in chrome if i import modules via importmap -->
+<script type="importmap">
+    {
+      "imports": {
+        "three": "/static/three/build/three.module.js",
+        "GLTFLoader": "/static/three/examples/jsm/loaders/GLTFLoader.js",
+        "DRACOLoader": "/static/three/examples/jsm/loaders/DRACOLoader.js",
+        "OrbitControls": "/static/three/examples/jsm/controls/OrbitControls.js"
+      }
+    }
+  </script>
+
+
+<script type="module" src="{% static 'js/main.js' %}"></script>
+
+
+
+
+
+{% endblock %}

@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     'honeypot',
     'blog',
 
+    'dev',
+
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
     'wagtail.embeds',
@@ -154,6 +156,7 @@ STATICFILES_DIRS = [
     str(BASE_DIR) + "/portfolio/static",
     str(BASE_DIR) + "/dailies/static",
     str(BASE_DIR) + "/blog/static",
+    str(BASE_DIR) + "/dev/static",
     str(BASE_DIR) + "/contact/static",
 ]
 
