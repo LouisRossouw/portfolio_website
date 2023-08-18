@@ -23,8 +23,8 @@ if(window.location.pathname === "/dailies/"){
 
 window.addEventListener('load', function() {
     // on load, start a video
-    var button = document.getElementById('test3');
-    
+    var button = document.getElementById('Food Racers'); // add row to select ex: "Food Racers"
+
     // Simulate a click event on the button
     button.click();
 });

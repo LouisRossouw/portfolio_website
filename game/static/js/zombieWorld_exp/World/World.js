@@ -1,7 +1,6 @@
 import * as THREE from "three";
-import * as TWEEN from "tween";
+// import * as TWEEN from "tween";
 import Experience from "../Experience.js";
-import { RGBELoader } from 'RGBELoader'
 
 import Nissan from "./Nissan.js";
 import Zombies from "./Zombies.js";
@@ -213,7 +212,7 @@ export default class World{
 
     update(){
 
-        TWEEN.update();
+        // TWEEN.update();
     
         if(this.nissan){
             this.nissan.update()

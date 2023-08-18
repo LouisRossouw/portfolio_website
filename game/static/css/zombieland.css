@@ -6,7 +6,7 @@ body{
 }
 
 .start_game_container{
-    z-index: 15;
+    z-index: 50;
     position: fixed;
     margin: auto;
     width: 100%;
@@ -21,6 +21,7 @@ body{
 
 
 #start_game{
+
     display: none;
     margin: auto;
     width: 250px;
@@ -129,6 +130,7 @@ body{
   
 
 .ZL_row{
+
     color: white;
     font-family: 'Source Code Pro', monospace;
     font-size: 14px;
@@ -139,16 +141,21 @@ body{
     padding-left: 10px;
     height: 425px;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+
+    z-index: 20;
+    position: fixed;
 }
   
 
 .ZL_logo{
+
     margin: auto;
     width: 500px;
     /* float: left; */
 }
   
 .ZL_profile_pic{
+
     display: block;
     padding-top: 20px;
     padding-bottom: 10px;
@@ -348,7 +355,7 @@ body {
 }
 
 .start_game_container{
-    z-index: 15;
+    z-index: 50;
     position: fixed;
     margin: auto;
     width: 100%;

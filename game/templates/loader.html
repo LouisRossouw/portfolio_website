@@ -1,0 +1,106 @@
+<div class="ZL_loadScreen">
+
+<div id="ZL_loading_container">
+
+    <h1>LOADING..</h1>
+    <p id="ZL_loading_p"></p>
+
+    <div id="ZL_loadbar"></div>
+    <div id="ZL_loadbar_02"></div> 
+
+</div>
+
+</div>
+
+
+
+<style>
+
+.ZL_loadScreen{
+    display: block;
+    position: fixed;
+    z-index: 15;
+    background-color: rgb(0, 0, 0);
+    width: 100vw;
+    height: 100vh;
+
+}
+
+#ZL_loading_container{
+
+    color: white;
+    position: relative;
+    margin: auto;
+    margin-top: 50vh;
+    margin-bottom: 50vh;
+    width: 500px;
+    overflow: auto;
+}
+
+
+#ZL_loading_container h1{
+    margin-top: 0px;
+    float: left;
+}
+
+#ZL_loading_container p{
+    margin-top: 15px;
+    float: right;
+}
+
+
+
+#ZL_loadbar{
+    z-index: 40;
+    position: absolute;
+    background-color: rgb(0, 255, 234);
+    width: 100%;
+    height: 10px;
+    border-radius: 15px;
+    margin-top: 32px;
+
+    transform: scaleX(0);
+    transform-origin: top left;
+    transition: transform 0.5s;
+}
+#ZL_loadbar_02{
+    z-index: 35;
+    position: absolute;
+    background-color: rgb(0, 53, 48);
+    width: 100%;
+    height: 10px;
+    border-radius: 15px;
+    margin-top: 32px;
+}
+
+
+/* ###############################################  Tablet / Mobile */
+@media (max-width: 850px){
+
+    .ZL_loadScreen{
+    display: block;
+    position: fixed;
+    z-index: 15;
+    background-color: rgb(0, 0, 0);
+    width: 100vw;
+    height: 100vh;
+
+}
+
+#ZL_loading_container{
+
+color: white;
+position: relative;
+margin: auto;
+margin-top: 50vh;
+margin-bottom: 50vh;
+width: 80%;
+overflow: auto;
+}
+
+
+}
+
+
+
+</style>

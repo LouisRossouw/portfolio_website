@@ -14,6 +14,9 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
+import mimetypes
+mimetypes.add_type("text/css", ".css", True)
+
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -206,7 +209,7 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
 
 # Set the path to your SCSS files
-SCSS_DIR = os.path.join(BASE_DIR, 'dev/static/scss/')
+SCSS_DIR = os.path.join(BASE_DIR, 'game/static/scss/')
 
 COMPRESS_PRECOMPILERS = (
     ('text/x-scss', 'django_libsass.SassCompiler'),

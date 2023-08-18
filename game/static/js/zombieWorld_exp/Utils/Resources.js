@@ -19,6 +19,24 @@ export default class Resources extends THREE.EventDispatcher{
         this.queue = this.assets.length;
         this.loaded = 0;
 
+        this.ZL_loading_p = document.getElementById('ZL_loading_p')
+        this.ZL_loadbar = document.getElementById('ZL_loadbar')
+
+        this.loadingManager = new THREE.LoadingManager(
+            // Loaded
+            () =>
+            {
+            },
+            // Progress
+            (itemUrl, itemsLoaded, itemsTotal) =>
+            {
+                const progress = (itemsLoaded / itemsTotal)
+                ZL_loadbar.style.transform = `scaleX(${progress})`
+                this.ZL_loading_p.innerHTML = `${Number(itemsLoaded / itemsTotal * 100).toFixed(0)}%`
+            }
+        )
+
+
         this.setLoaders();
         this.startLoading();
 
@@ -28,8 +46,8 @@ export default class Resources extends THREE.EventDispatcher{
     setLoaders() {
         this.loaders = {};
 
-        this.loaders.gltfLoader = new GLTFLoader();
-        this.loaders.dracoLoader = new DRACOLoader();
+        this.loaders.gltfLoader = new GLTFLoader(this.loadingManager);
+        this.loaders.dracoLoader = new DRACOLoader(this.loadingManager);
 
         // Set static path to draco.
         this.loaders.dracoLoader.setDecoderPath('/static/three/examples/jsm/libs/draco/');
@@ -39,6 +57,9 @@ export default class Resources extends THREE.EventDispatcher{
 
     startLoading(){
         for(const asset of this.assets){
+
+
+            // this.ZL_loading_p.innerHTML = asset.name
 
             // Load glb models.
             if (asset.type === "glbModel"){
@@ -76,12 +97,19 @@ export default class Resources extends THREE.EventDispatcher{
         this.loaded++;
 
         console.log(asset.name, " asset is loading")
+        this.ZL_loading_p.innerHTML = asset.name
 
         // console.log(this.loaded, this.queue)
 
         if(this.loaded === this.queue){
-            console.log("all assets are done.")
-            this.dispatchEvent({ type: 'ready' });
+
+            window.setTimeout(() => {
+                console.log("all assets are done.")
+                this.ZL_loading_p.innerHTML = "Ready"
+                document.querySelector(".ZL_loadScreen").style.display = "none"
+                this.dispatchEvent({ type: 'ready' });
+            }, 1000)
+
             
         }
     }

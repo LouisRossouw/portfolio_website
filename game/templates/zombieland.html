@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% load compress %}
+
 {% load static %}
 
 {% block page_content %}
@@ -39,6 +39,8 @@
 
   </div>
 </div>
+
+{% include "loader.html" %}
 
 <!-- TILT SHIFT BLUR EFFECT OVERLAY -->
 <div class="tiltShift_effect"></div>
@@ -130,19 +132,13 @@
     {
       "imports": {
         "three": "/static/three/build/three.module.js",
-        "tween": "/static/three/@tweenjs/tween.js/dist/tween.esm.js",
         "yuka": "/static/three/yuka/build/yuka.module.js",
         "skeletonUtils": "/static/three/examples/jsm/utils/SkeletonUtils.js",
         "dat": "/static/three/lil-gui/dist/lil-gui.esm.js",
         "stats": "/static/three/stats/src/Stats.js",
         "GLTFLoader": "/static/three/examples/jsm/loaders/GLTFLoader.js",
         "DRACOLoader": "/static/three/examples/jsm/loaders/DRACOLoader.js",
-        "OrbitControls": "/static/three/examples/jsm/controls/OrbitControls.js",
-        "AnaglyphEffect": "/static/three/examples/jsm/effects/AnaglyphEffect.js",
-        "RGBELoader": "/static/three/examples/jsm/loaders/RGBELoader.js",
-        "EffectComposer": "/static/three/examples/jsm/postprocessing/EffectComposer.js",
-        "GlitchPass": "/static/three/examples/jsm/postprocessing/GlitchPass.js"
-
+        "OrbitControls": "/static/three/examples/jsm/controls/OrbitControls.js"
       }
     }
 </script>
@@ -170,6 +166,7 @@
 
 
 <!-- LINK TO TILT SHIFT EFFECT scss -->
+{% load compress %}
 {% compress css %}
   <link rel="stylesheet" type="text/x-scss" href="{% static 'scss/tilt_shift.scss' %}" />
 {% endcompress %}

@@ -39,7 +39,7 @@ class LeaderBoard(models.Model):
         new_points = subbmitted_data["form_points"]
         is_personal_best = True
         email_isBot = subbmitted_data["email"] # email field is not displayed, Used as honeypot for bots.
-        print(subbmitted_data["form_zombie_deaths"])
+
         for i in leader_board_objects:
 
             if int(new_points) >= int(i.points):
@@ -54,7 +54,7 @@ class LeaderBoard(models.Model):
                     self.username = subbmitted_data["username"]
                     self.comment = subbmitted_data["comment"]
                     self.country_full = forms.save_leaderBoard.COUNTRIES_DICT.get(subbmitted_data["country"], 'Unknown')
-                    self.country_short = subbmitted_data["country"]
+                    self.country_short = str(subbmitted_data["country"]).lower()
                     self.UUID = request.session['uuid']
                     self.points = new_points
                     self.zombie_deaths = subbmitted_data["form_zombie_deaths"]
