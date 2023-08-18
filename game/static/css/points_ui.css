@@ -1,0 +1,151 @@
+
+#ZL_ui_stats_row{
+
+    display: none;
+    z-index: 15;
+    position: fixed;
+    margin: auto;
+    width: 100%;
+    height: 100px;
+    top: 80vh;
+
+    margin: auto;
+    /* border: 1px solid rgba(107, 107, 107, 0.2); */
+    
+}
+
+
+#ZL_ui_points_row{
+    width: 700px;
+    height: 100%;
+    margin: auto;
+    /* border: 1px solid rgba(107, 107, 107, 0.2); */
+
+}
+
+#ZL_ui_points_col_01,
+#ZL_ui_points_col_02,
+#ZL_ui_points_col_03,
+#ZL_ui_points_col_04{
+    width: 25%;
+    height: 100px;
+
+    float: left;
+    margin: auto;
+    border: 1px solid rgba(107, 107, 107, 0.2);
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+
+}
+
+#ZL_ui_points_col_01 h1{
+    font-size: 30px;
+    margin: 0px;
+    padding: 5px;
+}
+
+#ZL_ui_points_col_02 h1{
+    font-size: 30px;
+    margin: 0px;
+    padding: 5px;
+}
+
+#ZL_ui_points_col_03 h1{
+    font-size: 30px;
+    margin: 0px;
+    padding: 5px;
+}
+
+#ZL_ui_points_col_04 h1{
+    font-size: 30px;
+    margin: 0px;
+    padding: 5px;
+}
+
+
+
+
+
+/* ###############################################  Tablet / Mobile */
+@media (max-width: 850px){
+
+
+#ZL_ui_stats_row{
+
+    display: none;
+    z-index: 15;
+    position: fixed;
+    margin: auto;
+    width: 100%;
+    height: 100px;
+    top: 80vh;
+    margin: auto;
+    /* border: 1px solid rgba(107, 107, 107, 0.2); */
+    
+}
+
+
+#ZL_ui_points_row{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    /* border: 1px solid rgba(107, 107, 107, 0.2); */
+
+}
+
+#ZL_ui_points_col_01,
+#ZL_ui_points_col_02,
+#ZL_ui_points_col_03,
+#ZL_ui_points_col_04{
+    width: 25%;
+    height: 80px;
+
+    float: left;
+    margin: auto;
+    border: 1px solid rgba(107, 107, 107, 0.2);
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+
+}
+
+#ZL_ui_points_col_01 h1{
+    font-size: 15px;
+    margin: 0px;
+    padding: 5px;
+}
+
+#ZL_ui_points_col_02 h1{
+    font-size: 15px;
+    margin: 0px;
+    padding: 5px;
+}
+
+#ZL_ui_points_col_03 h1{
+    font-size: 15px;
+    margin: 0px;
+    padding: 5px;
+}
+
+#ZL_ui_points_col_04 h1{
+    font-size: 15px;
+    margin: 0px;
+    padding: 5px;
+}
+    
+
+
+}
+    
+    
+/* ###############################################  Large Mobile / Tablet */
+@media (max-width: 850px) and (min-width: 580px) {
+
+}
+    
+/* ###############################################  Normal Monitor */
+@media (max-width: 1418px) and (min-width: 851px) {
+
+
+}

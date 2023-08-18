@@ -1,0 +1,86 @@
+<!-- LEADERBOARD SECTION -->
+
+{% if show_leaderboard == True %}
+<div id="ZL_leaderBoard_ui" style="display: block;">
+{% else %}
+<div id="ZL_leaderBoard_ui" style="display: none;">
+{% endif %}
+
+<div id="ZL_leaderboard_buttons">
+
+  <div id="ZL_leaderboard_buttons_container">
+    <button onclick="experience.close_leaderboard()">Close</button>
+  </div>
+
+</div>  
+
+  <div id="ZL_leaderBoard_container">
+
+    <div id="ZL_table_container">
+      <table id="ZL_table">
+
+        <tr>
+          <th style="border-top-left-radius: 10px;"></th>
+          <th>Rank</th>
+          <th>Name</th>
+          <th>Points</th>
+          <th style="border-top-right-radius: 10px;">Time</th>
+          <th>Zombies</th>
+        </tr>
+
+        {% for i in leaderBoard_data %}
+
+          {% if i.UUID|slugify == UUID %}
+
+          <tr style="background-color: rgba(0, 255, 213, 0.15);">
+
+            {% if forloop.counter == 1 %}
+              <td style="width: 25px;">😄🏆</td>
+            {% elif forloop.counter == 2 %}
+              <td style="width: 25px;">😄🥇</td>
+            {% elif forloop.counter == 3 %}
+              <td style="width: 25px;">😄🥈</td>
+            {% else %}
+              <td style="width: 25px;">😄</td>
+            {% endif %}
+            <td style="width: 25px;">{{ forloop.counter }}</td>
+            <td style="width: 200px; text-align: left;"><span class="flag-icon flag-icon-{{ i.country_short }}"></span> {{ i.username }}</td>
+            <td style="width: 50px; text-align: left;">{{ i.points }}</td>
+            <td style="width: 50px; text-align: left;">{{ i.time_elapsed }}</td>
+            <td style="width: 50px; text-align: left;">{{ i.zombie_deaths }}</td>
+
+          </tr>
+
+          {% else %}
+
+          <tr>
+
+            {% if forloop.counter == 1 %}
+              <td style="width: 25px;">🏆</td>
+            {% elif forloop.counter == 2 %}
+              <td style="width: 25px;">🥇</td>
+            {% elif forloop.counter == 3 %}
+              <td style="width: 25px;">🥈</td>
+            {% else %}
+              <td style="width: 25px;">-</td>
+            {% endif %}
+            <td style="width: 25px;">{{ forloop.counter }}</td>
+            <td style="width: 200px; text-align: left;"><span class="flag-icon flag-icon-{{ i.country_short }}"></span> {{ i.username }}</td>
+            <td style="width: 50px; text-align: left;">{{ i.points }}</td>
+            <td style="width: 50px; text-align: left;">{{ i.time_elapsed }}</td>
+            <td style="width: 50px; text-align: left;">{{ i.zombie_deaths }}</td>
+            
+          </tr>
+
+          {% endif %}
+
+        {% endfor %}
+
+      </table>  
+
+    </div>
+
+
+
+</div>
+</div>

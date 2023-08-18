@@ -1,0 +1,22 @@
+/* line 2, dev/static/scss/tilt_shift.scss */
+.pewdev {
+  position: absolute;
+  z-index: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none; }
+  /* line 10, dev/static/scss/tilt_shift.scss */
+  .pewdev::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 0, 0, 0.595);
+    -webkit-mask-image: linear-gradient(0deg, black 0%, black 25%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 60%, black 75%, black 100%); }
+  /* line 31, dev/static/scss/tilt_shift.scss */
+  .pewdev #test_container {
+    width: inherit;
+    height: inherit; }

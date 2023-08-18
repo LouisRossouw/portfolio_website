@@ -1,9 +1,12 @@
 // Delay start video until the splash screen has cleared.
 const dailies_startVideo = async () => {
     let video = document.querySelector('.selected_media');
-    await video.play();
-    video.setAttribute('autoplay', true);
-}
+    if(window.location.pathname === "/dailies/"){
+        await video.play();
+        video.setAttribute('autoplay', true);
+    }
+    }
+
 
 dailies_startVideo();
 

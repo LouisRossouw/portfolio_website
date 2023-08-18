@@ -11,6 +11,7 @@
 <!-- LINK TO STYLES. -->
     <!-- <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}"> -->
 
+
     <link rel="stylesheet" type="text/css" href="{% static 'js_css/home.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'js_css/nav_style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'js_css/lightbox.css' %}">
@@ -28,23 +29,30 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'js_css/contact.css' %}">
 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/leaderboard.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/save_score.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/zombieland.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/points_ui.css' %}">
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 
 
     <title>{% block title %}LouisRossouw {% endblock %}</title>
 
     
 <!-- FLAV ICON. -->
-    <link class="flav-icon" rel="shortcut icon" href="{% static 'images/icons/pixl_play_blk_02.svg' %}"></link>
+    <link class="flav-icon" rel="shortcut icon" href="{% static 'images/icons/pixl_play_blk_01.svg' %}"></link>
 
 <!-- Script to animate the flav icon for fun. -->
-    <script>
+    <!-- <script>
       function iconAnimate() {
           setTimeout(function(){document.querySelector('.flav-icon').href="{% static 'images/icons/pixl_play_blk_02.svg' %}"}, 450);
           setTimeout(function(){document.querySelector('.flav-icon').href="{% static 'images/icons/pixl_play_blk_01.svg' %}"}, 900);}
 
       setInterval(function(){iconAnimate();}, 1000);
-    </script>
+    </script> -->
 
   </head>
 
@@ -57,7 +65,7 @@
       <a class="logo" href="{% url 'home' %}">Louis Rossouw</a>
       <nav class="nav_all">
         <ul class="nav_links">
-          <li><a href="{% url 'home' %}">ABOUT</a></li>
+          <li><a href="{% url 'about' %}">ABOUT</a></li>
           <li><a href="{% url 'portfolio_index' %}">PORTFOLIO</a></li>
           <li><a class="showreel">SHOWREEL</a></li>
           <li id="nav_dailies"><a href="{% url 'dailies' %}">DAILIES</a></li>
@@ -95,8 +103,8 @@
 
 
 <div class="footer">
-  <a class="footer" href="https://github.com/LouisRossouw/portfolio_website" target="_blank">Built by LouisRossouw 2023. </i></a>
-  <i class="fa fa-cog fa-spin fa-2xs"></i>
+  <a class="footer" href="https://github.com/LouisRossouw/portfolio_website" target="_blank">Created by Louis Rossouw 2023. </i></a>
+  <!-- <i class="fa fa-cog fa-spin fa-2xs"></i> -->
   <i class="fa fa-heart-o" id="footer_icons" aria-hidden="true">
 
 
@@ -110,6 +118,8 @@
     color: rgb(255, 255, 255, 0.2);
     text-align: center;
     padding: 20px 50px;
+    height: 1px;
+
   }
   .footer:hover {
     animation: footerGlow linear 0.5s 1 normal forwards;
@@ -126,7 +136,7 @@
 
 
 
-<div class="footer02">
+<!-- <div class="footer02">
 
   <style>
 
@@ -136,8 +146,10 @@
         left: 0px;
         bottom: 0;
         width: 100%;
-        height: 7%;
+        height: 1px;
         backdrop-filter: blur(4px);
+        background-color: rgba(127, 255, 212, 0.178);
+
 
         text-align: center;
         padding: 20px 50px;
@@ -180,7 +192,7 @@
 
 
 
-</div>
+</div> -->
 
 </html>
 

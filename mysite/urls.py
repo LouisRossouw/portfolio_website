@@ -25,12 +25,13 @@ from wagtail.documents import urls as wagtaildocs_urls
 
 from dailies import views as dailies
 
-from dev import views as dev
-
+# from dev import views as dev
+from game import views as game
+from home import views as about
 
 urlpatterns = [
     path(str(f"{os.getenv('ADMIN_LOGIN')}/"), admin.site.urls),
-    path('', include('home.urls'), name='home'),
+    path('about/', about.home_page, name='about'),
 
     path('dailies/', dailies.dailies_view, name="dailies"),
     path('ajax_capture_data/', dailies.ajax_return_data),
@@ -40,16 +41,13 @@ urlpatterns = [
     path('portfolio/', include('portfolio.urls'), name='portfolio'),
     path('contact/', include('contact.urls'), name='contact'),
 
-    path('test/', dev.dev_test),
+    path('', game.zombie_land, name='home'),
 
     path('cms/', include(wagtailadmin_urls)),
     path('documents/', include(wagtaildocs_urls)),
     path('', include(wagtail_urls)),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-# if settings.DEBUG:
-#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 

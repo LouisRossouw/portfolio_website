@@ -1,0 +1,21 @@
+/* line 2, game/static/scss/tilt_shift.scss */
+.tiltShift_effects {
+  position: absolute;
+  z-index: -2;
+  width: 100vw;
+  height: 95vh;
+  pointer-events: none; }
+  /* line 11, game/static/scss/tilt_shift.scss */
+  .tiltShift_effects::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    backdrop-filter: blur(12px);
+    -webkit-mask-image: linear-gradient(0deg, black 0%, black 25%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 60%, black 75%, black 100%); }
+  /* line 32, game/static/scss/tilt_shift.scss */
+  .tiltShift_effects #test_container {
+    width: inherit;
+    height: inherit; }

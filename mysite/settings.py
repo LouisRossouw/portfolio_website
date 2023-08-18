@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'compressor', # For .scss files
+    'sass_processor',
+
     'mysite',
     'home',
     'portfolio',
@@ -50,7 +53,7 @@ INSTALLED_APPS = [
     'honeypot',
     'blog',
 
-    'dev',
+    'game',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -98,6 +101,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
@@ -156,7 +160,7 @@ STATICFILES_DIRS = [
     str(BASE_DIR) + "/portfolio/static",
     str(BASE_DIR) + "/dailies/static",
     str(BASE_DIR) + "/blog/static",
-    str(BASE_DIR) + "/dev/static",
+    str(BASE_DIR) + "/game/static",
     str(BASE_DIR) + "/contact/static",
 ]
 
@@ -196,10 +200,20 @@ GFGF_REMOVE_THUMBNAIL_GIF = True
 GFGF_REMOVE_MAX_WIDTH_GIF = True
 GFGF_REPLACE_RENDITION_GIF = True
 
-
-
-
-
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
 
+
+
+# Set the path to your SCSS files
+SCSS_DIR = os.path.join(BASE_DIR, 'dev/static/scss/')
+
+COMPRESS_PRECOMPILERS = (
+    ('text/x-scss', 'django_libsass.SassCompiler'),
+)
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',  # Add this line
+]
