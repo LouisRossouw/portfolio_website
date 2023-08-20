@@ -20,18 +20,17 @@
           <i class="fa-regular fa-clock fa-xl"></i>
         </div>
 
-  
     </div>
   
-    <h1 id="ZL_save_score_message">
-        Would you like to add your score to the leaderboard?
-    </h1>
-  
+      <h1 id="ZL_save_score_message">
+          Would you like to add your score to the leaderboard?
+      </h1>
+    
       <form id="ZL_VW_form" action="" enctype="multipart/form-data" method="post">{% csrf_token %}
           {{ save_score_form.as_p }}
       <button id="ZL_submitter_btn" type="submit" onclick="experience.close_save_form()"><i class="fa-regular fa-floppy-disk fa-fade"></i></button>
       <button id="ZL_submitter_btn" style="color: grey;" onclick="experience.close_save_form()"><i class="fa-solid fa-xmark"></i></button>
       </form>
-  
+
     </div>
-  </div>
+</div>

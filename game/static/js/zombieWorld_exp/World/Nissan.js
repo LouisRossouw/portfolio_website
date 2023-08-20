@@ -3,10 +3,6 @@ import * as YUKA from "yuka";
 import Experience from "../Experience.js";
 
 
-// Nissan class is responsible for creating the 3D car, setting up the cars lights
-// and updating the light animations of the car based off triggers that come from the glb file
-// the lights are controlled from Maya, threejs is just updating the lights on or off in real time based
-// on that triggers.
 
 
 export default class Nissan{
@@ -50,7 +46,7 @@ export default class Nissan{
 
         // Listen for if the car has hit a zombie! then perform an action
         this.zombies.addEventListener('zombie_killed', () => {
-            this.car_light_front.intensity = 9
+            this.car_light_front.intensity = 7
             window.setTimeout(() =>{
                 this.car_light_front.intensity = 15
             }, 100)
@@ -89,17 +85,19 @@ export default class Nissan{
 
         // Position the obstacle sphere at the same position as the obstacle entity
         this.obstacleSphereMesh.position.copy(this.obsticale.position);
+        this.obstacleSphereMesh.visible = false
 
         // Add the obstacle sphere to the scene
-        // this.scene.add(this.obstacleSphereMesh);
+        this.scene.add(this.obstacleSphereMesh)
         
         this.entityManager.add(this.obsticale)
         this.obsticle_list.push(this.obsticale)
 
-        const collision_box_geo = new THREE.SphereGeometry(0.75, 8, 8);
-        const collision_box_mat = new THREE.MeshBasicMaterial({ color: 'blue', transparent: true, opacity: 0.1 });
-        this.collision_box = new THREE.Mesh(collision_box_geo, collision_box_mat);
-        // this.scene.add(this.collision_box)
+        const collision_box_geo = new THREE.SphereGeometry(0.75, 8, 8)
+        const collision_box_mat = new THREE.MeshBasicMaterial({ color: 'blue', transparent: true, opacity: 0.5 })
+        this.collision_box = new THREE.Mesh(collision_box_geo, collision_box_mat)
+        this.collision_box.visible = false
+        this.scene.add(this.collision_box)
 
     }
 
@@ -118,12 +116,11 @@ export default class Nissan{
             if(geo.isMesh){
                 geo.castShadow = false
                 geo.receiveShadow = false;
-                geo.frustumCulled = false; // So the geo doesnt disseapr when out of viewport
+                geo.frustumCulled = false; // So the geo doesnt dissapear when out of viewport
 
                 if(geo.name === "charZombie_geo"){
                     const newmaterial = new THREE.MeshStandardMaterial({
                         color: 'rgb(70, 100, 85)',
-                        // color: newColor,
                         roughness: 1,
                         metalness: 0.2,
                         })
@@ -207,26 +204,26 @@ export default class Nissan{
     create_nissan_lights(){
 
         // Front Car lights.
-        this.car_light_front = new THREE.SpotLight("rgb(255, 238, 160)", 15);
+        this.car_light_front = new THREE.SpotLight("rgb(255, 238, 160)", 15)
 
-        this.car_light_front.castShadow = false;
-        this.car_light_front.position.set(0, 0, 0);
+        this.car_light_front.castShadow = false
+        this.car_light_front.position.set(0, 0, 0)
 
-        this.car_light_front.target.position.set(0, 0, 2);
-        this.car_light_front.angle = Math.PI / 2; // Set the angle of the spotlight cone (default is Math.PI / 3)
-        this.car_light_front.penumbra = 1; // Set the penumbra angle (default is 0)
-        this.car_light_front.target.updateMatrixWorld();
+        this.car_light_front.target.position.set(0, 0, 2)
+        this.car_light_front.angle = Math.PI / 2
+        this.car_light_front.penumbra = 1 
+        this.car_light_front.target.updateMatrixWorld()
 
         // Back Car lights.
-        this.car_light_back = new THREE.SpotLight("red", 1);
+        this.car_light_back = new THREE.SpotLight("red", 1)
         
-        this.car_light_back.castShadow = false;
-        this.car_light_back.position.set(0, 0.04, -0.15);
+        this.car_light_back.castShadow = false
+        this.car_light_back.position.set(0, 0.04, -0.15)
 
-        this.car_light_back.target.position.set(0, 0, -2);
-        this.car_light_back.angle = Math.PI / 2; // Set the angle of the spotlight cone (default is Math.PI / 3)
-        this.car_light_back.penumbra = 0.5; // Set the penumbra angle (default is 0)
-        this.car_light_back.target.updateMatrixWorld();
+        this.car_light_back.target.position.set(0, 0, -2)
+        this.car_light_back.angle = Math.PI / 2
+        this.car_light_back.penumbra = 0.5 
+        this.car_light_back.target.updateMatrixWorld()
 
         // parent lights to selected bone.
         this.headlight_bone.add(this.car_light_front);
@@ -251,17 +248,6 @@ export default class Nissan{
             this.anim_nissan_mixer.update(this.time.delta * this.world_speed.world_speed); // update animation mixer.
 
         }
-
-        // Raycaster
-        // this.raycaster.setFromCamera(this.cursor, this.camera.perspectiveCamera)
-        // const objectsToTest = [this.nissan_geo]
-        // const intersects = this.raycaster.intersectObjects(objectsToTest)
-
-        // if(intersects.length){
-        //     this.nissan_geo.scale.set(12, 12, 12)
-        // } else {
-        //     this.nissan_geo.scale.set(10, 10, 10)
-        // }
 
         // Check if car lights are on or off based on bones position, if below -0 then disable the light.
         // This gives me control in Maya to toggle the light (in runtime) on and off.

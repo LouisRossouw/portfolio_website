@@ -9,8 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <!-- LINK TO STYLES. -->
-    <!-- <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}"> -->
 
+    <!-- LANDING PAGE GAME -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/loader.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/leaderboard.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/save_score.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/zombieland.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/points_ui.css' %}">
 
     <link rel="stylesheet" type="text/css" href="{% static 'js_css/home.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'js_css/nav_style.css' %}">
@@ -29,30 +34,13 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'js_css/contact.css' %}">
 
-    <link rel="stylesheet" type="text/css" href="{% static 'css/leaderboard.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/save_score.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/zombieland.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/points_ui.css' %}">
-
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-
 
     <title>{% block title %}LouisRossouw {% endblock %}</title>
 
-    
+
 <!-- FLAV ICON. -->
     <link class="flav-icon" rel="shortcut icon" href="{% static 'images/icons/pixl_play_blk_01.svg' %}"></link>
-
-<!-- Script to animate the flav icon for fun. -->
-    <!-- <script>
-      function iconAnimate() {
-          setTimeout(function(){document.querySelector('.flav-icon').href="{% static 'images/icons/pixl_play_blk_02.svg' %}"}, 450);
-          setTimeout(function(){document.querySelector('.flav-icon').href="{% static 'images/icons/pixl_play_blk_01.svg' %}"}, 900);}
-
-      setInterval(function(){iconAnimate();}, 1000);
-    </script> -->
 
   </head>
 
@@ -86,14 +74,17 @@
 
 
 <!-- CONTENTS PAGES -->
-  <body style="background-color: rgb(4, 4, 4)">
+<body style="background-color: rgb(4, 4, 4)">
 
-    {% block page_content %}{% endblock %}
+  
+
+    {% block page_content %}
+    {% endblock %}
 
     <script src="{% static 'js_css/home.js' %}"></script>
 
 
-  </body>
+</body>
 
 
 <script src="{% static 'js/dailies_captures.js' %}"></script>
@@ -108,7 +99,7 @@
   <i class="fa fa-heart-o" id="footer_icons" aria-hidden="true">
 
 
-  <style>
+<style>
 
 .footer {
     position: fixed;

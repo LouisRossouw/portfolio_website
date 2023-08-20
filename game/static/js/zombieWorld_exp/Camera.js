@@ -71,7 +71,6 @@ export default class Camera{
 
             this.play_ui.style.display = "block"
 
-
             this.cursor.x = (event.clientX / window.innerWidth) * 2 - 1;
             this.cursor.y = -(event.clientY / window.innerHeight) * 2 + 1;
 

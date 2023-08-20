@@ -1,7 +1,0 @@
-/* line 2, dev/static/scss/tilt_shift.scss */
-.pewdev {
-  position: absolute;
-  z-index: 5;
-  background-color: rgba(1, 187, 187, 0.507);
-  width: 90vw;
-  height: 100vh; }

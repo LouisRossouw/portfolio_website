@@ -23,8 +23,6 @@ export default class Game{
         // Woman
         this.woman = this.experience.world.woman
         this.woman_boundingBox = this.woman.obs_woman_reference_mesh
-        this.woman_dead = false
-        this.woman_lives = 3
 
         this.nissan = this.experience.world.nissan
         this.zombies = this.experience.world.zombies
@@ -35,16 +33,39 @@ export default class Game{
 
         this.is_nissan_active = false
 
+        // Document elements
+        this.contact_img_01 = document.getElementById("contact_img_01")
+        this.contact_img_02 = document.getElementById("contact_img_02")
+
+        this.ZL_final_rank = document.getElementById("ZL_final_rank")
+        this.ZL_final_points = document.getElementById("ZL_final_points")
+        this.ZL_final_time = document.getElementById("ZL_final_time")
+
+        this.form_points = document.querySelector("input[name='form_points']")
+        this.form_zombie_deaths = document.querySelector("input[name='form_zombie_deaths']")
+        this.form_time_elapsed = document.querySelector("input[name='form_time_elapsed']")
+        this.form_rank = document.querySelector("input[name='form_rank']")
+
+        this.zombieland_rank = document.getElementById("zombieland_rank")
+
+        this.ZL_zombie_meter_02 = document.getElementById("ZL_zombie_meter_02")
+        this.zombieland_zombie_deaths = document.getElementById("zombieland_zombie_deaths")
+        this.ZL_ui_points_col_03 = document.getElementById("ZL_ui_points_col_03")
+
+        this.zombieland_time_elapsed = document.getElementById("zombieland_time_elapsed")
+
+        this.ZL_ui_points_col_02 = document.getElementById("ZL_ui_points_col_02")
+
         this.experience.addEventListener("start_game", () => {
 
-            document.getElementById("ZL_final_rank").innerHTML = 0
-            document.getElementById("ZL_final_points").innerHTML = 0
-            document.getElementById("ZL_final_time").innerHTML = 0
+            this.ZL_final_rank .innerHTML = 0
+            this.ZL_final_points.innerHTML = 0
+            this.ZL_final_time.innerHTML = 0
 
-            document.querySelector("input[name='form_points']").value = 0
-            document.querySelector("input[name='form_zombie_deaths']").value = 0
-            document.querySelector("input[name='form_time_elapsed']").value = 0
-            document.querySelector("input[name='form_rank']").value = 0
+            this.form_points.value = 0
+            this.form_zombie_deaths.value = 0
+            this.form_time_elapsed.value = 0
+            this.form_rank.value = 0
 
             this.collect_me = 0
             this.game_start_time = 0
@@ -58,12 +79,13 @@ export default class Game{
             this.nissan.nissan_geo.visible = false
             this.nissan.nissan_geo.position.set(-25, -5, -25)
 
-            const icons = document.querySelectorAll(".socials i");
+            // Hide icons on game start.
+            const icons = document.querySelectorAll(".socials i")
             icons.forEach(icon => {
-              icon.style.display = "none"; // Apply your styles here
+              icon.style.display = "none"
             });
 
-            document.getElementById("zombieland_rank").innerHTML = calculate_user_ranking(0)
+            this.zombieland_rank.innerHTML = calculate_user_ranking(0)
 
             this.game_active = true
             this.set_collectMe()
@@ -72,18 +94,19 @@ export default class Game{
             this.zombies.reset_zombies(false, 50)
 
             // Reset woman
-            this.woman.woman_reset()
+            this.woman.reset()
 
             // Reset Nissan
             this.nissan.reset_animation()
 
+            // Animate logo for fun.
             function profileAnimate() {
   
-                setTimeout(function(){document.getElementById("contact_img_01").style.display = "none"}, 450);
-                setTimeout(function(){document.getElementById("contact_img_02").style.display = "block"}, 450);
+                setTimeout(function(){this.contact_img_01.style.display = "none"}, 450);
+                setTimeout(function(){this.contact_img_02.style.display = "block"}, 450);
             
-                setTimeout(function(){document.getElementById("contact_img_01").style.display = "block"}, 900);
-                setTimeout(function(){document.getElementById("contact_img_02").style.display = "none"}, 900);
+                setTimeout(function(){this.contact_img_01.style.display = "block"}, 900);
+                setTimeout(function(){this.contact_img_02.style.display = "none"}, 900);
             
             }
             
@@ -95,19 +118,20 @@ export default class Game{
 
             if(this.game_active){
                 this.zombie_death_counter += 1
-                document.getElementById("ZL_zombie_meter_02").innerHTML += '<i class="fa-solid fa-skull"></i>'
-                document.getElementById("zombieland_zombie_deaths").innerHTML = this.zombie_death_counter
 
-                document.getElementById("ZL_ui_points_col_03").style.borderColor = "rgba(123, 255, 255, 0.5)"
-                document.getElementById("ZL_ui_points_col_03").style.backgroundColor = "rgba(132, 0, 255, 0.1)"
+                this.ZL_zombie_meter_02.innerHTML += '<i class="fa-solid fa-skull"></i>'
+                this.zombieland_zombie_deaths.innerHTML = this.zombie_death_counter
+
+                this.ZL_ui_points_col_03.style.borderColor = "rgba(123, 255, 255, 0.5)"
+                this.ZL_ui_points_col_03.style.backgroundColor = "rgba(132, 0, 255, 0.1)"
 
                 window.setTimeout(() =>{
-                    document.getElementById("ZL_ui_points_col_03").style.borderColor = "rgba(107, 107, 107, 0.2)"
-                    document.getElementById("ZL_ui_points_col_03").style.backgroundColor = "rgba(107, 107, 107, 0)"
+                    this.ZL_ui_points_col_03.style.borderColor = "rgba(107, 107, 107, 0.2)"
+                    this.ZL_ui_points_col_03.style.backgroundColor = "rgba(107, 107, 107, 0)"
                 }, 50)
 
                 window.setTimeout(() =>{
-                    document.getElementById("ZL_zombie_meter_02").innerHTML = ""
+                    this.ZL_zombie_meter_02.innerHTML = ""
                 }, 3000)
             }
         })
@@ -115,9 +139,6 @@ export default class Game{
         this.experience.world.zombies.addEventListener("woman_died", () => {
 
             if(this.game_active){
-
-                // document.getElementById("ZL_play_ui").style.display = "none"
-                // document.getElementById("ZL_ui_play_button").style.display = "none"
                 
                 const icons = document.querySelectorAll(".socials i");
                 icons.forEach(icon => {
@@ -128,7 +149,7 @@ export default class Game{
 
                 this.experience.reset_game()
                 this.scene.remove(this.collect_me)
-                this.woman.woman_died()
+                this.woman.play_death_anim()
                 this.game_active = false
                 this.game_end_time = Date.now()
                 
@@ -150,14 +171,14 @@ export default class Game{
                     var ranking = calculate_user_ranking(this.total_points)
                     var time_elapsed = get_time_difference(this.game_start_time, this.game_end_time)
                     
-                    document.getElementById("ZL_final_rank").innerHTML = ranking
-                    document.getElementById("ZL_final_points").innerHTML = this.total_points
-                    document.getElementById("ZL_final_time").innerHTML = time_elapsed
+                    this.ZL_final_rank.innerHTML = ranking
+                    this.ZL_final_points.innerHTML = this.total_points
+                    this.ZL_final_time.innerHTML = time_elapsed
 
-                    document.querySelector("input[name='form_points']").value = this.total_points
-                    document.querySelector("input[name='form_zombie_deaths']").value = this.zombie_death_counter
-                    document.querySelector("input[name='form_time_elapsed']").value = time_elapsed
-                    document.querySelector("input[name='form_rank']").value = ranking
+                    this.form_points.value = this.total_points
+                    this.form_zombie_deaths.value = this.zombie_death_counter
+                    this.form_time_elapsed.value = time_elapsed
+                    this.form_rank.value = ranking
 
                     this.zombies.reset_zombies(true, 10)
                     this.nissan.nissan_geo.position.set(0, 0, 0)
@@ -203,7 +224,7 @@ export default class Game{
 
         if(this.game_active){
 
-            document.getElementById("zombieland_time_elapsed").innerHTML = get_time_difference(this.game_start_time, Date.now())
+            this.zombieland_time_elapsed.innerHTML = get_time_difference(this.game_start_time, Date.now())
 
             // Calculate the distance between bounding spheres' centers
             const distance = this.collect_me.position.distanceTo(this.woman_boundingBox.position);
@@ -213,7 +234,7 @@ export default class Game{
             if (distance < this.collect_me.geometry.parameters.radius + this.woman_boundingBox.geometry.parameters.radius) {
                 // If the bounding spheres are intersecting, meaning the zombie is touching the obstacle - handle collision behavior here
 
-                this.woman.woman_point()
+                this.woman.play_point_anim()
 
                 // Randomly position the ball within the scene
                 const translate_x = (Math.random() - 0.5) * 25
@@ -235,7 +256,6 @@ export default class Game{
 
                 }
 
-
                 // Only activate nissan after 50 points. 
                 if(this.is_nissan_active !== true){
                     if(this.total_points > 50){
@@ -254,18 +274,17 @@ export default class Game{
                     }
                 }
 
-            
-                document.getElementById('zombieland_point').innerHTML = parseInt(current_points) + 1
+                this.point_counter.innerHTML = parseInt(current_points) + 1
 
-                document.getElementById("ZL_ui_points_col_02").style.borderColor = "rgba(123, 255, 255, 0.5)"
-                document.getElementById("ZL_ui_points_col_02").style.backgroundColor = "rgba(132, 0, 255, 0.1)"
+                this.ZL_ui_points_col_02.style.borderColor = "rgba(123, 255, 255, 0.5)"
+                this.ZL_ui_points_col_02.style.backgroundColor = "rgba(132, 0, 255, 0.1)"
 
                 window.setTimeout(() =>{
-                    document.getElementById("ZL_ui_points_col_02").style.borderColor = "rgba(107, 107, 107, 0.2)"
-                    document.getElementById("ZL_ui_points_col_02").style.backgroundColor = "rgba(107, 107, 107, 0)"
+                    this.ZL_ui_points_col_02.style.borderColor = "rgba(107, 107, 107, 0.2)"
+                    this.ZL_ui_points_col_02.style.backgroundColor = "rgba(107, 107, 107, 0)"
                 }, 50)
 
-                document.getElementById("zombieland_rank").innerHTML = calculate_user_ranking(this.total_points)
+                this.zombieland_rank.innerHTML = calculate_user_ranking(this.total_points)
 
             }
         }

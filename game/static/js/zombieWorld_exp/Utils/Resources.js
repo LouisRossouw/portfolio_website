@@ -12,7 +12,6 @@ export default class Resources extends THREE.EventDispatcher{
 
         this.experience = new Experience();
         this.renderer = this.experience.renderer;
-
         this.assets = assets;
 
         this.items = {};
@@ -26,6 +25,8 @@ export default class Resources extends THREE.EventDispatcher{
             // Loaded
             () =>
             {
+                document.getElementById("ZL_loadbar").style.backgroundColor = "aqua"
+                document.getElementById("ZL_loading_h").innerHTML = "READY"
             },
             // Progress
             (itemUrl, itemsLoaded, itemsTotal) =>
@@ -35,7 +36,6 @@ export default class Resources extends THREE.EventDispatcher{
                 this.ZL_loading_p.innerHTML = `${Number(itemsLoaded / itemsTotal * 100).toFixed(0)}%`
             }
         )
-
 
         this.setLoaders();
         this.startLoading();
@@ -58,9 +58,6 @@ export default class Resources extends THREE.EventDispatcher{
     startLoading(){
         for(const asset of this.assets){
 
-
-            // this.ZL_loading_p.innerHTML = asset.name
-
             // Load glb models.
             if (asset.type === "glbModel"){
                 this.loaders.gltfLoader.load(asset.path, (file)=>{
@@ -69,6 +66,7 @@ export default class Resources extends THREE.EventDispatcher{
 
             // Load and play video textures if they exist.
             } else if (asset.type === "videoTexture"){
+
                 this.video = {};
                 this.videoTexture = {};
 
@@ -92,26 +90,23 @@ export default class Resources extends THREE.EventDispatcher{
         }
     }
 
+
     singleAssetLoaded(asset, file){
         this.items[asset.name] = file;
         this.loaded++;
 
         console.log(asset.name, " asset is loading")
-        this.ZL_loading_p.innerHTML = asset.name
-
-        // console.log(this.loaded, this.queue)
 
         if(this.loaded === this.queue){
 
             window.setTimeout(() => {
+
                 console.log("all assets are done.")
-                this.ZL_loading_p.innerHTML = "Ready"
                 document.querySelector(".ZL_loadScreen").style.display = "none"
                 this.dispatchEvent({ type: 'ready' });
-            }, 1000)
 
+            }, 1000)
             
         }
     }
-
 }

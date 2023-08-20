@@ -6,6 +6,7 @@ export default class Settings{
     this.world_speed_value = 4
     this.world_speed = [
         {
+            "gui": false,
             "this_settings": 0,
             "FPS": 12, 
             "zombie_speed": 40, 
@@ -18,6 +19,7 @@ export default class Settings{
             "zombie_spawn_distance": 100,
         },
         {
+            "gui": false,
             "this_settings": 1,
             "FPS": 10, 
             "zombie_speed": 12, 
@@ -30,6 +32,7 @@ export default class Settings{
             "zombie_spawn_distance": 100,
         },
         {
+            "gui": false,
             "this_settings": 2,
             "FPS": 125, 
             "zombie_speed": 1, 
@@ -42,6 +45,7 @@ export default class Settings{
             "zombie_spawn_distance": 100,
         },
         {
+            "gui": false,
             "this_settings": 3,
             "FPS": 125, 
             "zombie_speed": 1, 
@@ -54,6 +58,7 @@ export default class Settings{
             "zombie_spawn_distance": 100,
         },
         {
+            "gui": false,
             "this_settings": 4,
             "FPS": 200, 
             "zombie_speed": 3, 
@@ -66,6 +71,7 @@ export default class Settings{
             "zombie_spawn_distance": 100,
         },
         {
+            "gui": false,
             "this_settings": 5,
             "FPS": 125, 
             "zombie_speed": 0.000000, 
@@ -77,9 +83,6 @@ export default class Settings{
             "zombie_count": 100,
             "zombie_spawn_distance": 100,
         },
-    ]
-
-
-    }
+    ]}
 }
 

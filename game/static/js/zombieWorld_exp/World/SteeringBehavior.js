@@ -23,6 +23,7 @@ export default class SteeringBehavior
         
     }
 
+    
     sync(entity, renderComponent){
         renderComponent.matrix.copy(entity.worldMatrix);
     }

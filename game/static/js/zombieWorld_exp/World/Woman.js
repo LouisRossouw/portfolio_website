@@ -1,6 +1,6 @@
-import * as THREE from "three";
-import * as YUKA from "yuka";
-import Experience from "../Experience.js";
+import * as THREE from "three"
+import * as YUKA from "yuka"
+import Experience from "../Experience.js"
 
 
         
@@ -10,12 +10,12 @@ export default class Woman
 {
     constructor()
     {
-        this.experience = new Experience();
-        this.scene = this.experience.scene;
+        this.experience = new Experience()
+        this.scene = this.experience.scene
         this.settings = this.experience.settings
-        this.time = this.experience.time;
-        this.resources = this.experience.resources;
-        this.textureLoader = this.experience.textureLoader;
+        this.time = this.experience.time
+        this.resources = this.experience.resources
+        this.textureLoader = this.experience.textureLoader
         this.world_speed = this.settings.world_speed[this.settings.world_speed_value] // Get speed settings
 
         // entity manager needed for ai
@@ -24,15 +24,13 @@ export default class Woman
         this.obsticle_list = this.steeringBehavior.obsticle_list
 
         // load woman geo
-        this.woman = this.resources.items.woman;
-        this.woman_geo = this.woman.scene;
-
-        this.current_animation_playing = null
-
-        this.set_woman_test()
+        this.woman = this.resources.items.woman
+        this.woman_geo = this.woman.scene
+        this.set_woman()
 
         // Animation
-        this.anim_woman_mixer = new THREE.AnimationMixer(this.woman_geo);
+        this.current_animation_playing = null
+        this.anim_woman_mixer = new THREE.AnimationMixer(this.woman_geo)
 
         // Run animation list.
         this.woman_run_anims = []
@@ -40,11 +38,11 @@ export default class Woman
         this.woman_point_anims = []
         this.woman_death_anims = []
 
-        this.sort_animations()
+        this.sort_animation_clips()
 
     }
 
-    sort_animations(){
+    sort_animation_clips(){
 
         for(let i = 0; i < this.woman.animations.length; i++){
 
@@ -66,16 +64,15 @@ export default class Woman
         }
 
         this.death_animations_count = this.woman_death_anims.length
-    
-        this.woman_anim_clip = this.anim_woman_mixer.clipAction(this.woman_run_anims[1]);
-        this.woman_anim_clip.timeScale = 0.8;
+        this.woman_anim_clip = this.anim_woman_mixer.clipAction(this.woman_run_anims[1])
+        this.woman_anim_clip.timeScale = 0.8
     
         this.woman_anim_clip.play();
 
     }
 
 
-    woman_reset(){
+    reset(){
         // Reset animation.
 
         this.woman_anim_clip.reset()
@@ -85,22 +82,22 @@ export default class Woman
     }
 
 
-    woman_died(){
-        // Play die animation.
+    play_death_anim(){
+        // Play death animation.
         
         // Stop Yuka behaviour movement and animations.
         this.woman_entity.active = false
         this.woman_anim_clip.stop()
 
         // Play death anim.
-        const random_clip = Math.floor(Math.random() * this.woman_death_anims.length);
-        const death_anim = this.woman_death_anims[random_clip];
+        const random_clip = Math.floor(Math.random() * this.woman_death_anims.length)
+        const death_anim = this.woman_death_anims[random_clip]
 
-        const deathAction = this.anim_woman_mixer.clipAction(death_anim, this.woman_geo);
-        deathAction.setLoop(THREE.LoopOnce);
-        deathAction.timeScale = 0.7;
-        deathAction.clampWhenFinished = true;
-        deathAction.play();
+        const deathAction = this.anim_woman_mixer.clipAction(death_anim, this.woman_geo)
+        deathAction.setLoop(THREE.LoopOnce)
+        deathAction.timeScale = 0.7
+        deathAction.clampWhenFinished = true
+        deathAction.play()
 
         // Delay before respawn.
         window.setTimeout(() =>{
@@ -122,7 +119,7 @@ export default class Woman
     }
 
 
-    woman_point(){
+    play_point_anim(){
         // Play celebrate when collecting a point.
 
         // Stop the current animation
@@ -134,10 +131,10 @@ export default class Woman
 
         const pointAction = this.anim_woman_mixer.clipAction(point_anim, this.woman_geo)
         pointAction.setLoop(THREE.LoopOnce)
-        pointAction.timeScale = 0.8;
-        pointAction.clampWhenFinished = true;
-        // this.current_animation_playing = "point";
-        pointAction.play();
+        pointAction.timeScale = 0.8
+        pointAction.clampWhenFinished = true
+
+        pointAction.play()
 
         this.anim_woman_mixer.addEventListener("finished", (event) => {
 
@@ -151,30 +148,30 @@ export default class Woman
 
     animation_on_completion = (clipName, Action) => {
 
-        var type = clipName.split("_")[1] 
+        var type = clipName.split("_")[1] // Run / point / death
 
         if(type === "death"){
 
-            Action.stop();
-            Action.reset();
+            Action.stop()
+            Action.reset()
         }
 
         else {
 
-            Action.stop();
-            Action.reset();
+            Action.stop()
+            Action.reset()
             
             this.woman_anim_clip.stop()
-            this.woman_anim_clip = this.anim_woman_mixer.clipAction(this.woman_run_anims[1]);
+            this.woman_anim_clip = this.anim_woman_mixer.clipAction(this.woman_run_anims[1]) // set to run anim clip
             
-            this.woman_anim_clip.reset();
-            this.woman_anim_clip.play();
+            this.woman_anim_clip.reset()
+            this.woman_anim_clip.play()
 
         }
     }
 
 
-    woman_random(){
+    play_random_run_anim(){
         // Play random run animation every 10 seconds.
 
         // Stop the current animation
@@ -201,13 +198,14 @@ export default class Woman
     }
 
 
-    set_woman_test(){
+    set_woman(){
+        // Sets woman geo / yuka behaviour etc..
 
         // Woman Geo
         this.woman_geo.scale.set(10, 10, 10)
         this.woman_geo.position.set(-1, 0, 0)
-        this.woman_geo.receiveShadow = true
-        this.woman_geo.castShadow = true
+        this.woman_geo.receiveShadow = false
+        this.woman_geo.castShadow = false
         this.scene.add(this.woman_geo)
 
         this.woman_geo.traverse( (child) => {
@@ -217,7 +215,7 @@ export default class Woman
             }
         });
 
-        // Fake SHADOW
+        // Fake Shadow
         const simpleShadow = this.textureLoader.load('/static/textures/simpleShadow.jpg')
         this.shadow_geo = new THREE.PlaneGeometry(0.07, 0.07)
         this.shadow_material = new THREE.MeshBasicMaterial({ 
@@ -227,6 +225,7 @@ export default class Woman
             blendEquation: THREE.AdditiveBlending,
             depthWrite: false,
         }),
+
 
         // Woman AI setup *****
 
@@ -239,14 +238,12 @@ export default class Woman
 
         // Add Woman entity (vehicle) to the entityManager
         this.entityManager.add(this.woman_entity);
-
         this.woman_entity.maxSpeed = this.world_speed.woman_speed
 
         // Woman entity behaviour will seek the target position.
         this.seekBehavior = new YUKA.SeekBehavior(this.steeringBehavior.target.position);
         this.woman_entity.steering.add(this.seekBehavior);
 
-        // this.woman_entity.boundingRadius = this.lady_bbb
         this.woman_entity.boundingRadius = 0.2
         this.obstacleAvoidanceBehavior = new YUKA.ObstacleAvoidanceBehavior(this.obsticle_list)
         this.woman_entity.steering.add(this.obstacleAvoidanceBehavior)
@@ -257,12 +254,13 @@ export default class Woman
         this.obs_woman_reference_mesh = new THREE.Mesh(obs_woman_reference_geo, obs_woman_reference_mat);
 
         // Add the obstacle sphere to the scene
-        // this.scene.add(this.obs_woman_reference_mesh);
+        this.obs_woman_reference_mesh.visible = false
+        this.scene.add(this.obs_woman_reference_mesh)
 
         this.obstacleAvoidanceBehavior.active = false
 
-        // this.obstacleAvoidanceBehavior.brakingWeight = 0.05
         this.obstacleAvoidanceBehavior.dBoxMinLength = 0.1
+        // this.obstacleAvoidanceBehavior.brakingWeight = 0.05
         // this.obstacleAvoidanceBehavior.weight = 2
 
         this.woman_entity.smoother = new YUKA.Smoother(10)
@@ -291,7 +289,7 @@ export default class Woman
 
         if(this.time.ten_elapsed === 0){
 
-            this.woman_random()
+            this.play_random_run_anim()
 
         }
 

@@ -1,8 +1,5 @@
 {% extends 'base.html' %}
-
-
 {% load static %}
-
 {% block page_content %}
 
 
@@ -40,6 +37,7 @@
   </div>
 </div>
 
+
 {% include "loader.html" %}
 
 <!-- TILT SHIFT BLUR EFFECT OVERLAY -->
@@ -49,6 +47,7 @@
 {% include "save_score.html" %}
 
 {% include "leaderboard.html" %}
+
 
 <div id="ZL_zombie_meter">
   <div id="ZL_zombie_meter_02">
@@ -98,7 +97,6 @@
 
   {% include "points_ui.html" %}
 
-
 </div>
 
 
@@ -107,6 +105,7 @@
 
 
 <!-- THREEJS CANVAS -->
+
 <div id="zombieland_container">
     <canvas class="experience-canvas"></canvas>
 </div>
@@ -126,9 +125,9 @@
 
 
 
-
 <!-- GOOGLE CHROME - three.js module only works in chrome if i import modules via importmap -->
 <script type="importmap">
+
     {
       "imports": {
         "three": "/static/three/build/three.module.js",
@@ -141,9 +140,11 @@
         "OrbitControls": "/static/three/examples/jsm/controls/OrbitControls.js"
       }
     }
+
 </script>
 
 <script>
+
   // Add leaderboard to global so we can access it to calculate a users ranking.
   const leaderboard_ranks_str = "{{ leaderboard_ranks }}"
   const leaderboard_ranks = JSON.parse(leaderboard_ranks_str) // convert to Array.
@@ -164,13 +165,11 @@
 
 <script type="module" src="{% static 'js/main.js' %}"></script>
 
-
 <!-- LINK TO TILT SHIFT EFFECT scss -->
 {% load compress %}
 {% compress css %}
   <link rel="stylesheet" type="text/x-scss" href="{% static 'scss/tilt_shift.scss' %}" />
 {% endcompress %}
-
 
 
 {% endblock %}

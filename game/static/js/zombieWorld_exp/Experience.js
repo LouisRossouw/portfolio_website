@@ -10,6 +10,7 @@ import Resources from "./Utils/Resources.js";
 import Camera from "./Camera.js";
 import Renderer from "./Renderer.js";
 import Settings from "./Settings.js";
+import Debug from "./Debug.js";
 
 import SteeringBehavior from "./World/SteeringBehavior.js";
 import World from "./World/World.js";
@@ -17,23 +18,26 @@ import assets from "./Utils/assets.js";
 
 import { start_text } from './Utils/utils.js';
 
+
+
 export default class Experience extends THREE.EventDispatcher{
 
     static instance
     constructor(canvas, container){
         super()
-
         
         if (Experience.instance){
             return Experience.instance
         }
+
+        this.isMobile = window.innerWidth <= 800
 
         Experience.instance = this
         this.canvas = canvas
         this.container = container
         this.scene = new THREE.Scene()
         this.settings = new Settings()
-        // this.gui = new dat.GUI()
+
         this.time = new Time()
         this.sizes = new Sizes()
         this.steeringBehavior = new SteeringBehavior()
@@ -42,16 +46,14 @@ export default class Experience extends THREE.EventDispatcher{
         this.resources = new Resources(assets)
         this.textureLoader = new THREE.TextureLoader()
         this.world = new World()
-
+        this.gui = new Debug()
         this.game_active = false
 
-        // this.gui.visible = false
 
         // Statistics FPS
         this.stats = new stat()
         this.stats.showPanel(0) // 0: fps, 1: ms, 2: mb, 3+: custom
         // document.body.appendChild(this.stats.dom)
-
 
         this.time.addEventListener("update", ()=>{
             this.update();
@@ -60,21 +62,31 @@ export default class Experience extends THREE.EventDispatcher{
             this.resize();
         })
 
+
+        // instructions
+        this.start_game_element = document.getElementById("start_game")
+
+        this.ZL_ui_play_button = document.getElementById("ZL_ui_play_button")
+
+        // Leaderboard
+        this.ZL_leaderBoard_ui = document.getElementById("ZL_leaderBoard_ui")
+        this.ZL_leaderBoard_save_ui = document.getElementById("ZL_leaderBoard_save_ui")
+        this.ZL_ui_leaderboard_button = document.getElementById("ZL_ui_leaderboard_button")
+
+        // points UI / stats
+        this.ZL_ui_stats_row = document.getElementById("ZL_ui_stats_row")
+        this.zombieland_point = document.getElementById('zombieland_point')
     }
 
     
     show_instructions(){
 
-        // Hide play button
-        document.getElementById("ZL_ui_play_button").style.display = "none"
-        document.getElementById("ZL_ui_leaderboard_button").style.display = "none"    
+        this.ZL_ui_play_button.style.display = "none"
+        this.ZL_ui_leaderboard_button.style.display = "none"    
+        this.ZL_leaderBoard_ui.style.display = "none"
+        this.start_game_element.style.display = "block"
 
-        // Hide leaderboard
-        document.getElementById("ZL_leaderBoard_ui").style.display = "none"
-
-        // Show instructions and start button.
-        document.getElementById("start_game").style.display = "block"
-
+        // Animated text that appears after clicking the play button.
         start_text("ignore_this_argument", "ZL_instructions")
 
     }
@@ -83,17 +95,12 @@ export default class Experience extends THREE.EventDispatcher{
     start_game(){
 
         this.dispatchEvent({ type: 'start_game' });
+
         this.game_active = true
-
-        // Hide leaderboard
-        document.getElementById("ZL_leaderBoard_ui").style.display = "none"
-
-        // Hide play button
-        document.getElementById("ZL_ui_play_button").style.display = "none"
-        document.getElementById("start_game").style.display = "none"
-
-        // Show running game ui, points / timer / lives etc
-        document.getElementById("ZL_ui_stats_row").style.display = "block"
+        this.ZL_leaderBoard_ui.style.display = "none"
+        this.ZL_ui_play_button.style.display = "none"
+        this.start_game_element.style.display = "none"
+        this.ZL_ui_stats_row.style.display = "block"
 
     }
 
@@ -102,33 +109,31 @@ export default class Experience extends THREE.EventDispatcher{
 
         this.game_active = false
         this.camera.auto_play = true
-
-        document.getElementById("ZL_ui_stats_row").style.display = "none"
-        document.getElementById('zombieland_point').innerHTML = 0
+        this.ZL_ui_stats_row.style.display = "none"
+        this.zombieland_point.innerHTML = 0
 
     }
 
     
     close_save_form(){
 
-        document.getElementById("ZL_ui_play_button").style.display = "none"
-        document.getElementById("ZL_leaderBoard_save_ui").style.display = "none"
-        document.getElementById("ZL_leaderBoard_ui").style.display = "block"  
-
+        this.ZL_ui_play_button.style.display = "none"
+        this.ZL_leaderBoard_save_ui.style.display = "none"
+        this.ZL_leaderBoard_ui.style.display = "block"  
 
     }
 
 
     close_leaderboard(){
 
-        document.getElementById("ZL_leaderBoard_ui").style.display = "none"
+        this.ZL_leaderBoard_ui.style.display = "none"
 
         if(this.game_active === false){
-            document.getElementById("ZL_ui_play_button").style.display = "block"
-            document.getElementById("ZL_ui_leaderboard_button").style.display = "block"
+            this.ZL_ui_play_button.style.display = "block"
+            this.ZL_ui_leaderboard_button.style.display = "block"
         } else{
-            document.getElementById("ZL_ui_play_button").style.display = "none"       
-            document.getElementById("ZL_ui_leaderboard_button").style.display = "none"       
+            this.ZL_ui_play_button.style.display = "none"       
+            this.ZL_ui_leaderboard_button.style.display = "none"       
         }
 
     }
@@ -136,9 +141,9 @@ export default class Experience extends THREE.EventDispatcher{
 
     show_leaderboard(){
 
-        document.getElementById("ZL_leaderBoard_ui").style.display = "block" 
-        document.getElementById("ZL_ui_play_button").style.display = "none"
-        document.getElementById("ZL_ui_leaderboard_button").style.display = "none"
+        this.ZL_leaderBoard_ui.style.display = "block" 
+        this.ZL_ui_play_button.style.display = "none"
+        this.ZL_ui_leaderboard_button.style.display = "none"
 
     }
 
