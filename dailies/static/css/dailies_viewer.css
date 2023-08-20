@@ -181,6 +181,21 @@
 }
 
 
+
+
+.DLS_VW_task_position{
+    position: relative;
+    float: left;
+    margin-left: 5px;
+}
+.DLS_VW_task{
+    position: absolute;
+    top: 25px;
+    opacity: 0.4;
+}
+
+
+
 /* USER COMMENTS **********************************************/
 
 #user_comment{

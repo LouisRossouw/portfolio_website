@@ -15,7 +15,7 @@
                     <th style="width:25px; border-left: none;"></th>
                     <th style="width:200px;">Project</th>
                     <th style="width:35px;">Type</th>
-                    <th style="width:50px;">Studio</th>
+                    <th style="width:17px;">Studio</th>
                     <th style="width:50px;">Status</th>
                     <th style="width:75px;">Date</th>
                     <th>Comment</th>
@@ -39,7 +39,7 @@
 
                         <td style="width:200px;">{{ capture.project }}_{{ capture }}_{{ capture.version }}</td>
                         <td style="width:35px; overflow: hidden;">{{ capture.task_type }}</td>
-                        <td style="width:50px;">{{ capture.project.studio_name }}</td>
+                        <td style="width:17px; text-align: center;"><img class="software_item" src="/media/dailies/{{ capture.project.studio_name }}.png" width="17" height="17"></img></td> 
                         <td style="width:50px;">{{ capture.status }}</td>
                         <td style="width:75px;">{{ capture.date_time.date|date:"d.m.y" }}</td>
                         <td>{{ capture.description }}</td>
@@ -71,6 +71,7 @@
 
 // Pass IP to JS,so user can remove their own comments.
 var user_ip = "{{ user_ip }}";
+var UUID = "{{ UUID }}";
 
 </script>
 

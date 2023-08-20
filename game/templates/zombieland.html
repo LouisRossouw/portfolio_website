@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block page_content %}
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
+
+<div class="ZL_top">
+  <div class="ZL_row">
+  <div class="ZL_logo" id="ZL_logo">
+
+    <div class="logo_icons">
+
+      <img class="ZL_profile_pic" id="contact_img_01" src="{% static 'images/icons/pixl_play_FR_01.svg' %}" style="margin: auto;"></img>
+      <img class="ZL_profile_pic" id="contact_img_02" src="{% static 'images/icons/pixl_play_FR_02.svg' %}" style="display: none; margin: auto;"></img>
+
+      <ul class="socials">
+        <a href="https://www.linkedin.com/in/louisrossouw636/" target="_blank">
+          <i class="fa-brands fa-linkedin fa-2xl" aria-hidden="true"></i>
+        </a>
+        <a href="https://github.com/LouisRossouw" target="_blank">
+          <i class="fa-brands fa-github fa-2xl " aria-hidden="true"></i>
+        </a>
+        <a href="https://www.imdb.com/name/nm11179176/?ref_=ra_sb_ln" target="_blank">
+          <i class="fa-brands fa-imdb fa-2xl" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.youtube.com/user/kwelapies" target="_blank">
+          <i class="fa-brands fa-youtube fa-2xl" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.instagram.com/boxbloxx/" target="_blank">
+          <i class="fa-brands fa-instagram fa-2xl" aria-hidden="true"></i>
+        </a>
+      </ul>
+
+    </div>
+
+  </div>
+</div>
+
+
+{% include "loader.html" %}
+
+<!-- TILT SHIFT BLUR EFFECT OVERLAY -->
+<div class="tiltShift_effect"></div>
+
+
+{% include "save_score.html" %}
+
+{% include "leaderboard.html" %}
+
+
+<div id="ZL_zombie_meter">
+  <div id="ZL_zombie_meter_02">
+  </div>
+</div>
+
+
+<div class="start_game_container" style="display: block;">
+  <div id="start_game">
+    <div id="ZL_instructions"></div>
+
+    <div class="ZL_button_container" onclick="experience.start_game()">
+      <div id="ZL_start">Start</div>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="ZL_game_ui_container" id="ZL_play_ui" style="display: none;">
+
+  {% if show_leaderboard == True %}
+
+    <div class="ZL_game_ui_row">
+      
+      <div id="ZL_ui_play_button" style="display: none;" onclick="experience.show_instructions()">
+        <h1>Play</h1>
+      </div>
+      <div id="ZL_ui_leaderboard_button" style="display: none;" onclick="experience.show_leaderboard()">
+        <h1><i class="fa-solid fa-ranking-star"></i></h1>
+      </div>
+    </div>
+
+  {% else %}
+
+    <div class="ZL_game_ui_row">
+
+      <div id="ZL_ui_play_button" style="display: block;"  onclick="experience.show_instructions()">
+        <h1>Play</h1>
+      </div>
+      <div id="ZL_ui_leaderboard_button" style="display: block;"  onclick="experience.show_leaderboard()">
+        <h1><i class="fa-solid fa-ranking-star"></i></h1>
+      </div>
+    </div>
+
+  {% endif %}
+
+  {% include "points_ui.html" %}
+
+</div>
+
+
+
+
+
+
+<!-- THREEJS CANVAS -->
+
+<div id="zombieland_container">
+    <canvas class="experience-canvas"></canvas>
+</div>
+
+
+<div class="bottom_gradient">
+</div>
+
+<!-- GAME OVVER OVERLAY -->
+<div id='ZL_glow_effect'>
+  <div class='ZL_row_glow'>
+    <div class='ZL_glow'>Game Over!</div>
+  </div>
+</div>  
+
+
+
+
+
+<!-- GOOGLE CHROME - three.js module only works in chrome if i import modules via importmap -->
+<script type="importmap">
+
+    {
+      "imports": {
+        "three": "/static/three/build/three.module.js",
+        "yuka": "/static/three/yuka/build/yuka.module.js",
+        "skeletonUtils": "/static/three/examples/jsm/utils/SkeletonUtils.js",
+        "dat": "/static/three/lil-gui/dist/lil-gui.esm.js",
+        "stats": "/static/three/stats/src/Stats.js",
+        "GLTFLoader": "/static/three/examples/jsm/loaders/GLTFLoader.js",
+        "DRACOLoader": "/static/three/examples/jsm/loaders/DRACOLoader.js",
+        "OrbitControls": "/static/three/examples/jsm/controls/OrbitControls.js"
+      }
+    }
+
+</script>
+
+<script>
+
+  // Add leaderboard to global so we can access it to calculate a users ranking.
+  const leaderboard_ranks_str = "{{ leaderboard_ranks }}"
+  const leaderboard_ranks = JSON.parse(leaderboard_ranks_str) // convert to Array.
+  const is_personal_best = "{{ is_personal_best }}"
+  const is_naughty = "{{ is_naughty }}"
+  const censored_text = "{{ censored_text }}"
+
+  // After user saves a re-direct occures, If False, warn the user their score was not saved 
+  // Because it was not a new personal best score.
+  if (is_personal_best == "False"){
+    alert("Beat your old score to save it to the Leaderboard!")
+  }
+  if (is_naughty == "True"){
+    alert(censored_text + " ? Hey, No naughty words in my portfolio, your score will not be saved. =)")
+  }
+
+</script>
+
+<script type="module" src="{% static 'js/main.js' %}"></script>
+
+<!-- LINK TO TILT SHIFT EFFECT scss -->
+{% load compress %}
+{% compress css %}
+  <link rel="stylesheet" type="text/x-scss" href="{% static 'scss/tilt_shift.scss' %}" />
+{% endcompress %}
+
+
+{% endblock %}

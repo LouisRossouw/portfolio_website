@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200&display=swap');
 
+*{
+    max-width: 3000px;
+}
+
 html{
     -webkit-tap-highlight-color: transparent;
 }
@@ -20,7 +24,8 @@ li, a, button{
     align-items: center;
     overflow: hidden;
     background-image: linear-gradient(to top, rgba(255,0,0,0), rgb(0, 0, 0));
-    background-image: grad;
+    /* background-image: grad; */
+    /* background-color: black; */
     padding:  0% 10vw;
     width: 100vw;
 }
@@ -127,6 +132,17 @@ li, a, button{
 /* ###############################################  Normal Monitor */
 @media (max-width: 1418px) and (min-width: 1000px) {
 
+.navbar_header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    background-image: linear-gradient(to top, rgba(255,0,0,0), rgb(0, 0, 0));
+    background-image: grad;
+    padding:  0% 7vw;
+    width: 100vw;
+}
+
 .hamburger{
     display: none;
     z-index: 15;
@@ -175,16 +191,9 @@ li, a, button{
 }
 
 
-.navbar_header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    overflow: hidden;
-    background-image: linear-gradient(to top, rgba(255,0,0,0), rgb(0, 0, 0));
-    background-image: grad;
-    padding:  0% 7vw;
-    width: 100vw;
-}
+
+
+
 }
 
 
@@ -485,7 +494,7 @@ li, a, button{
     margin-top: -10px;
     width: 100vw;
     float: left;
-    margin-left: -10px;
+    margin-left: 0px;
 
 
 }

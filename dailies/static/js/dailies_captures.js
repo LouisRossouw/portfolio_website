@@ -139,7 +139,10 @@ function generate_comments(commento){
     for (var i = 0; i < commento.length; i++) {
         var pk = commento[i].pk;
         var comment = commento[i].fields;
-        var comment_ip = comment.user_ip
+        var comment_uuid = comment.UUID
+
+
+
 
 // row
         var DLS_VW_description = document.createElement('div');
@@ -173,7 +176,7 @@ function generate_comments(commento){
         DLS_VW_comment.appendChild(p_tag);
 
         // If user created comment, then highlight it and allow user to remove it.
-        if (user_ip === comment_ip){
+        if (UUID === comment_uuid){
             p_tag.style.color = "rgb(205, 253, 255)";
             var comment_id = "toRemove_id_" + pk; // Generate ID based off user IP so comment can be removed by anon user.
             DLS_VW_description.setAttribute("id", comment_id)

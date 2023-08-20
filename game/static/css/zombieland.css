@@ -1,0 +1,431 @@
+
+body {
+    /* overflow: hidden; */
+    padding: 0px;
+    margin: 0px;
+}
+
+.start_game_container{
+    z-index: 50;
+    position: fixed;
+    margin: auto;
+    width: 100%;
+    top: 10vh;
+    margin: auto;
+    margin-top: 25vh;
+    margin-bottom: 50vh;
+    font-weight:lighter;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+#start_game{
+    display: none;
+    margin: auto;
+    width: 250px;
+    font-size: 25px;
+    text-align: center;
+    color: white;
+    width: 400px;
+    height: 350px;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(15px);
+    border-radius: 10px;
+}
+
+
+#ZL_instructions{
+    padding: 5px;
+}
+  
+
+.ZL_button_container{
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 25px;
+    width: 100%;
+    font-weight:lighter;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+#ZL_start{
+    margin: auto;
+    width: 80%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+
+#ZL_start:hover{
+    border-color: white;
+    cursor: pointer;
+}
+  
+  
+.ZL_game_ui_container{
+    z-index: 10;
+    position: fixed;
+    color: white;
+    width: 100%;
+    top: 80vh;
+    font-weight:lighter;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+  
+
+.ZL_game_ui_row{
+    margin: auto;
+    width: 500px;
+}
+  
+  
+#ZL_ui_play_button{
+    display: block;
+    margin: auto;
+    width: 50%;
+    float: left;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(107, 107, 107, 0.1);
+    border-radius: 10px;
+}
+
+
+#ZL_ui_play_button:hover{
+    border-color: rgb(213, 255, 249);
+    color: rgb(157, 253, 242);
+    cursor: pointer;
+    animation: socials_animate 2s infinite alternate;   
+}
+
+
+#ZL_ui_leaderboard_button{
+    display: block;
+    margin: auto;
+    width: 50%;
+    float: left;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(107, 107, 107, 0.1);
+    border-radius: 10px;
+}
+
+
+#ZL_ui_leaderboard_button:hover{
+    border-color: rgb(213, 255, 249);
+    color: rgb(157, 253, 242);
+    cursor: pointer;
+    animation: socials_animate 2s infinite alternate;   
+}
+  
+
+.ZL_row{
+    color: white;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 14px;
+    background: none;
+    float: left;
+    width: 100%;
+    padding: 0px;
+    padding-left: 10px;
+    height: 425px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    z-index: 10;
+    position: fixed;
+}
+  
+
+.ZL_logo{
+    margin: auto;
+    width: 500px;
+}
+  
+
+.ZL_profile_pic{
+    display: block;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    padding-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    padding-right: 10px;
+}
+  
+
+.bottom_gradient{
+    height: 300px;
+    width: 100%;
+    position: fixed;
+    left: 0px;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+  
+
+#zombieland_container{
+      position: fixed;
+      z-index: -100;
+      width: 100%;
+      height: 100%;
+      color: white;
+      margin: auto;
+      margin-top: 0px;
+      max-width: 3000px;
+      max-height: 2000px;
+      min-height: 1000px;
+}
+
+
+.experience-canvas{
+      border-radius: 15px;
+}
+  
+
+  /* Glow death */
+#ZL_glow_effect{
+    display: none;
+    position: fixed;
+    top: 50%;
+    transform: translate();
+    width: 100%;
+    text-align: center;
+    color: #ffff;
+    font-family: sans-serif;
+    font-size: 50px;
+    margin: 0;
+    padding: 0px, 0;
+    text-transform: uppercase;
+    opacity: 1;
+    font-weight:lighter;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+  
+  
+.ZL_glow {
+    position: relative;
+    color : #ffffff;
+    border-radius : 10px;
+    margin-left: 0px;
+}
+  
+    
+.ZL_glow:before, .ZL_glow:after {
+    content: '';
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    background: linear-gradient(to right, #f20000, #a605e6, #f20000);
+    background-size: 200%;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    z-index: -1;
+    border-radius : 10px;
+    border-radius: inherit;
+    animation: steam 0s infinite alternate;
+}
+    
+  
+@keyframes steam {
+    0% {
+        background-position: 0 0; 
+    }
+    50% {
+        background-position: 400% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+  
+    
+.ZL_glow:after {
+    filter: blur(200px);
+}
+
+
+
+#ZL_zombie_meter{
+    position: fixed;
+    color: white;
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    top: 73vh;
+}
+
+
+#ZL_zombie_meter_02{
+    display: flex;
+    flex-direction:row;
+    align-items: center; 
+    justify-content: center; 
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+
+#ZL_zombie_meter_02 i{
+    font-size: 20px;
+    padding: 10px;
+}
+
+
+
+
+
+/* ###############################################  Tablet / Mobile */
+@media (max-width: 850px){
+    
+.ZL_row{
+    color: white;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 14px;
+    background: none;
+    float: left;
+    width: 100%;
+    padding: 0px;
+    padding-left: 0px;
+    height: 300px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+
+
+.ZL_logo{
+    margin: auto;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+  
+
+.ZL_profile_pic{
+    display: block;
+    padding-top: 50px;
+    padding-bottom: 10px;
+    padding-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    width: 125px;
+    padding-right: 10px;
+}
+
+
+.ZL_game_ui_container{
+    z-index: 10;
+    position: fixed;
+    color: white;
+    width: 100%;
+    top: 70vh;
+    font-weight:lighter;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+.ZL_game_ui_row{
+    margin: auto;
+    width: 90%;
+}
+
+
+.start_game_container{
+    z-index: 50;
+    position: fixed;
+    margin: auto;
+    width: 100%;
+    top: 0vh;
+    font-weight:lighter;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: auto;
+    margin-top: 25vh;
+    margin-bottom: 50vh;
+}
+ 
+#start_game{
+    display: none;
+    margin: auto;
+    width: 100%;
+    font-size: 25px;
+    text-align: center;
+    color: white;
+    height: 350px;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(15px);
+    border-radius: 10px;
+}
+
+
+#ZL_ui_points_container{
+    display: none;
+    margin: auto;
+    width: 200px;
+    text-align: center;
+    border: 1px solid rgba(107, 107, 107, 0.2);
+    border-radius: 10px;
+    padding: 25px;
+}
+
+
+#ZL_ui_points_container h1{
+    margin: 0px;
+    padding: 5px;
+}
+
+
+}
+
+
+
+@media (max-width: 850px) and (min-width: 580px) {
+    
+}
+
+
+/* ###############################################  Normal Monitor */
+@media (max-width: 1418px) and (min-width: 851px) {
+
+.ZL_logo{
+    margin: auto;
+    width: 500px;
+}
+    
+
+.ZL_profile_pic{
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
+    padding-right: 10px;
+}
+
+    
+}
+
+
+/* ###############################################  Normal smaller height Monitor */
+@media (min-width: 1000px) and (max-height: 1000px) and (min-height: 600px) {
+
+    
+    .ZL_logo{
+        margin: auto;
+        width: 500px;
+    }
+        
+    .ZL_profile_pic{
+        display: block;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-bottom: auto;
+        margin-left: auto;
+        margin-right: auto;
+        width: 150px;
+        padding-right: 10px;
+    }
+    
+        
+}

@@ -1,0 +1,191 @@
+/* SAVE SCORE */
+
+#ZL_leaderBoard_save_ui{
+  display: none;
+  z-index: 50;
+  position: fixed;
+  margin: auto;
+  width: 100%;
+  top: 0vh;
+  margin: auto;
+  margin-top: 25vh;
+  margin-bottom: 50vh;
+}
+  
+
+#ZL_save_score_container{
+  margin: auto;
+  font-size: 15px;
+  text-align: center;
+  color: white;
+  width: 800px;
+  height: 500px;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(15px);
+  border-radius: 10px;
+}
+
+  
+#ZL_save_score_stats_row{
+  margin: auto;
+  width: 100%;
+  height: 100px;
+  padding: 25px;
+}
+  
+
+#ZL_save_score_stats_column_01, 
+#ZL_save_score_stats_column_02, 
+#ZL_save_score_stats_column_03{
+  width: 30%;
+  float: left;
+  height: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  margin: 5px;
+}
+
+
+#ZL_save_score_stats_column_01 h1, 
+#ZL_save_score_stats_column_02 h1, 
+#ZL_save_score_stats_column_03 h1{
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+
+#ZL_save_score_stats_column_01 i, 
+#ZL_save_score_stats_column_02 i, 
+#ZL_save_score_stats_column_03 i{
+  margin-top: 0px;
+  padding-top: 0px;
+  color: rgb(157, 253, 242);
+  cursor: pointer;
+  animation: socials_animate 1s infinite alternate;   
+}
+
+#ZL_save_score_message{
+  padding-top: 35px;
+}
+  
+  
+#ZL_save_score_container form{
+  padding: 10px;
+  align-items: left;
+  width: 100%;
+  bottom: 0;
+  margin-bottom: 15PX;
+}
+
+
+#ZL_save_score_container input{
+  width: 100%;
+}
+
+
+#ZL_save_score_container label{
+  float: left;
+}
+  
+
+#ZL_save_score_container button{
+  margin: auto;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  border: 1px solid rgba(107, 107, 107, 0.2);
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 10px;
+  font-size: 25px;
+  margin-top: 20px;
+  float: left;
+  width: 50%;
+} 
+
+
+#ZL_save_score_container button:hover{
+  border-color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+  
+
+#ZL_save_score_container select{
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  color: rgb(65, 65, 65);
+}
+  
+
+#ZL_save_score_container p{
+  padding: 10px;
+  margin: 0px;
+}
+  
+
+
+
+
+/* ###############################################  Tablet / Mobile */
+@media (max-width: 850px){
+
+#ZL_leaderBoard_save_ui{
+  display: none;
+  z-index: 25;
+  position: fixed;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  top: 5vh;
+  margin: auto;
+  margin-top: 0vh;
+  margin-bottom: 50vh;
+}
+  
+
+#ZL_save_score_container{
+  margin: auto;
+  font-size: 15px;
+  text-align: center;
+  color: white;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(15px);
+  border-radius: 10px;
+}
+
+  
+#ZL_save_score_stats_row{
+  margin: auto;
+  width: 100%;
+  height: 100px;
+  padding: 25px;
+}
+
+
+#ZL_save_score_stats_column_01, 
+#ZL_save_score_stats_column_02, 
+#ZL_save_score_stats_column_03{
+  width: 33.3%;
+  float: left;
+  height: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  margin: 0px;
+}
+
+
+  
+}
+      
+      
+  /* ###############################################  Large Mobile / Tablet */
+  @media (max-width: 850px) and (min-width: 580px) {
+  
+}
+      
+  /* ###############################################  Normal Monitor */
+  @media (max-width: 1418px) and (min-width: 851px) {
+  
+  
+}

@@ -2,6 +2,8 @@
 
 * {
     box-sizing:border-box;
+    margin-right: 0;
+    max-width: 3000px;
 }
 
 
@@ -12,6 +14,7 @@ html{
     scrollbar-color: rgb(29, 29, 29) rgb(0, 0, 0);
     padding-bottom: 500px;
 }
+
 
 /* Chrome, Safari */
 html::-webkit-scrollbar {
@@ -136,7 +139,11 @@ to {
     width: 33.3%;
     padding: 0px;
     padding-left: 10px;
-    height: 50vh;
+    height: 425px;
+
+    /* backdrop-filter: blur(5px);
+    filter: grayscale(50%); */
+    /* background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)); */
 }
 
 
@@ -148,7 +155,11 @@ to {
     float: left;
     width: 33.3%;
     padding: 10px;
-    height: 50vh;
+    height: 425px;
+
+    /* backdrop-filter: blur(5px); */
+    /* filter: grayscale(50%); */
+    /* background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)); */
 }
 
 .column_03{
@@ -160,7 +171,12 @@ to {
     width: 33.3%;
     padding: 10px;
     padding-left: 50px;
-    height: 50vh;
+    height: 425px;
+
+    /* backdrop-filter: blur(5px); */
+    /* filter: grayscale(50%); */
+    /* background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)); */
+
 }
 
 
@@ -311,6 +327,7 @@ to {
 
 
 .socials{
+
     margin-left: -50px;
     display: flex;
     justify-content: space-evenly;    
@@ -391,14 +408,12 @@ to {
 /* ###############################################  Tablet / Mobile */
 @media (max-width: 850px){
     
-    html,
-    body {
-        overflow-x: hidden;
-        overflow-y: scroll;
-        width: 99.3%;
-    }
-
-
+html,
+body {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 100%;
+}
 
 
 .bg_video{
@@ -507,6 +522,7 @@ to {
     float:left; 
     padding-left: 4%;
     margin-top: -5px;
+
 }
 
 .software{

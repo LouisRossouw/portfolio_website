@@ -1,9 +1,12 @@
 // Delay start video until the splash screen has cleared.
 const dailies_startVideo = async () => {
     let video = document.querySelector('.selected_media');
-    await video.play();
-    video.setAttribute('autoplay', true);
-}
+    if(window.location.pathname === "/dailies/"){
+        await video.play();
+        video.setAttribute('autoplay', true);
+    }
+    }
+
 
 dailies_startVideo();
 
@@ -18,16 +21,13 @@ function add_vote(element){
         if (this.readyState == 4 && this.status == 200) {
             var data = JSON.parse(this.responseText);
 
+            document.getElementById("DLS_VW_vote_count").innerHTML = data.total_votes;
+
         }
     }
     xhttp.open("GET", "/ajax_add_vote/?id=" + row_selected, true);
     xhttp.send();
 }
-
-
-
-
-
 
 
 

@@ -66,6 +66,10 @@ class SubmitDaily(forms.Form):
         ('Houdini', 'Houdini'),
         ('Blender', 'Blender'),
         ('3DS max', '3DS max'),
+        ('SubstancePainter', 'SubstancePainter'),
+        ('AfterEffects', 'AfterEffects'),
+        ('PhotoShop', 'PhotoShop'),
+        ('Vray', 'Vray'),
 
     ]
     software_used = forms.MultipleChoiceField(
