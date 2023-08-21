@@ -1,5 +1,5 @@
-import * as THREE from "three";
-import Experience from "./Experience.js";
+import * as THREE from "three"
+import Experience from "./Experience.js"
 import {OrbitControls} from "OrbitControls"
 
 
@@ -7,13 +7,13 @@ export default class Camera{
     
     constructor(){
 
-        this.experience = new Experience();
-        this.sizes = this.experience.sizes;
-        this.time = this.experience.time;
-        this.scene = this.experience.scene;
+        this.experience = new Experience()
+        this.sizes = this.experience.sizes
+        this.time = this.experience.time
+        this.scene = this.experience.scene
         this.settings = this.experience.settings
-        this.canvas = this.experience.canvas;
-        this.container = this.experience.container;
+        this.canvas = this.experience.canvas
+        this.container = this.experience.container
         this.steeringBehavior = this.experience.steeringBehavior
         this.world_speed = this.settings.world_speed[this.settings.world_speed_value] // Get speed settings
 
@@ -46,11 +46,11 @@ export default class Camera{
 
                 if(this.auto_play_updated === false){
 
-                    const x = (Math.random() - 0.5) * 25;
-                    const y = Math.random() * 0;
-                    const z = (Math.random() - 0.5) * 25;
+                    const x = (Math.random() - 0.5) * 25
+                    const y = Math.random() * 0
+                    const z = (Math.random() - 0.5) * 25
             
-                    this.steeringBehavior.target.position.set(x, y, z);
+                    this.steeringBehavior.target.position.set(x, y, z)
                     this.auto_play_updated = true
                 }
             }
@@ -65,29 +65,30 @@ export default class Camera{
 
         window.addEventListener('mousemove', (event) =>{
 
-            this.mouse_last_moved = Date.now();
+            this.mouse_last_moved = Date.now()
             this.auto_play = false
             this.auto_play_updated = true
 
             this.play_ui.style.display = "block"
 
-            this.cursor.x = (event.clientX / window.innerWidth) * 2 - 1;
-            this.cursor.y = -(event.clientY / window.innerHeight) * 2 + 1;
+            this.cursor.x = (event.clientX / window.innerWidth) * 2 - 1
+            this.cursor.y = -(event.clientY / window.innerHeight) * 2 + 1
 
-            this.raycaster.setFromCamera(this.cursor, this.perspectiveCamera);
+            this.raycaster.setFromCamera(this.cursor, this.perspectiveCamera)
 
             // Raycast / check intersects floor.
-            const intersects = this.raycaster.intersectObject(this.experience.world.floorMesh);
+            const intersects = this.raycaster.intersectObject(this.experience.world.floorMesh)
 
             if (intersects.length > 0) {
-                const intersectionPoint = intersects[0].point;
+
+                const intersectionPoint = intersects[0].point
 
                 const ball_x = intersectionPoint.x
-                const ball_y = 0
+                const ball_y = intersectionPoint.y + 1
                 const ball_z = intersectionPoint.z
                 
                 // Target follows user mouse - entity(woman) follows target.
-                this.steeringBehavior.target.position.copy({x: ball_x, y: ball_y, z: ball_z});
+                this.steeringBehavior.target.position.copy({x: ball_x, y: ball_y, z: ball_z})
               }
         })
     }
