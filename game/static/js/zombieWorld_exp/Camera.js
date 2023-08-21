@@ -71,8 +71,15 @@ export default class Camera{
 
             this.play_ui.style.display = "block"
 
-            this.cursor.x = (event.clientX / window.innerWidth) * 2 - 1
-            this.cursor.y = -(event.clientY / window.innerHeight) * 2 + 1
+            // For some reason im struggling to get the ball to sit exactly on the cursor.
+            // So this IF statement helps.
+            if(this.experience.isMobile){
+                this.cursor.x = (event.clientX / window.innerWidth) * 2 - 1
+                this.cursor.y = -(event.clientY / window.innerHeight) * 2 + 1
+            } else {
+                this.cursor.x = (event.clientX / this.container.offsetWidth) * 2 - 1
+                this.cursor.y = -(event.clientY / this.container.offsetHeight) * 2 + 1.08
+            }
 
             this.raycaster.setFromCamera(this.cursor, this.perspectiveCamera)
 
@@ -84,7 +91,7 @@ export default class Camera{
                 const intersectionPoint = intersects[0].point
 
                 const ball_x = intersectionPoint.x
-                const ball_y = intersectionPoint.y + 1
+                const ball_y = 0
                 const ball_z = intersectionPoint.z
                 
                 // Target follows user mouse - entity(woman) follows target.
