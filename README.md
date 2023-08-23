@@ -1,5 +1,5 @@
 Personal portfolio with a Threejs zombie mini game as a landing page.
-All 3D assets are 3D modeled, rigged, and animated by myself.
+All 3D assets are modelled, rigged, and animated by myself.
 
 always under WIP.
 
