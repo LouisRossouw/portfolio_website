@@ -1,7 +1,9 @@
-import * as THREE from "three";
-import * as YUKA from "yuka";
-import Experience from "../Experience.js";
+import * as THREE from "three"
+import * as YUKA from "yuka"
+import Experience from "../Experience.js"
 import * as skeletonUtils from 'skeletonUtils'
+
+import * as zombie_utils from "../Utils/Zombie_utils.js"
 
 
 export default class Zombies extends THREE.EventDispatcher
@@ -10,31 +12,37 @@ export default class Zombies extends THREE.EventDispatcher
     {
         super();
 
-        this.experience = new Experience();
-        this.scene = this.experience.scene;
+        this.experience = new Experience()
+        this.scene = this.experience.scene
         this.settings = this.experience.settings
-        this.time = this.experience.time;
-        this.resources = this.experience.resources;
-        this.textureLoader = this.experience.textureLoader;
+        this.time = this.experience.time
+        this.resources = this.experience.resources
+        this.textureLoader = this.experience.textureLoader
         this.world_speed = this.settings.world_speed[this.settings.world_speed_value] // Get speed settings
         this.world = this.experience.world
-
-        // load zombie geo
-        this.zombie = this.resources.items.zombie;
-        this.zombie_mesh = this.zombie.scene;
+        this.woman_entity = this.experience.world.woman.woman_entity
 
         // entity manager needed for ai
         this.steeringBehavior = this.experience.steeringBehavior
         this.entityManager = this.steeringBehavior.entityManager
         this.obsticle_list = this.steeringBehavior.obsticle_list
 
+        // load zombie walkers files
+        this.zombie = this.resources.items.zombie
+        this.zombie_mesh = this.zombie.scene
+
+        // load zombie crawlers files
+        this.zombie_crawlers = this.resources.items.zombie_crawlers
+        this.zombie_crawlers_mesh = this.zombie_crawlers.scene
+
         this.zombie_list = []
-        this.animationActions = []; // Store the animation actions for each zombie
+        this.animationActions = [] // Store the animation actions for each zombie
 
         this.zombies_grp = null
 
-        this.set_zombies()
+        this.create_zombies()
     }
+
 
     reset_zombies(is_active, distance){
 
@@ -49,7 +57,7 @@ export default class Zombies extends THREE.EventDispatcher
             this.entityManager.remove(this.zombie_list[i])
 
         }
-
+        
         // Reset all the zombies.
         this.zombie_walk_walking_animations = []
         this.zombie_walk_death_animations = []
@@ -59,366 +67,241 @@ export default class Zombies extends THREE.EventDispatcher
         this.animationActions = []
 
         // Add fresh zombies.
-        this.set_zombies()
+        this.create_zombies()
         this.world.updateAllMaterials()
 
         // Random zombies spawn position and re-activate them.
-        for(let i = 0; i < this.zombie_list.length; i++){
-
-            const zombie_type = this.zombie_list[i].name.split("_")[1]
-            
-            var respawn_position_x = ((Math.random() - 0.5) * 50) + distance
-            var respawn_position_z = ((Math.random() - 0.5) * 50) + distance
-    
-            this.zombie_list[i].position.set(respawn_position_x, 0, respawn_position_z)
-
-            if(is_active){
-                this.zombie_list[i].active = true
-                this.zombie_list_geo[i].visible = true
-            } else {
-
-                this.zombie_list[i].active = false
-                this.zombie_list_geo[i].visible = false
-
-                if(zombie_type === "crawler"){
-                    this.zombie_list[i].active = true
-                    this.zombie_list_geo[i].visible = true   
-                }
-            }
-        }
+        zombie_utils.reset_respawn_zombies(this.zombie_list, this.zombie_list_geo, is_active, distance)
 
         this.zombie_list[0].active = true
         this.zombie_list_geo[0].visible = true
         this.zombie_list[0].position.set(10, 0, 0)
+
     }
 
-    
-    set_zombies(){
 
-        // Zombie Walkers ******
+    create_zombies(){
 
-        // Edit zombies material
-        this.zombie_mesh.traverse(function(geo){
-            if(geo.isMesh){
-                geo.castShadow = false
-                geo.receiveShadow = false;
-                geo.material.roughness = 1
-                geo.material.metalness = 0.5
-            }
-        })
-
-        // Change zombie materials (this is tmp)
-        this.zombie_mesh.traverse((child) => {
-            if (child instanceof THREE.Mesh){
-                const newmaterial = new THREE.MeshStandardMaterial({
-                    color: 'rgb(70, 100, 85)',
-                    roughness: 1,
-                    metalness: 0.2,
-                    })
-                child.material = newmaterial
-            }
-        })
-
-        // Sort animation clips:
-        this.zombie_walk_walking_animations = []
-        this.zombie_walk_death_animations = []
-        
-        for(let i = 0; i < this.zombie.animations.length; i++){
-
-            const anim_clip = this.zombie.animations[i]
-
-            var type = anim_clip.name.split("_")[2] // anim type: death / walking etc
-
-            if(type === "walking"){
-                this.zombie_walk_walking_animations.push(anim_clip)
-            }
-            else if(type == "death" ){
-                this.zombie_walk_death_animations.push(anim_clip)
-            }
-        }
-
-        this.death_animations_count = this.zombie_walk_death_animations.length
-
-
-        // Zombie animations
-        this.zombies_grp = new THREE.AnimationObjectGroup()
-        this.mixer = new THREE.AnimationMixer(this.zombies_grp)
-
-        const zombieCount = this.zombie_walk_walking_animations.length;
-
-        const zombie_count = this.world_speed.zombie_count
-        this.spawn_distance = this.world_speed.zombie_spawn_distance
-        const devide_by = 10
-
-        const alignmentBehavior = new YUKA.AlignmentBehavior()
-        alignmentBehavior.weight = 0.5 / devide_by
-
-        const cohesionBehaviour = new YUKA.AlignmentBehavior()
-        cohesionBehaviour.weight = 0.5 / devide_by
-
-        const seperationBehaviour = new YUKA.SeparationBehavior()
-        seperationBehaviour.weight = 0.001
-
-        const z_bounding_box_mat = new THREE.MeshBasicMaterial({ color: 'green', transparent: true, opacity: 0.5 });
+        // General Setup.
 
         this.zombie_list_geo = []
         this.zombie_bounding_box_list = []
-        this.zombieKilled = new Array(this.zombie_bounding_box_list.length).fill(false);
+        this.zombieKilled = new Array(this.zombie_bounding_box_list.length).fill(false)
+
+        const z_bounding_box_mat = new THREE.MeshBasicMaterial({ 
+            color: 'green', 
+            transparent: true, 
+            opacity: 0.5 
+        })
+
+        // Create a zombie shadow using a plane geo and texture with alpha.
+        const textureLoader = new THREE.TextureLoader();
+        const simpleShadow = textureLoader.load('/static/textures/simpleShadow.jpg');
+        const shadow_geo = new THREE.PlaneGeometry(0.07, 0.07);
+        const shadow_material = new THREE.MeshBasicMaterial({ 
+            color: 'black', 
+            alphaMap: simpleShadow, 
+            transparent: true,
+            opacity: 0.6,
+            blendEquation: THREE.AdditiveBlending,
+            depthWrite: false,
+        });
+
+        // Mesh and Material setup for zombies.
+        zombie_utils.set_zombie_mesh(this.zombie_mesh)
+        
+        // Sort zombie walk and death animation clips into seperate arrays.
+        this.zombie_animation_clips = zombie_utils.sort_animation_clips(this.zombie.animations)
+        
+        // ************
+        //
+        //
+        // 01 *** Zombie Walkers ******
+
+        // Animation Mixer and zombie object groups.
+        this.zombies_grp = new THREE.AnimationObjectGroup()
+        this.mixer = new THREE.AnimationMixer(this.zombies_grp)
+
+        const zombie_count = this.world_speed.zombie_count
+        const spawn_distance = this.world_speed.zombie_spawn_distance
+
+        // Set settings for general yuka behaviour, returns a dict to apply to each zombie in set_yuka_entity_behaviour().
+        const yuka_behaviors_settings = zombie_utils.set_yuka_walker_behaviour(zombie_count, spawn_distance)
 
         // Generate zombie clones.
         for(let i = 0; i < zombie_count; i++){
 
             this.zombie_geo = skeletonUtils.clone(this.zombie_mesh)
-            this.scene.add(this.zombie_geo)
-            this.zombies_grp.add(this.zombie_geo)
-
-            // Calculate the index of the animation clip based on the current zombie index
-            const clipIndex = i % zombieCount;
-            const clip = this.zombie_walk_walking_animations[clipIndex];
-
-            // Create a separate AnimationAction for each zombie
-            const action = this.mixer.clipAction(clip, this.zombie_geo);
-
-            // Set the starting time of the animation to introduce the offset
-            action.time = Math.random() * 10;
-
-            // Play the animation
-            action.play();
-
-            // Store the action in the array for later reference
-            this.animationActions.push(action);
-                        
-            // Zombie AI
             this.zombie_geo.matrixAutoUpdate = false
 
-            this.zombie_entity = new YUKA.Vehicle()
-            this.zombie_entity.name = `zombie_walker_${i}`
-            this.zombie_entity.scale.set(10, 10, 10)
+            // Set Animation clip to a zombie.
+            const action = zombie_utils.set_zombie_animation(
+                i, 
+                this.mixer, 
+                this.zombie_animation_clips.walkingAnimations, 
+                this.zombie_geo
+            )
+
+            // ****** Zombie Yuka behaviour **********
+
+            // Set Yuka behaviour to a zombie.
+            this.zombie_entity = zombie_utils.set_yuka_entity_behaviour(
+                i, 
+                yuka_behaviors_settings, 
+                this.woman_entity, 
+                this.obsticle_list,
+                true,
+                "walker"
+            )
+
+            // Add zombie entity (vehicle) to the entityManager and rendercomponent
+            this.entityManager.add(this.zombie_entity)
             this.zombie_entity.setRenderComponent(this.zombie_geo, this.steeringBehavior.sync)
 
-            this.zombie_entity.smoother = new YUKA.Smoother(10)
-
-            // // Add zombie entity (vehicle) to the entityManager
-            this.entityManager.add(this.zombie_entity)
-
-            this.wanderBehavior = new YUKA.WanderBehavior()
-            this.zombie_entity.steering.add(this.wanderBehavior);
-
-            this.wanderBehavior.weight = Math.random() / devide_by
-
-            this.zombie_entity.updateNeighborhood = true
-            this.zombie_entity.updateNeighborhood = Math.random() / devide_by
-            
-            this.zombie_entity.steering.add(alignmentBehavior)
-            this.zombie_entity.steering.add(cohesionBehaviour)
-            this.zombie_entity.steering.add(seperationBehaviour)
-
-            // Zombie speed - slightly random
-            this.zombie_entity.maxSpeed =  Math.random() * (0.9 - 0.2) + 0.1 * this.world_speed.zombie_speed;
-
-            this.zombie_entity.position.x = (Math.random() - 0.5) * this.spawn_distance
-            this.zombie_entity.position.z = (Math.random() - 0.5) * this.spawn_distance
-
-
-            this.zombie_entity.rotation.fromEuler(0, 2 * Math.PI * Math.random(), 0)
-
-            this.seekBehavior = new YUKA.SeekBehavior(this.experience.world.woman.woman_entity.position);
-            this.zombie_entity.steering.add(this.seekBehavior);
-
-            // Obstacle Avoidance
-            this.zombie_entity.boundingRadius = 0.1
-            this.obstacleAvoidanceBehavior = new YUKA.ObstacleAvoidanceBehavior(this.obsticle_list)
-            this.zombie_entity.steering.add(this.obstacleAvoidanceBehavior)
-
             // Create an obstacle sphere with the same radius as the bounding radius
-            const z_bounding_box_geo = new THREE.SphereGeometry(this.zombie_entity.boundingRadius, 6, 6);
-            this.z_bounding_box = new THREE.Mesh(z_bounding_box_geo, z_bounding_box_mat);
-            this.zombie_bounding_box_list.push(this.z_bounding_box)
-            // this.scene.add(this.z_bounding_box);
+            this.z_bounding_box = zombie_utils.set_bounding_box(this.zombie_entity, z_bounding_box_mat)
 
-            this.obstacleAvoidanceBehavior.active = true
+            // Set Zombie speed - slightly random
+            zombie_utils.set_zombie_attributes(
+                this.zombie_entity, 
+                this.world_speed.zombie_speed, 
+                spawn_distance
+            )
 
-            this.obstacleAvoidanceBehavior.brakingWeight = 0.05
-            this.obstacleAvoidanceBehavior.dBoxMinLength = 0.1
-            // this.obstacleAvoidanceBehavior.weight = 2
-    
-            // Fake SHADOW
-            const simpleShadow = this.textureLoader.load('/static/textures/simpleShadow.jpg')
-            this.shadow_geo = new THREE.PlaneGeometry(0.07, 0.07)
-            this.shadow_material = new THREE.MeshBasicMaterial({ 
-                color: 'black', 
-                alphaMap: simpleShadow, 
-                transparent: true,
-                opacity: 0.6,
-                blendEquation: THREE.AdditiveBlending,
-                depthWrite: false,
-            }),
+            // Add shadow - Clone / instance.
+            const shadow_mesh = zombie_utils.instance_zombie_shadow(shadow_geo, shadow_material)
 
-            this.shadow_mesh = new THREE.Mesh(this.shadow_geo, this.shadow_material)
-
-            this.shadow_mesh.rotation.x = - Math.PI / 2
-            this.shadow_mesh.position.y = 0.001
-
-            this.zombie_geo.add(this.shadow_mesh)
-
+            // Add to:
+            this.scene.add(this.zombie_geo)
+            // this.scene.add(this.z_bounding_box)
+            this.zombie_geo.add(shadow_mesh)
+            this.zombies_grp.add(this.zombie_geo)
+            this.animationActions.push(action)
             this.zombie_list.push(this.zombie_entity)
             this.zombie_list_geo.push(this.zombie_geo)
+            this.zombie_bounding_box_list.push(this.z_bounding_box)
 
         }
 
-
-
-
-
-        // Zombie Crawlers ******
-
-        // load zombie crawlers
-        this.zombie_crawlers = this.resources.items.zombie_crawlers;
-        this.zombie_crawlers_mesh = this.zombie_crawlers.scene;
-
-        // Edit zombies material
-        this.zombie_crawlers_mesh.traverse(function(geo){
-            if(geo.isMesh){
-                geo.castShadow = false
-                geo.receiveShadow = false;
-                geo.material.roughness = 1
-                geo.material.metalness = 0.5
-            }
-        })
-
-        // // Change zombie materials (this is tmp)
-        this.zombie_crawlers_mesh.traverse((child) => {
-            if (child instanceof THREE.Mesh){
-                const newmaterial = new THREE.MeshStandardMaterial({
-                    color: 'rgb(70, 100, 85)',
-                    roughness: 1,
-                    metalness: 0.2
-                    })
-                child.material = newmaterial
-            }
-        })
-
-        const w_clips = this.zombie_crawlers.animations
+        // ************
+        //
+        //
+        // 02 *** Zombie Crawlers ******
+        
+        // Mesh and Material setup for crawler zombies.
+        zombie_utils.set_zombie_mesh(this.zombie_crawlers_mesh)
 
         // Zombie crawl animations
         this.w_zombies_grp = new THREE.AnimationObjectGroup()
         this.mixer_crawl = new THREE.AnimationMixer(this.w_zombies_grp)
 
-        const w_zombieCount = w_clips.length;
-
         const w_zombie_count = 10
         const w_spawn_distance = 50
-        const w_devide_by = 100
 
-        const crawlers_alignmentBehavior = new YUKA.AlignmentBehavior()
-        crawlers_alignmentBehavior.weight = 0.5 / w_devide_by
-
-        const crawlers_cohesionBehaviour = new YUKA.AlignmentBehavior()
-        crawlers_cohesionBehaviour.weight = 0.5 / w_devide_by
-
-        const crawlers_seperationBehaviour = new YUKA.SeparationBehavior()
-        crawlers_seperationBehaviour.weight = 0.001
-
+        // Set settings for general yuka behaviour, returns a dict to apply to each zombie in set_yuka_entity_behaviour().
+        const yuka_behaviors_settings_crawlers = zombie_utils.set_yuka_crawler_behaviour(w_zombie_count, w_spawn_distance)
 
         // Generate zombie clones.
         for(let i = 0; i < w_zombie_count; i++){
 
             this.zombie_geo = skeletonUtils.clone(this.zombie_crawlers_mesh)
-            this.scene.add(this.zombie_geo)
-            this.w_zombies_grp.add(this.zombie_geo)
-
-            // Calculate the index of the animation clip based on the current zombie index
-            const clipIndex = i % w_zombieCount;
-            const clip = w_clips[clipIndex];
-
-            // Create a separate AnimationAction for each zombie
-            const action = this.mixer_crawl.clipAction(clip, this.zombie_geo);
-
-            // Set the starting time of the animation to introduce the offset
-            action.time = Math.random() * 10
-
-            // // Play the animation
-            action.play();
-
-            // Store the action in the array for later reference
-            this.animationActions.push(action);
-                        
-            // Zombie AI
             this.zombie_geo.matrixAutoUpdate = false
 
-            this.zombie_entity = new YUKA.Vehicle()
-            this.zombie_entity.name = `zombie_crawler_${i}`
-            this.zombie_entity.scale.set(10, 10, 10)
+            // Animation.
+            const action = zombie_utils.set_zombie_animation(
+                i, 
+                this.mixer_crawl, 
+                this.zombie_crawlers.animations, 
+                this.zombie_geo
+            )
+                        
+            // ****** Zombie AI **********
+
+            // Yuka behaviour setup.
+            this.zombie_entity = zombie_utils.set_yuka_entity_behaviour(
+                i, 
+                yuka_behaviors_settings_crawlers, 
+                this.woman_entity, 
+                this.obsticle_list,
+                false,
+                "crawler"
+            )
+
+            // Add zombie entity (vehicle) to the entityManager and rendercomponent
+            this.entityManager.add(this.zombie_entity)
             this.zombie_entity.setRenderComponent(this.zombie_geo, this.steeringBehavior.sync)
 
-            this.zombie_entity.smoother = new YUKA.Smoother(10)
+            // Create an obstacle sphere with the same radius as the bounding radius
+            this.z_bounding_box = zombie_utils.set_bounding_box(this.zombie_entity, z_bounding_box_mat)
 
-            // // Add zombie entity (vehicle) to the entityManager
-            this.entityManager.add(this.zombie_entity)
+            // Set Zombie speed - slightly random
+            zombie_utils.set_zombie_attributes(
+                this.zombie_entity, 
+                this.world_speed.zombie_speed, 
+                w_spawn_distance
+            )
 
-            this.wanderBehavior = new YUKA.WanderBehavior()
-            this.zombie_entity.steering.add(this.wanderBehavior);
-
-            this.wanderBehavior.weight = Math.random() / w_devide_by
-
-            this.zombie_entity.updateNeighborhood = true
-            this.zombie_entity.updateNeighborhood = Math.random() / w_devide_by
-            
-            this.zombie_entity.steering.add(crawlers_alignmentBehavior)
-            this.zombie_entity.steering.add(crawlers_cohesionBehaviour)
-            this.zombie_entity.steering.add(crawlers_seperationBehaviour)
-
-            // Zombie speed - slightly random
+            // Overide to slower.
             this.zombie_entity.maxSpeed =  0.2
 
-            this.zombie_entity.position.x = (Math.random() - 0.5) * w_spawn_distance
-            this.zombie_entity.position.z = (Math.random() - 0.5) * w_spawn_distance
+            // Add shadow - Clone / instance.
+            const shadow_mesh = zombie_utils.instance_zombie_shadow(shadow_geo, shadow_material)
 
-            this.zombie_entity.rotation.fromEuler(0, 2 * Math.PI * Math.random(), 0)
-
-            this.seekBehavior = new YUKA.SeekBehavior(this.experience.world.woman.woman_entity.position);
-            this.zombie_entity.steering.add(this.seekBehavior);
-    
-            // Obstacle Avoidance
-            this.zombie_entity.boundingRadius = 0.1
-            this.obstacleAvoidanceBehavior = new YUKA.ObstacleAvoidanceBehavior(this.obsticle_list)
-            this.zombie_entity.steering.add(this.obstacleAvoidanceBehavior)
-
-            this.obstacleAvoidanceBehavior.active = false
-
-            this.obstacleAvoidanceBehavior.brakingWeight = 0.05
-            this.obstacleAvoidanceBehavior.dBoxMinLength = 0.1
-            // this.obstacleAvoidanceBehavior.weight = 2
-
-            // Create an obstacle sphere with the same radius as the bounding radius
-            const z_bounding_box_geo = new THREE.SphereGeometry(this.zombie_entity.boundingRadius, 6, 6);
-            this.z_bounding_box = new THREE.Mesh(z_bounding_box_geo, z_bounding_box_mat);
+            // Add to:
+            this.zombie_geo.add(shadow_mesh)
+            // this.scene.add(this.z_bounding_box)
             this.zombie_bounding_box_list.push(this.z_bounding_box)
-            // this.scene.add(this.z_bounding_box);
-
-            // Fake SHADOW
-            const simpleShadow = this.textureLoader.load('/static/textures/simpleShadow.jpg')
-            this.shadow_geo = new THREE.PlaneGeometry(0.07, 0.07)
-            this.shadow_material = new THREE.MeshBasicMaterial({ 
-                color: 'black', 
-                alphaMap: simpleShadow, 
-                transparent: true,
-                opacity: 0.6,
-                blendEquation: THREE.AdditiveBlending,
-                depthWrite: false,
-            }),
-
-            this.shadow_mesh = new THREE.Mesh(this.shadow_geo, this.shadow_material)
-
-            this.shadow_mesh.rotation.x = - Math.PI / 2
-            this.shadow_mesh.position.y = 0.001
-
-            this.zombie_geo.add(this.shadow_mesh)
-
+            this.scene.add(this.zombie_geo)
+            this.w_zombies_grp.add(this.zombie_geo)
             this.zombie_list.push(this.zombie_entity)
             this.zombie_list_geo.push(this.zombie_geo)
+            this.animationActions.push(action)
 
         }
+    }
+
+
+    kill_zombie(i, zombie, zombie_geo){
+        // Kills a zombie when hit by the vehicle entity.
+
+        // Stop Yuka behaviour movement.
+        zombie.active = false
+
+        // Stop animation.
+        const action = this.animationActions[i]
+        action.stop()
+
+        // Play death anim.
+        const random_clip = i % this.zombie_animation_clips.deathAnimations.length
+        const death_anim = this.zombie_animation_clips.deathAnimations[random_clip]
+        
+        const deathAction = this.mixer.clipAction(death_anim, zombie_geo)
+        deathAction.setLoop(THREE.LoopOnce)
+        deathAction.timeScale = 0.7
+        deathAction.clampWhenFinished = true
+        deathAction.play()
+
+        // Delay before zombie respawn.
+        window.setTimeout(() =>{
+
+            var min_value = 50
+            var max_value = 100
+            var respawn_position_x = min_value + (Math.random() - 0.5) * (max_value - min_value)
+            var respawn_position_z = min_value + (Math.random() - 0.5) * (max_value - min_value)
+
+            this.zombie_list[i].position.set(respawn_position_x, 0, respawn_position_z)
+
+            // Re-activate Yuka behaviour movement
+            deathAction.stop()
+            deathAction.reset()
+            this.animationActions[i].play()
+            zombie.active = true
+
+            this.zombieKilled[i] = false
+
+        }, 2000)
+
+
     }
 
 
@@ -429,10 +312,10 @@ export default class Zombies extends THREE.EventDispatcher
     update(){
 
         if (this.mixer) {
-            this.mixer.update(this.time.delta * this.world_speed.zombie_anim_speed); // update animation mixer.
+            this.mixer.update(this.time.delta * this.world_speed.zombie_anim_speed) // Zombie Walker mixer
         }
         if (this.mixer_crawl) {
-            this.mixer_crawl.update(this.time.delta * 0.002); // update animation mixer.
+            this.mixer_crawl.update(this.time.delta * 0.002) // Zombie Crawler mixer
         }
 
 
@@ -456,53 +339,12 @@ export default class Zombies extends THREE.EventDispatcher
 
                 if(this.zombieKilled[i] !== true){
 
-                    // console.log('Killed!')
-                    this.zombieKilled[i] = true; // Mark the zombie as killed
-                    this.dispatchEvent({ type: 'zombie_killed' }); // Dispatch
-
-                    const kill_zombie = () => {
-
-                        // Stop Yuka behaviour movement.
-                        zombie.active = false
-
-                        // Stop animation.
-                        const action = this.animationActions[i]
-                        action.stop()
-
-                        // Play death anim.
-                        const random_clip = i % this.death_animations_count
-                        const death_anim = this.zombie_walk_death_animations[random_clip];
-                        
-                        const deathAction = this.mixer.clipAction(death_anim, zombie_geo);
-                        deathAction.setLoop(THREE.LoopOnce);
-                        deathAction.timeScale = 0.7;
-                        deathAction.clampWhenFinished = true;
-                        deathAction.play();
-
-                        // Delay before zombie respawn.
-                        window.setTimeout(() =>{
-
-                            var min_value = 50
-                            var max_value = 100
-                            var respawn_position_x = min_value + (Math.random() - 0.5) * (max_value - min_value)
-                            var respawn_position_z = min_value + (Math.random() - 0.5) * (max_value - min_value)
-        
-                            this.zombie_list[i].position.set(respawn_position_x, 0, respawn_position_z)
-
-                            // Re-activate Yuka behaviour movement
-                            deathAction.stop()
-                            deathAction.reset()
-                            this.animationActions[i].play()
-                            zombie.active = true
-
-                            this.zombieKilled[i] = false
-
-                        }, 2000)
-                };
-
-                kill_zombie()
+                    // Mark the zombie as killed
+                    this.zombieKilled[i] = true 
+                    this.dispatchEvent({ type: 'zombie_killed' })
+                    this.kill_zombie(i, zombie, zombie_geo)
+                }
             }
-        }
 
             const woman_boundingBox = this.experience.world.woman.obs_woman_reference_mesh
                 

@@ -67,7 +67,7 @@ export default class Settings{
             "woman_anim_speed": 0.002, 
             "world_speed": 0.0015, 
             "cam_speed": 1,
-            "zombie_count": 100,
+            "zombie_count": 150,
             "zombie_spawn_distance": 100,
         },
         {

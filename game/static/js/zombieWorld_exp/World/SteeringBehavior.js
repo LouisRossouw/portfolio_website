@@ -37,14 +37,14 @@ export default class SteeringBehavior
             new THREE.SphereGeometry(0.1, 6, 6), 
             new THREE.MeshBasicMaterial({color: 0xFFEA00})
         );
-        this.targetMesh.matrixAutoUpdate = false;
-        this.targetMesh.visible = true
-        // this.scene.add(this.targetMesh);
+        this.targetMesh.matrixAutoUpdate = false
+        this.targetMesh.visible = false
+        this.scene.add(this.targetMesh)
 
         // Add target to entity
-        this.target = new YUKA.GameEntity();
-        this.target.setRenderComponent(this.targetMesh, this.sync);
-        this.entityManager.add(this.target);
+        this.target = new YUKA.GameEntity()
+        this.target.setRenderComponent(this.targetMesh, this.sync)
+        this.entityManager.add(this.target)
 
     }
 

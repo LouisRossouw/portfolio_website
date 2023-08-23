@@ -38,6 +38,7 @@ export default class Camera{
         // Listen for the 'everyFiveSeconds' event
         this.time.addEventListener('everyFiveSeconds', () => {
 
+
             this.auto_play_updated = false
             this.mouse_moving = false
 
@@ -71,8 +72,7 @@ export default class Camera{
 
             this.play_ui.style.display = "block"
 
-            // For some reason im struggling to get the ball to sit exactly on the cursor.
-            // So this IF statement helps.
+            // TMP fix, for: when changing between mobile view and desktop the position is not exact on the cursor.
             if(this.experience.isMobile){
                 this.cursor.x = (event.clientX / window.innerWidth) * 2 - 1
                 this.cursor.y = -(event.clientY / window.innerHeight) * 2 + 1
