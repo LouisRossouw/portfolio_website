@@ -1,11 +1,10 @@
-import * as THREE from "three";
-// import * as TWEEN from "tween";
-import Experience from "../Experience.js";
+import * as THREE from "three"
+import Experience from "../Experience.js"
 
-import Nissan from "./Nissan.js";
-import Zombies from "./Zombies.js";
-import Woman from "./Woman.js";
-import Game from "./Game.js";
+import Nissan from "./Nissan.js"
+import Zombies from "./Zombies.js"
+import Woman from "./Woman.js"
+import Game from "./Game.js"
 
 export default class World{
     constructor(){
@@ -87,7 +86,6 @@ export default class World{
 
         this.scene.add(this.clouds_all)
 
-
         if(this.experience.isMobile){
             this.clouds_all.visible = false
         }
@@ -138,12 +136,12 @@ export default class World{
     set_env(){
 
         // Create the floor geometry
-        this.floorGeometry = new THREE.PlaneGeometry(50, 50); // Specify the width and height of the floor
-        this.floorMaterial = new THREE.MeshStandardMaterial({ color: "rgb(10,10,10)", roughness: 1, metalness: 0 }); // Set the desired color or material for the floor
-        this.floorMesh = new THREE.Mesh(this.floorGeometry, this.floorMaterial);
-        this.floorMesh.rotation.x = -Math.PI / 2; // Rotate the floor to make it horizontal
-        this.floorMesh.position.y = 0; // Set the desired height position of the floor
-        this.scene.add(this.floorMesh);
+        this.floorGeometry = new THREE.PlaneGeometry(50, 50)
+        this.floorMaterial = new THREE.MeshStandardMaterial({ color: "rgb(10,10,10)", roughness: 1, metalness: 0 })
+        this.floorMesh = new THREE.Mesh(this.floorGeometry, this.floorMaterial)
+        this.floorMesh.rotation.x = -Math.PI / 2
+        this.floorMesh.position.y = 0
+        this.scene.add(this.floorMesh)
         this.floorMesh.receiveShadow = false
         this.floorMesh.visible = false
 
@@ -151,7 +149,7 @@ export default class World{
 
 
     set_fog(){
-        this.scene.fog = new THREE.Fog( "rgb(49, 0, 95)", 62, 150);
+        this.scene.fog = new THREE.Fog( "rgb(49, 0, 95)", 62, 150)
     }
 
 
@@ -183,13 +181,13 @@ export default class World{
         this.scene.background = environmentMap
 
         // Directional Light.
-        this.light_01 = new THREE.DirectionalLight("red", 0.6);
-        this.light_01.castShadow = false;
-        this.light_01.shadow.camera.far = 20;
-        this.light_01.shadow.mapSize.set(1024, 1024);
+        this.light_01 = new THREE.DirectionalLight("red", 0.6)
+        this.light_01.castShadow = false
+        this.light_01.shadow.camera.far = 20
+        this.light_01.shadow.mapSize.set(1024, 1024)
         this.light_01.shadow.normalBias = 0.05;
-        this.light_01.position.set(-8.85, 7.64, -10);
-        this.scene.add(this.light_01);
+        this.light_01.position.set(-8.85, 7.64, -10)
+        this.scene.add(this.light_01)
 
     }
 
