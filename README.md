@@ -9,7 +9,6 @@ Web Site: www.louisrossouw.com
 
 
 
-<p align="center">
-<video src="https://github.com/LouisRossouw/portfolio_website/assets/80905013/feaf397d-6220-4b54-b621-968ec302a071" align="center" width="100%">
-</p>
 
+
+![landing_page](https://github.com/LouisRossouw/portfolio_website/assets/80905013/ab4f1039-3dc6-459a-b327-2f0c6496f043)
