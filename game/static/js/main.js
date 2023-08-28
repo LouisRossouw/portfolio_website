@@ -6,7 +6,9 @@ var container = document.getElementById("zombieland_container");
 const experience = new Experience(canvas, container)
 
 // Experience class available on global scope.
-window.experience = experience;
+window.experience = experience
+window.loading_first_time = true
+
 
 
 

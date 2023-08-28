@@ -105,7 +105,7 @@ export default class Camera{
 
         this.camera_group = new THREE.Group()
         this.perspectiveCamera = new THREE.PerspectiveCamera(
-            18, 
+            20, 
             this.container.offsetWidth / this.container.offsetHeight, // = 1
             10, 
             200

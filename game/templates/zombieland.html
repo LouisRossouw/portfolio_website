@@ -38,6 +38,12 @@
 </div>
 
 
+<audio id="audioPlayer" autoplay="False" loop>
+  <source src="{% static 'music/SecessionStudios-Covenant-devour.mp3' %}" type="audio/mp3">
+  Your browser does not support the audio element.
+</audio>
+
+
 {% include "loader.html" %}
 
 <!-- TILT SHIFT BLUR EFFECT OVERLAY -->
@@ -55,12 +61,13 @@
 </div>
 
 
+
 <div class="start_game_container" style="display: block;">
   <div id="start_game">
     <div id="ZL_instructions"></div>
 
     <div class="ZL_button_container" onclick="experience.start_game()">
-      <div id="ZL_start">Start</div>
+      <div id="ZL_start">Enter</div>
     </div>
 
   </div>
@@ -85,15 +92,30 @@
 
     <div class="ZL_game_ui_row">
 
-      <div id="ZL_ui_play_button" style="display: block;"  onclick="experience.show_instructions()">
-        <h1>Play</h1>
-      </div>
+
       <div id="ZL_ui_leaderboard_button" style="display: block;"  onclick="experience.show_leaderboard()">
         <h1><i class="fa-solid fa-ranking-star"></i></h1>
       </div>
+
+      <div id="ZL_ui_play_button" style="display: block;"  onclick="experience.show_instructions()">
+        <h1>Play</h1>
+      </div>
+
+      <div id="musicPlay" onclick="experience.set_music()" onmouseover="experience.display_music_info()" onmouseleave="experience.hide_music_info()">
+        <h1 id="musicPlay_icon_active" style="display: block;"><i class="fa-solid fa-volume-high fa-2xs"></i></h1>
+        <h1 id="musicPlay_icon_inactive" style="display: none;"><i class="fa-solid fa-volume-xmark fa-2xs"></i></h1>
+      </div>
+
+
+      <div id="musicInfo">
+        <p>Music was kindly provided by the <a href="https://www.secessionstudios.com/" target="_blank">www.secessionstudios.com</a> <i class="fa-regular fa-heart"></i></p>
+      </div>
+
+
     </div>
 
   {% endif %}
+
 
   {% include "points_ui.html" %}
 
@@ -160,6 +182,7 @@
   if (is_naughty == "True"){
     alert(censored_text + " ? Hey, No naughty words in my portfolio, your score will not be saved. =)")
   }
+
 
 </script>
 

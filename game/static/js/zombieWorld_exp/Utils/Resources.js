@@ -27,6 +27,8 @@ export default class Resources extends THREE.EventDispatcher{
             {
                 document.getElementById("ZL_loadbar").style.backgroundColor = "aqua"
                 document.getElementById("ZL_loading_h").innerHTML = "READY"
+                document.querySelector('.navbar_header').style.display = 'flex'
+                // document.getElementById("audioPlayer").play()
             },
             // Progress
             (itemUrl, itemsLoaded, itemsTotal) =>
@@ -36,6 +38,7 @@ export default class Resources extends THREE.EventDispatcher{
                 this.ZL_loading_p.innerHTML = `${Number(itemsLoaded / itemsTotal * 100).toFixed(0)}%`
             }
         )
+
 
         this.setLoaders();
         this.startLoading();
@@ -90,6 +93,18 @@ export default class Resources extends THREE.EventDispatcher{
         }
     }
 
+    ready(){
+
+        this.dispatchEvent({ type: 'ready' });
+        document.querySelector(".ZL_loadScreen").style.display = "none"
+        document.querySelector(".ZL_loadScreen_02").style.display = "none"
+        document.getElementById("audioPlayer").play()
+        sessionStorage.setItem('loaded_before', 'True');
+        this.experience.autoplay = true
+
+
+    }
+
 
     singleAssetLoaded(asset, file){
         this.items[asset.name] = file;
@@ -101,12 +116,39 @@ export default class Resources extends THREE.EventDispatcher{
 
             window.setTimeout(() => {
 
+                var loading_first_time = sessionStorage.getItem('loaded_before');
+                console.log(loading_first_time); // Output: Hello from global variable!
+
                 console.log("all assets are done.")
-                document.querySelector(".ZL_loadScreen").style.display = "none"
-                this.dispatchEvent({ type: 'ready' });
+                // document.querySelector(".ZL_loadScreen").style.display = "none"
+                // this.dispatchEvent({ type: 'ready' });
+
+                if(loading_first_time === null){
+
+                    console.log('loading first time')
+                    document.querySelector(".ZL_loadScreen").style.display = "none"
+                    document.querySelector(".ZL_loadScreen_02").style.display = "block"
+                    document.getElementById("audioPlayer").play()
+
+
+    
+                } else if (loading_first_time === 'True') {
+    
+                    this.dispatchEvent({ type: 'ready' });
+                    document.querySelector(".ZL_loadScreen").style.display = "none"
+                    document.querySelector(".ZL_loadScreen_02").style.display = "none"
+                    document.getElementById("audioPlayer").play()
+                    console.log('loaded before')
+
+    
+                }
 
             }, 1000)
-            
+
+
+
+
+
         }
     }
 }
