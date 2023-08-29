@@ -78,7 +78,7 @@ export default class Camera{
                 this.cursor.y = -(event.clientY / window.innerHeight) * 2 + 1
             } else {
                 this.cursor.x = (event.clientX / this.container.offsetWidth) * 2 - 1
-                this.cursor.y = -(event.clientY / this.container.offsetHeight) * 2 + 1.08
+                this.cursor.y = -(event.clientY / this.container.offsetHeight) * 2 + 1
             }
 
             this.raycaster.setFromCamera(this.cursor, this.perspectiveCamera)
