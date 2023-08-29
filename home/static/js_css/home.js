@@ -22,7 +22,7 @@ document.body.appendChild(lightbox_blur)
 const showreel = document.querySelector(".showreel");
 
 
-    // when clicked - set the css for video active for youtube + blurred div.
+// when clicked - set the css for video active for youtube + blurred div.
 showreel.addEventListener('click', e => {
         
     lightbox.classList.add('active');

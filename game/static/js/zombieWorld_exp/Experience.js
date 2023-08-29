@@ -48,6 +48,7 @@ export default class Experience extends THREE.EventDispatcher{
         this.world = new World()
         this.gui = new Debug()
         this.game_active = false
+        this.music_active = true
 
 
         // Statistics FPS
@@ -76,6 +77,13 @@ export default class Experience extends THREE.EventDispatcher{
         // points UI / stats
         this.ZL_ui_stats_row = document.getElementById("ZL_ui_stats_row")
         this.zombieland_point = document.getElementById('zombieland_point')
+
+        // Music
+        this.musicInfo = document.getElementById('musicInfo')
+        this.musicPlay = document.getElementById('musicPlay')
+        this.audio = document.getElementById("audioPlayer")
+        this.musicPlay_icon_active = document.getElementById("musicPlay_icon_active")
+        this.musicPlay_icon_inactive = document.getElementById("musicPlay_icon_inactive")
     }
 
     
@@ -84,6 +92,8 @@ export default class Experience extends THREE.EventDispatcher{
         this.ZL_ui_play_button.style.display = "none"
         this.ZL_ui_leaderboard_button.style.display = "none"    
         this.ZL_leaderBoard_ui.style.display = "none"
+        this.musicPlay.style.display = "none"
+        this.musicInfo.style.display = "none"
         this.start_game_element.style.display = "block"
 
         // Animated text that appears after clicking the play button.
@@ -99,6 +109,8 @@ export default class Experience extends THREE.EventDispatcher{
         this.game_active = true
         this.ZL_leaderBoard_ui.style.display = "none"
         this.ZL_ui_play_button.style.display = "none"
+        this.musicPlay.style.display = "none"
+        this.musicInfo.style.display = "none"
         this.start_game_element.style.display = "none"
         this.ZL_ui_stats_row.style.display = "block"
 
@@ -119,6 +131,8 @@ export default class Experience extends THREE.EventDispatcher{
 
         this.ZL_ui_play_button.style.display = "none"
         this.ZL_leaderBoard_save_ui.style.display = "none"
+        this.musicPlay.style.display = "none"
+        this.musicInfo.style.display = "none"
         this.ZL_leaderBoard_ui.style.display = "block"  
 
     }
@@ -131,9 +145,14 @@ export default class Experience extends THREE.EventDispatcher{
         if(this.game_active === false){
             this.ZL_ui_play_button.style.display = "block"
             this.ZL_ui_leaderboard_button.style.display = "block"
+            this.musicPlay.style.display = "block"
+
         } else{
             this.ZL_ui_play_button.style.display = "none"       
-            this.ZL_ui_leaderboard_button.style.display = "none"       
+            this.ZL_ui_leaderboard_button.style.display = "none"      
+            this.musicPlay.style.display = "none"
+            this.musicInfo.style.display = "none"
+ 
         }
 
     }
@@ -144,6 +163,41 @@ export default class Experience extends THREE.EventDispatcher{
         this.ZL_leaderBoard_ui.style.display = "block" 
         this.ZL_ui_play_button.style.display = "none"
         this.ZL_ui_leaderboard_button.style.display = "none"
+        this.musicPlay.style.display = "none"
+        this.musicInfo.style.display = "none"
+
+    }
+
+
+    set_music(){
+        
+        if(this.music_active){
+            this.audio.pause()
+            this.music_active = false
+            this.musicPlay_icon_active.style.display = "none"
+            this.musicPlay_icon_inactive.style.display = "block"
+            this.musicInfo.style.display = "block"
+        } else {
+            this.audio.play()
+            this.music_active = true
+            this.musicPlay_icon_active.style.display = "block"
+            this.musicPlay_icon_inactive.style.display = "none"
+            this.musicInfo.style.display = "block"
+        }
+
+    }
+
+    display_music_info(){
+
+        this.musicInfo.style.display = "block"
+
+    }
+    
+    hide_music_info(){
+
+        window.setTimeout(() => {
+            this.musicInfo.style.display = "none"
+        }, 5000)
 
     }
 

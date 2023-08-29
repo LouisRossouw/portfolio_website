@@ -81,7 +81,7 @@
     max-width: 2100px;
     margin: auto;
     height: 82vh;
-    margin-top: 25px;
+    top: 50px;
 
     background-color: rgb(25, 25, 25);
     border: 1px solid rgb(60, 60, 60);
@@ -89,8 +89,7 @@
     border-top: 2px solid rgb(120, 120, 120);
 
 
-    /* background-color: rgb(15, 15, 15);
-    border: 1px solid rgb(35, 35, 35);; */
+    border: 1px solid rgb(35, 35, 35);
     border-radius: 10px;
     overflow: hidden;
     color: rgb(200, 200, 200);
