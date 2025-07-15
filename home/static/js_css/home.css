@@ -44,6 +44,10 @@ to {
 }
 
 
+#notice{
+    color:#00f2f2;
+
+}
 
 
 #playbutton{
@@ -59,8 +63,6 @@ to {
     color: rgb(0, 255, 255);
     font-weight: bolder;
 }
-
-
 
 .showreel_button{
     color: white;
@@ -179,14 +181,10 @@ to {
 
 }
 
-
-
 .row {
     display: inline;
     clear: both;
 }
-
-
 
 
 /* GLOW EFFECTS */
@@ -249,8 +247,6 @@ to {
   .glow02:after {
       filter: blur(200px);
   }
-
-
 
 
 /* GLOW EFFECTS */

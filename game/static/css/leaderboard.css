@@ -7,6 +7,7 @@
     margin: auto;
     width: 100%;
     height: 90vh;
+    top: 50px;
 }
   
 
@@ -156,8 +157,9 @@
     position: fixed;
     margin: auto;
     width: 100%;
-    margin-top: 35px;
+    /* margin-top: 35px; */
     height: 90vh;
+    top: 50px;
 }
     
 
@@ -222,7 +224,7 @@
     width: 100%;
     margin-top: 35px;
     height: 90vh;
-
+    top: 10px;
 }
     
 

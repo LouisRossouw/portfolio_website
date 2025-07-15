@@ -2,7 +2,7 @@ export default [
     {
         name: "nissan",
         type: "glbModel",
-        path: "/static/models/zombieWorld/nissan1400_anims/nissan1400_anim_06.glb",
+        path: "/static/models/zombieWorld/nissan1400_anims/nissan1400_anim_08.glb",
     },
     {
         name: "woman",

@@ -25,6 +25,9 @@ def zombie_land(request):
         leaderboard_ranks = []  
         for i in leaderBoard:
             leaderboard_ranks.append(i.points)
+
+        first_visit = 'visited_before' not in request.session
+        print(first_visit)
             
 
         context = {

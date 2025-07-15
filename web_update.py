@@ -1,5 +1,5 @@
 """ I had some trouble trying to update my website source code on the server with github WHILE keeping
-    some local files / content / DB etc files, so the point of this script is to keep specific local files, 
+    some local files / content / DB etc files, so the point of this script is to keep specific local files,
     and then download the latest source code from github, and move the local files back into the source code.
 """
 
@@ -10,6 +10,9 @@ import shutil
 import logging
 import random
 from git import Repo, rmtree
+from dotenv import load_dotenv
+
+load_dotenv()
 
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', )
@@ -22,13 +25,16 @@ KEEP_FILES = [
     ".env",
     "db.sqlite3",
     "media",
-    "venv",
+    # "venv",
 
     "home/static/images",
 
     "mysite/settings.py",
     "mysite/static/font-awesome",
     "mysite/static/images",
+    "game/static/models",
+    "game/static/three",
+    "game/static/textures"
 ]
 
 VERSIONS = False # Currently no function for this.
@@ -38,12 +44,12 @@ BACKUP_FILES = [
     "mysite/settings.py",
 ]
 
-BRANCH = "master"
+# BRANCH = "master"
 GITHUB_REPO = "https://github.com/LouisRossouw/portfolio_website.git"
 
-TOOLNAME = "web_update"
-LOCAL_REPO = "D:/work/projects/dev/projects/portfolio_website_test"
-BACKUP_DIR = "D:/work/projects/dev/projects/"
+TOOLNAME = "web_updater"
+LOCAL_REPO = "/home/Kpow636/louisrossouw_env/portfolio_website"
+BACKUP_DIR = "/home/Kpow636/louisrossouw_env/"
 UPDATER_DIR = os.path.join(BACKUP_DIR, TOOLNAME)
 
 
@@ -112,8 +118,8 @@ def is_dir(file_path):
 
 
 
-def execute_shutil(source_path, 
-                   destination_path, 
+def execute_shutil(source_path,
+                   destination_path,
                    is_directory, file, generate_id):
     """ copies out files """
 
@@ -127,7 +133,7 @@ def execute_shutil(source_path,
                 os.mkdir(ID_DIR)
 
             logging.info(f"Copying: {f_name} directory, to /" + TOOLNAME)
-            shutil.move(src=str(source_path), 
+            shutil.move(src=str(source_path),
                             dst=str(f"{destination_path}/{generate_id}/{f_name}"))
 
         else:
@@ -135,18 +141,18 @@ def execute_shutil(source_path,
                 os.mkdir(ID_DIR)
 
             logging.info(f"Copying: {file} file, to /" + TOOLNAME)
-            shutil.move(src=str(source_path), 
+            shutil.move(src=str(source_path),
                         dst=str(f"{destination_path}/{generate_id}/{f_name}"))
-    
+
     else:
         logging.warning(f"{file} - does not exist. skipping.")
 
 
 
 
-def record_data(data, file_source, 
+def record_data(data, file_source,
                 file_destination, is_directory, generate_id,):
-    """ Records the copied files path into a .json file, 
+    """ Records the copied files path into a .json file,
         so it can easily move it back to where they came from. """
 
     file_name = os.path.basename(file_source)
@@ -156,7 +162,7 @@ def record_data(data, file_source,
         "file_source": file_source,
         "file_destination": file_destination,
         "is_dir": is_directory,
-        "ID": generate_id, 
+        "ID": generate_id,
         }
 
     return data
@@ -180,14 +186,14 @@ def perform_update_copy():
 
             generate_id = random.randint(1000, 10000)
 
-            data = record_data(data, file_source, 
+            data = record_data(data, file_source,
                                 file_destination, is_directory, generate_id)
 
             execute_shutil(
-                            file_source, 
-                            file_destination, 
+                            file_source,
+                            file_destination,
                             is_directory,
-                            file, 
+                            file,
                             generate_id
                             )
 
@@ -211,14 +217,14 @@ def clear_directory():
 
             else:
                 os.remove(f"{LOCAL_REPO}/{f}")
-                
+
         except PermissionError:
             logging.warning(f"Failed to remove: {f}")
 
 
 
 
-def clone_git():
+def clone_git(BRANCH):
     """ Creates a nice fresh clone from GitHub repository. """
 
     Repo.clone_from(GITHUB_REPO,
@@ -280,6 +286,8 @@ def final_cleanup():
 def run_update():
     """ Runs the update procedure. """
 
+    BRANCH = input("Select a branch to pull from? ex: 'master' or 'v01 .. v02' etc.. :")
+
     update = input("Run update - [ y / n ]?")
 
     line_length = 100
@@ -315,7 +323,7 @@ def run_update():
         logging.info(("-")*line_length)
         logging.info(f"Creating a fresh clone from  {GITHUB_REPO} -- {BRANCH}")
 
-        clone_git()
+        clone_git(BRANCH)
 
         for f in os.listdir(LOCAL_REPO):
             logging.info(f" -- {f}")
@@ -335,9 +343,13 @@ def run_update():
         logging.info("Update complete.")
 
         input()
-    
+
     else:
         exit()
+
+
+
+
 
 
 
@@ -349,6 +361,6 @@ if __name__ == "__main__":
         logging.error(e)
         input()
 
-    
+
 
 
