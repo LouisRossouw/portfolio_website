@@ -6,7 +6,6 @@ services:
     volumes:
       - ./db.sqlite3:/app/db.sqlite3
       - ./media:/app/media
-      - ./static:/app/static
     env_file:
       - path: .env
         required: false
