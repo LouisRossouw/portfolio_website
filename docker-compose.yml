@@ -1,15 +1,13 @@
-version: '3.8'
-
 services:
   web:
     build: .
     ports:
       - "8000:8000"
     volumes:
-      - ./.env:/app/.env
       - ./db.sqlite3:/app/db.sqlite3
       - ./media:/app/media
       - ./static:/app/static
     env_file:
-      - .env
+      - path: .env
+        required: false
     restart: always
