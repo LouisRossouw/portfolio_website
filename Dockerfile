@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libpq-dev \
     imagemagick \
     git \
+    dos2unix \
  && rm -rf /var/lib/apt/lists/*
 
 # Install python dependencies
@@ -26,8 +27,8 @@ RUN pip install gunicorn
 # Copy project files
 COPY . /app/
 
-# Make the entrypoint script executable
-RUN chmod +x /app/entrypoint.sh
+# Fix Windows CRLF line endings and make the entrypoint script executable
+RUN dos2unix /app/entrypoint.sh && chmod +x /app/entrypoint.sh
 
 # Expose port 8000
 EXPOSE 8000
