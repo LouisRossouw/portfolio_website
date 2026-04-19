@@ -227,6 +227,10 @@ COMPRESS_PRECOMPILERS = (
     ('text/x-scss', 'django_libsass.SassCompiler'),
 )
 
+# Pre-compile SCSS at deploy time so WhiteNoise can serve cached CSS correctly.
+# Required when using WhiteNoise — it only serves files present at startup.
+COMPRESS_OFFLINE = True
+
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
