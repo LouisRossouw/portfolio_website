@@ -30,10 +30,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("PORTFOLIO_WEBSITE_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEV = True if os.getenv('APP_ENV') == "dev" else False
 
-ALLOWED_HOSTS = ["10.0.0.113", "localhost"]
-
+ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS').split(",")
 
 # Application definition
 
@@ -45,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'compressor', # For .scss files
+    'compressor',  # For .scss files
     'sass_processor',
 
     'mysite',
@@ -205,8 +204,6 @@ GFGF_REMOVE_MAX_WIDTH_GIF = True
 GFGF_REPLACE_RENDITION_GIF = True
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
-
-
 
 
 # Set the path to your SCSS files

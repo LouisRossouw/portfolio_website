@@ -1,12 +1,12 @@
 services:
   web:
     build: .
-    ports:
-      - "8000:8000"
+    expose:
+      - "8000"
     volumes:
-      - ./db.sqlite3:/app/db.sqlite3
-      - ./media:/app/media
-    env_file:
-      - path: .env
-        required: false
-    restart: always
+      - db_data:/app/db.sqlite3
+      - media_data:/app/media
+
+volumes:
+  db_data:
+  media_data:
