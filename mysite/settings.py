@@ -175,6 +175,9 @@ STATICFILES_DIRS = [
     str(BASE_DIR) + "/contact/static",
 ]
 
+if os.getenv("USE_DOCKER") == "true":
+    STATICFILES_DIRS += ["/assets/game"]
+
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST_USER = os.getenv("GMAIL_SMTP_NAME")
@@ -184,7 +187,10 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_PASSWORD = os.getenv("GMAIL_SMTP_PASSWORD")
 
 
-MEDIA_ROOT = f"{BASE_DIR}/media"
+if os.getenv("USE_DOCKER") == "true":
+    MEDIA_ROOT = "/assets/media"
+else:
+    MEDIA_ROOT = str(BASE_DIR / "media")
 MEDIA_URL = '/media/'
 
 

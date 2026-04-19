@@ -7,7 +7,10 @@ db.sqlite3*
 
 venv
 media
-static
+
+assets
+!assets/
+!assets/**/.gitkeep
 
 venv/Include/*
 venv/lib/*
@@ -19,4 +22,3 @@ mysite/__pychache__
 contact/__pychache__
 
 mysite/settings.py
-

@@ -1,6 +1,10 @@
 #!/bin/bash
 set -e
 
+echo "Ensuring /assets directory structure..."
+mkdir -p /assets/media
+mkdir -p /assets/game
+
 echo "Running database migrations..."
 python manage.py migrate --noinput
 
