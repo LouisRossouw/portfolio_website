@@ -4,10 +4,5 @@ services:
     expose:
       - "8000"
     volumes:
-      - sqlite_data:/data
-      - media_data:/app/media
-      - assets_data:/assets
-volumes:
-  sqlite_data:
-  media_data:
-  assets_data:
+      - /opt/projects/portfolio/data:/data
+      - /opt/projects/portfolio/assets:/assets
