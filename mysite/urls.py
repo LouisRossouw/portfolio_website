@@ -29,6 +29,9 @@ from dailies import views as dailies
 from game import views as game
 from home import views as about
 
+from django.urls import re_path
+from django.views.static import serve
+
 urlpatterns = [
     path(str(f"{os.getenv('ADMIN_LOGIN')}/"), admin.site.urls),
     path('about/', about.home_page, name='about'),
@@ -47,7 +50,8 @@ urlpatterns = [
     path('documents/', include(wagtaildocs_urls)),
     path('', include(wagtail_urls)),
 
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
+]
 
 
 
