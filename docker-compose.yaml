@@ -6,7 +6,8 @@ services:
     volumes:
       - sqlite_data:/data
       - media_data:/app/media
-
+      - assets_data:/assets
 volumes:
   sqlite_data:
   media_data:
+  assets_data:
