@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+.env
+
+# Database (We map this via volume)
+# Wait! In Django development it's often db.sqlite3, we don't want to copy the local database
+# except if it's explicitly needed or we volume mount it. Best to ignore it so it doesn't get baked into the image.
+db.sqlite3
+
+# static/ and media/ directories will be generated or mapped
+# We might want static files to be collected in the container, but we don't want local static to override it.
+# Usually, we don't ignore static files used for development, but we can ignore STATIC_ROOT.
+static/
+media/
+
+# IDEs
+.idea/
+.vscode/
+
+# Git
+.git/
+.gitignore
