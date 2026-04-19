@@ -4,9 +4,9 @@ services:
     expose:
       - "8000"
     volumes:
-      - db_data:/app/db.sqlite3
+      - sqlite_data:/data
       - media_data:/app/media
 
 volumes:
-  db_data:
+  sqlite_data:
   media_data:

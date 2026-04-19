@@ -111,6 +111,21 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+
+# if os.getenv("USE_DOCKER") == "true":
+#     DB_PATH = "/data/db.sqlite3"
+# else:
+#     DB_PATH = str(BASE_DIR / "data/db.sqlite3")
+
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": DB_PATH,
+#     }
+# }
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
