@@ -33,6 +33,7 @@ DEV = True if os.getenv('APP_ENV') == "dev" else False
 DEBUG = DEV
 
 ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS').split(",")
+CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS').split(",")
 
 
 # Application definition
